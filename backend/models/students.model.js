@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 const studentSchema = new mongoose.Schema({
     firstname:{
         type: String,
-        default:""
+        required: true,
     },
     lastname:{
         type: String,
-        default:""
+        required: true,
     },
     email: {
         type: String,
