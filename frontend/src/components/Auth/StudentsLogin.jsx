@@ -7,15 +7,28 @@ import {
   GoogleLogo,
   Minus,
 } from "@phosphor-icons/react/dist/ssr";
+import axios from 'axios'
 
 export default function StudentsLogin() {
   const [passInput, setPassInput] = useState(false);
   const [isPassHidden, setisPassHidden] = useState(true);
+  const [studentID , setStudentID] = useState("");
+  const [password , setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // do stuff bro
+    axios
+      .post("http://localhost:3000/api/auth/signin", {studentID , password})
+      .then((res) =>{
+        console.log(res)
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+    
   };
+
+  
 
   return (
     <section className="w-screen h-screen lg:bg-white xl:bg-[#1F2544]/75 flex justify-center items-center">
@@ -40,7 +53,10 @@ export default function StudentsLogin() {
             className="mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-300 rounded-lg p-2 hover:border-[#474F7A] focus:border-[#474F7A] text-sm"
             name="studentid"
             id="studentid"
-            placeholder="NAME123456789"
+            placeholder="320XXXXXXXX"
+            onChange={(e)=>setStudentID(e.target.value)}
+
+
           ></input>
           <span className="mt-3 text-[#474F7A] font-sans font-medium">
             Password
@@ -62,6 +78,7 @@ export default function StudentsLogin() {
               placeholder="Enter 6 characters or more"
               name="password"
               id="password"
+              onChange={(e)=>setPassword(e.target.value)}
             />
             {isPassHidden ? (
               <Eye
