@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import StudentsLogin from './components/Auth/StudentsLogin'
+import AdminDashboard from './components/Admin/AdminDashboard'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<></>}/>
           <Route path="/studentlogin" element={<StudentsLogin/>}/>
+          <Route path="/admin" element={<AdminDashboard/>}/>
         </Routes>
     </Router>
   );

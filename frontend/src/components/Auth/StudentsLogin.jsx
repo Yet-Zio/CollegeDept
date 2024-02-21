@@ -13,12 +13,13 @@ export default function StudentsLogin() {
   const [passInput, setPassInput] = useState(false);
   const [isPassHidden, setisPassHidden] = useState(true);
   const [studentID , setStudentID] = useState("");
+  const [batch, setBatch] = useState("")
   const [password , setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/api/auth/signin", {studentID , password})
+      .post("http://localhost:3000/api/auth/signin", {studentID , batch, password})
       .then((res) =>{
         console.log(res)
       })
@@ -27,8 +28,6 @@ export default function StudentsLogin() {
       })
     
   };
-
-  
 
   return (
     <section className="w-screen h-screen lg:bg-white xl:bg-[#1F2544]/75 flex justify-center items-center">
@@ -55,6 +54,18 @@ export default function StudentsLogin() {
             id="studentid"
             placeholder="320XXXXXXXX"
             onChange={(e)=>setStudentID(e.target.value)}
+
+
+          ></input>
+          <span className="mt-3 text-[#474F7A] font-sans font-medium">
+            Batch
+          </span>
+          <input
+            className="mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-300 rounded-lg p-2 hover:border-[#474F7A] focus:border-[#474F7A] text-sm"
+            name="batch"
+            id="batch"
+            placeholder="20XX"
+            onChange={(e)=>setBatch(e.target.value)}
 
 
           ></input>
