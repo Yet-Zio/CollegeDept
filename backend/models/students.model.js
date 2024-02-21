@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 
 const studentSchema = new mongoose.Schema({
-    firstname:{
+    firstname: {
         type: String,
         required: true,
     },
-    lastname:{
+    lastname: {
         type: String,
         required: true,
     },
@@ -15,24 +15,24 @@ const studentSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    studentID:{
+    studentID: {
         type: Number,
         unique: true,
-        required:true,
+        required: true,
     },
-    password :{
+    password: {
         type: String,
         required: true,
     },
-    dob:{
+    dob: {
         type: Date,
         required: false,
     },
-    avatar:{
+    avatar: {
         type: String,
-        default:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+        default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
     },
-},{timestamps:true});
+}, { timestamps: true });
 
 
 const Student = mongoose.model('Student',studentSchema);
