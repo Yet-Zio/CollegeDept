@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRouter from './routes/auth.route.js'
 import studentRouter from './routes/student.route.js'
+import teacherRouter from './routes/teacher.route.js'
 import cookieParser from 'cookie-parser';
 import corsMiddleware from './utils/cors.js'
 
@@ -38,6 +39,7 @@ app.listen(PORT, () => {
 
 app.use('/api/auth',authRouter);
 app.use('/api/student',studentRouter);
+app.use('/api/teacher',teacherRouter);
 
 
 // creating middleware

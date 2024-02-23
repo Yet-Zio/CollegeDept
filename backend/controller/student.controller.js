@@ -1,6 +1,7 @@
 import Student from "../models/students.model.js";
 import bcrypt from 'bcrypt';
 import mongoose from "mongoose";
+import ContactUs from "../models/contactUs.model.js";
 
 
 export const addStudent = async(req , res , next)=>{
@@ -18,5 +19,21 @@ export const addStudent = async(req , res , next)=>{
 
     }catch(error){
         next (error);
+    }
+}
+
+export const contactUs = async(req , res ,next) =>{
+    const{name, email, message} = req.body;
+
+    const newContactUs = new ContactUs({name, email, message});
+
+    try {
+        await newContactUs.save();
+        res
+        .status(200)
+        .json("Thanks For Contacting")
+
+    } catch (error) {
+        next(error);
     }
 }
