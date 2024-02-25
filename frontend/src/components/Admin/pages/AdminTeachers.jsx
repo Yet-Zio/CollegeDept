@@ -90,19 +90,6 @@ export default function AdminTeachers() {
               />
             </div>
           </div>
-          <div className="flex flex-col w-1/2">
-              <span className="mt-3 text-[#474F7A] font-sans font-medium">
-                Faculty Advisor?
-              </span>
-              <select
-                name="facultyadvisor"
-                id="facultyadvisor"
-                class="mt-1.5 w-1/3 h-8 rounded-lg border-2 border-transparent text-gray-700 sm:text-sm outline-0 focus:border-[#1F2544]"
-              >
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-              </select>
-            </div>
           <div className="flex flex-col w-1/2 items-center">
             <button
               type="submit"
