@@ -3,6 +3,7 @@ import Sidebar from "./sidebar/Sidebar";
 import AdminHome from "./pages/AdminHome"
 import AdminTeachers from "./pages/AdminTeachers"
 import AdminQueries from "./pages/AdminQueries"
+import AdminBatches from "./pages/AdminBatches";
 
 export default function AdminDashboard() {
   const [pageToRender, setPageToRender] = useState("dashboard");
@@ -13,6 +14,8 @@ export default function AdminDashboard() {
         return <AdminHome pageFunc={setPageToRender}/>;
       case "teachers":
         return <AdminTeachers/>
+      case "batches":
+        return <AdminBatches/>
       case "queries":
         return <AdminQueries/>
       default:

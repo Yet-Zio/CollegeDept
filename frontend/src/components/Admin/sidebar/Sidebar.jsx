@@ -14,6 +14,7 @@ export default function Sidebar(props) {
         </div>
         <SideOption activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
         <SideOption activePage={activePage} name="Teachers" option="teachers" pageFunc={pageFunc}/>
+        <SideOption activePage={activePage} name="Batches" option="batches" pageFunc={pageFunc}/>
         <SideOption activePage={activePage} name="Queries" option="queries" pageFunc={pageFunc}/>
     </div>
   )

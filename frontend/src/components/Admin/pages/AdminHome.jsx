@@ -26,21 +26,21 @@ export default function AdminHome(props) {
         <p className='text-2xl useinter ps-5 pt-5 text-black font-bold'>Dashboard</p>
         <p className='text-sm useinter ps-4 pt-1 text-slate-500/75 font-semibold'>Hello Admin, Good {currentGreet()}</p>
         <div className="flex w-full pe-10">
-          <div className='flex flex-col bg-[#1F2544] border border-transparent rounded-lg ms-5 mt-3 w-1/6 h-36 p-4 justify-center items-center cursor-pointer hover:bg-[#1F2544]/75' onClick={() => {pageFunc("teachers")}}>
+          <div className='flex flex-col bg-[#1F2544] border border-transparent rounded-lg ms-5 mt-3 w-1/6 h-36 p-4 justify-center items-center cursor-pointer hover:bg-[#1F2544]/75 select-none' onClick={() => {pageFunc("teachers")}}>
             <span className='text-3xl useinter font-bold text-white'>{numoftrs}</span>
             <span className='text-sm useinter font-semibold text-white'>Teachers</span>
             <div>
               <Users size={72} className='text-white'/>
             </div>
           </div>
-          <div className='flex flex-col bg-[#474F7A] border border-transparent rounded-lg ms-5 mt-3 w-1/6 h-36 p-4 justify-center items-center'>
+          <div className='flex flex-col bg-[#474F7A] border border-transparent rounded-lg ms-5 mt-3 w-1/6 h-36 p-4 justify-center items-center cursor-pointer hover:bg-[#474F7A]/75 select-none' onClick={() => {pageFunc("batches")}}>
             <span className='text-3xl useinter font-bold text-white'>{numofbatches}</span>
             <span className='text-sm useinter font-semibold text-white'>Batches</span>
             <div>
               <Student size={72} className='text-white'/>
             </div>
           </div>
-          <div className='flex flex-col bg-[#81689D] border border-transparent rounded-lg ms-5 mt-3 w-1/6 h-36 p-4 justify-center items-center cursor-pointer hover:bg-[#81689D]/75' onClick={() => {pageFunc("queries")}}>
+          <div className='flex flex-col bg-[#81689D] border border-transparent rounded-lg ms-5 mt-3 w-1/6 h-36 p-4 justify-center items-center cursor-pointer hover:bg-[#81689D]/75 select-none' onClick={() => {pageFunc("queries")}}>
             <span className='text-3xl useinter font-bold text-white'>{numofqueries}</span>
             <span className='text-sm useinter font-semibold text-white'>Queries</span>
             <div>
