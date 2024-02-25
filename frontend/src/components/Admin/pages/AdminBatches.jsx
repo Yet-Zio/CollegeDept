@@ -8,7 +8,7 @@ export default function AdminBatches() {
 
   return (
 
-    <div className='flex w-full bg-[#cdd4fa] ps-7'>
+    <div className='flex w-screen min-h-screen bg-[#cdd4fa] ps-7'>
         <div className="flex flex-col w-full">
             <span className='text-2xl useinter underline mt-5 mb-5'>Batches</span>
             <div className="overflow-x-auto w-1/2">

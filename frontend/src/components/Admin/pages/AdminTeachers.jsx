@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Trash, Pencil} from '@phosphor-icons/react'
+import {Trash, Pencil, Plus} from '@phosphor-icons/react'
 import axios from 'axios';
 
 export default function AdminTeachers() {
@@ -34,7 +34,7 @@ export default function AdminTeachers() {
   }, []);
 
   return (
-    <div className='flex w-screen h-screen bg-[#cdd4fa] ps-7'>
+    <div className='flex w-screen min-h-screen bg-[#cdd4fa] ps-7'>
       <div className="flex flex-col w-full">
         <span className='text-2xl useinter underline mt-5 mb-5'>Lecturers</span>
         <div className="overflow-x-auto w-1/2">
@@ -125,7 +125,7 @@ export default function AdminTeachers() {
               type="submit"
               className="mt-5 w-1/4 flex pt-3 pb-3 bg-[#474F7A] justify-center items-center rounded-lg font-sans text-white hover:bg-[#474F7A]/75"
             >
-              Add Lecturer
+              <span className='hidden md:flex'>Add Lecturer</span><Plus className='md:hidden'/>
             </button>
             <p className='text-xl text-black'>{response}</p>
           </div>
