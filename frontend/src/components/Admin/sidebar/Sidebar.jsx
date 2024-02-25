@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import SideLogo from '../SideLogo'
-import CategoryDash from './CategoryDash'
 import SideOption from './SideOption'
 
 export default function Sidebar(props) {
