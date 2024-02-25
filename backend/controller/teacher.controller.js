@@ -3,11 +3,11 @@ import Teacher from '../models/teachers.model.js';
 import jwt from 'jsonwebtoken'
 
 export const addTeacher = async(req, res, next) =>{
-    const{firstname, lastname, isFacultyAdviser, teacherID, email} = req.body;
+    const{firstname, lastname,  teacherID, email} = req.body;
 
     const handPassword = bcrypt.hashSync( email , 10 );
 
-    const newBatchStudents = new Teacher({email , password: handPassword, teacherID ,firstname , lastname, isFacultyAdviser});
+    const newBatchStudents = new Teacher({email , password: handPassword, teacherID ,firstname , lastname });
 
     try{
         await newBatchStudents.save();
@@ -43,6 +43,17 @@ export const teacherSignin = async (req , res , next ) =>{
         .status(200)
         .json(rest);
     }catch(error){
+        next(error);
+    }
+}
+
+export const getTeacher = async(req, res, next) =>{
+    try {
+        const teacher = await Teacher.find();
+        res
+        .status(200)
+        .json(teacher)
+    } catch (error) {
         next(error);
     }
 }

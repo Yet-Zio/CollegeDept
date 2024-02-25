@@ -9,10 +9,6 @@ const teacherSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    isFacultyAdviser:{
-        type: Boolean,
-        default: false,
-    },
     teacherID:{
         type: Number,
         required: true,

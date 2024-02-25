@@ -1,42 +1,68 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Trash, Pencil} from '@phosphor-icons/react'
+import axios from 'axios';
 
 export default function AdminTeachers() {
   const handleAddTeacher = (e) => {
     e.preventDefault()
+    axios
+    .post("http://localhost:3000/api/teacher/addTeacher",{firstname , lastname, email , teacherID})
+    .then((res) =>{
+      console.log(res.data);
+      setResponse(res.data);
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
   }
+
+  const [teacher , setTeacher] = useState([]);
+
+  const [firstname , setFirstname] = useState("");
+  const [lastname , setLastname] = useState("");
+  const [email , setEmail] = useState("");
+  const [teacherID , setTeacherID] = useState("");
+  const [response ,  setResponse] = useState("");
+
+  useEffect(() => {
+    const fetchTeachers= async () => {
+      const res = await axios.get("http://localhost:3000/api/teacher/getTeacher");
+      setTeacher(res.data);
+    };
+
+    fetchTeachers();
+  }, []);
 
   return (
     <div className='flex w-screen h-screen bg-[#cdd4fa] ps-7'>
       <div className="flex flex-col w-full">
         <span className='text-2xl useinter underline mt-5 mb-5'>Lecturers</span>
-        <div class="overflow-x-auto w-1/2">
-          <table class="useinter divide-y-2 divide-gray-700 text-md">
-            <thead class="ltr:text-left rtl:text-right">
+        <div className="overflow-x-auto w-1/2">
+          <table className="useinter divide-y-2 divide-gray-700 text-md">
+            <thead className="ltr:text-left rtl:text-right">
               <tr>
-                <th class="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">SL.NO</th>
-                <th class="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">FIRST NAME</th>
-                <th class="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">LAST NAME</th>
-                <th class="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">Teacher ID</th>
-                <th class="whitespace-nowrap px-4 py-2 font-semibold text-gray-900"></th>
+                <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">SL.NO</th>
+                <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">FIRST NAME</th>
+                <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">LAST NAME</th>
+                <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">Teacher ID</th>
+                <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900"></th>
               </tr>
             </thead>
 
-            <tbody class="divide-y divide-gray-700">
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">1</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Benziger</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Raj. J. J</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">TEACHERXXXXXX</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 flex"><Trash size={24} className='text-red-500 cursor-pointer me-4'/> <Pencil size={24} className='text-[#1F2544] cursor-pointer'/></td>
-              </tr>
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">2</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Leena</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">U</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">TEACHERXXXXXX</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700 flex"><Trash size={24} className='text-red-500 cursor-pointer me-4'/> <Pencil size={24} className='text-[#1F2544] cursor-pointer'/></td>
-              </tr>
+            <tbody className="divide-y divide-gray-700">
+              
+                {teacher.map((teach , index) =>{
+                  return(
+                    <tr key={index}>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">{index+1}</td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">{teach.firstname}</td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">{teach.lastname}</td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">{teach.teacherID}</td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700 flex"><Trash size={24} className='text-red-500 cursor-pointer me-4'/> <Pencil size={24} className='text-[#1F2544] cursor-pointer'/></td>
+                    </tr>
+                  )
+                })}
+              
             </tbody>
           </table>
         </div>
@@ -52,6 +78,7 @@ export default function AdminTeachers() {
                 name="firstname"
                 id="firstname"
                 placeholder="John"
+                onChange={(e) => setFirstname(e.target.value)}
               />
             </div>
             <div className="flex flex-col w-1/2">
@@ -63,6 +90,7 @@ export default function AdminTeachers() {
                 name="lastname"
                 id="lastname"
                 placeholder="Doe"
+                onChange={(e) => setLastname(e.target.value)}
               />
             </div>
           </div>
@@ -76,6 +104,7 @@ export default function AdminTeachers() {
                 name="email"
                 id="email"
                 placeholder="example@mail.com"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="flex flex-col w-1/2">
@@ -87,6 +116,7 @@ export default function AdminTeachers() {
                 name="teacherid"
                 id="teacherid"
                 placeholder="TEACHERXXXXXX"
+                onChange={(e) => setTeacherID(e.target.value)}
               />
             </div>
           </div>
@@ -97,6 +127,7 @@ export default function AdminTeachers() {
             >
               Add Lecturer
             </button>
+            <p className='text-xl text-black'>{response}</p>
           </div>
         </form>
       </div>
