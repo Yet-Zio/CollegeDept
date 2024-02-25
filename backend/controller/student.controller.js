@@ -37,3 +37,30 @@ export const contactUs = async(req , res ,next) =>{
         next(error);
     }
 }
+
+export const getBatch = async (req, res, next) => {
+    try {
+        const db = mongoose.connection;
+
+        if (db.readyState !== 1) {
+            throw new Error('MongoDB connection is not established.');
+        }
+
+        const collections = await db.db.listCollections().toArray();
+        
+        const batchName = collections.map((data) =>{
+            return(data.name);
+        })
+
+        const batchItems = batchName.filter(item => item.startsWith("batch"));
+
+        
+                
+        res.json(batchItems);
+        
+        
+    } catch (error) {
+        next(error);
+    }
+}
+
