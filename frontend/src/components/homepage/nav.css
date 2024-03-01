@@ -1,0 +1,131 @@
+.c-nav{
+    user-select: none;
+    position:fixed;
+    top: 0;
+    width: 100%;
+    height: 10dvh;
+    background:transparent;
+    color: black;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.scrolled {
+    background-color:#151515;
+    z-index: 2;
+    height: 5dvh;
+    transition: 0.2s ease-in;
+  }
+  
+  .notscrolled {
+    background: transparent;
+    transition: 0.1s ease-in;
+  }
+  .dissapearonscroll{
+    display: none;
+  }
+  .c-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    height: 9dvh;
+  }
+  .colapse-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 5dvh;
+    background-color: inherit;
+    height: 4dvh;
+  }
+  .colapse-btn span{
+    background-color: rgb(226, 226, 226);
+    height: .3dvh;
+    width: 3dvh;
+    margin: 2.4px;
+  }
+  .c-border{
+    transition:ease-in-out;
+  }
+  .c-border:hover{
+    border-color: #dc8733;
+    border-width: 1px;
+  }
+  .search{
+    height: 4dvh;
+    width: 4dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .search img{
+    height: 3dvh;
+    width: 3dvh;
+  }
+  .c-logo{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  .line{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    background: #dc8733;
+    z-index: inherit;
+}
+  .logo-scrolled{
+    height: 3.5dvh;
+    width: 3.5dvh;
+  }
+ .logo{
+    height: 4dvh;
+    width: 4dvh;
+    padding-bottom: 3px;
+ }
+  .c-logo span{
+    font-weight: bolder;
+    font-size: 1.4rem;
+    padding-left: 4px;
+  }
+  
+  @media screen and (max-width:718px){
+
+    .notscrolled{
+        position: relative;
+        background: #151515;;
+    }
+  }
+  @media  screen and (min-width:718px) {
+    .c-logo span{
+        font-size: 2rem;
+    }
+    .title-scrolled{
+        font-size: 1.6rem !important;
+      }
+  }
+  @media screen and (min-width:1200px) {
+    .c-logo span{
+        font-size: 2.4rem;
+    }
+    .title-scrolled{
+        font-size: 2rem !important;
+    }
+    .logo-scrolled{
+        height: 4dvh;
+        width: 4dvh;
+      }
+     .logo{
+        height: 5dvh;
+        width: 5dvh;
+        padding-bottom: 3px;
+     }
+  }
+ 

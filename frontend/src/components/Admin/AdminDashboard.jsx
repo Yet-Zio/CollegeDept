@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import AdminHome from "./pages/AdminHome"
 import AdminTeachers from "./pages/AdminTeachers"

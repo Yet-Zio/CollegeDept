@@ -1,0 +1,234 @@
+.main-panel{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 120dvh;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+}
+.upper{
+    position: relative;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    object-fit: cover;
+    background-position: center;
+}
+.uppertext{
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    left: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 5dvh;
+    margin-top: 24dvh;
+}
+.u-title{
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-bottom: 1dvh;
+    color: rgb(249, 249, 249);
+}
+.u-text{
+    font-size: .9rem;
+    font-weight: bold;
+    color: #efeeec;
+}
+.title{
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 1dvh;
+    color: rgb(249, 249, 249);
+}
+.text{
+    font-size: .8rem;
+    font-weight: bold;
+    color: #efeeec;
+    
+}
+.seperator{
+    background-color: #dc8733;
+    height: 1px;
+    z-index:1;
+    width: 100%;
+    box-shadow:30px 60px 60px 3px #56504b;
+}
+.lower{
+    height: 60%;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #151515;
+}
+
+.c-col{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.imagecontainer{
+    height: 50%;
+    width: 80%;
+    overflow: hidden;
+    border-radius: 30px;
+    background: rgb(0, 0, 0);
+    border-color: #dc8733;
+    border-width: 1px;
+}
+.imagecontainer img{
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s ease-in;
+}
+.image:hover{
+    transform: scale(1.2);
+}
+.textarea{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 80%;
+    color: white;
+    padding-top: 3px;
+}
+.c-col:hover{
+    cursor: pointer;
+}
+@media screen and (min-width:500px){
+    .c-col img{
+        height: 120%;
+        width: 120%;
+        object-fit: cover;
+    }
+}
+@media screen and (min-width:600px){
+    .c-col{
+        padding-top: 30px;
+    }
+    .imagecontainer{
+        height: 60%;
+    }
+    .textarea{
+        height: 40%;
+    }
+}
+@media screen and (min-width:700px){
+    .main-panel{
+        height: 110dvh;
+    }
+    .upper{
+        height: 50%;
+    }
+    .uppertext{
+        margin-top: 30dvh;
+    }
+    .lower{
+        height: 50%;
+    }
+    .c-col{
+        flex-direction: row;
+        padding: 20px;
+    }
+    .textarea{
+        padding-left: 20px;
+    }
+    .imagecontainer{
+        height: 100%;
+    }
+
+}
+
+@media screen and (min-width:850px) {
+    .text{
+        font-size: .9rem;
+    }
+    .title{
+        font-size: 1.4rem;
+    }
+    .u-title{
+        font-size: 1.5rem;
+    }
+    .u-text{
+        font-size: 1rem;
+    }
+}
+@media screen and (min-width:950px) {
+    .main-panel{
+        height: 100dvh;
+    }
+    .upper{
+        height: 60%;
+    }
+    .uppertext{
+        margin-top: 36dvh;
+    }
+    .lower{
+        flex-direction: row;
+        justify-content :space-evenly;
+        height: 40%;
+    }
+    .c-col{
+        flex-direction: column;
+        height: 100%;
+    }
+    .imagecontainer{
+        height: 50%;
+        width: 60%;
+    }
+    .imagecontainer img{
+        height: 100%;
+        width: 100%;
+    }
+    .text{
+        font-size: .8rem;
+    }
+   
+}
+@media screen and (min-width:1200px) {
+    .u-title{
+        font-size: 1.8rem;
+    }
+    .u-text{
+        font-size: 1.3rem;
+        
+    }
+    .imagecontainer{
+        height: 100%;
+        width: 70%;
+    }
+    .c-col{
+        flex-direction: row;
+        width: 45%;
+    }
+    .upper{
+        height: 75%;
+    }
+    .title{
+        font-size: 1.3rem;  
+    }
+    .lower{
+        height: 25%;
+    }
+    .uppertext{
+        margin-top: 45dvh;
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {Trash} from '@phosphor-icons/react'
 import axios from 'axios';
 

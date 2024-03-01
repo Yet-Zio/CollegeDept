@@ -3,3 +3,7 @@
     src: local('Inter'),
          url('./fonts/Inter-Regular.ttf');
 }
+@font-face {
+    font-family: 'SuperMario';
+    src: url('./fonts/SuperMario256.ttf');
+}

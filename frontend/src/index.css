@@ -6,3 +6,18 @@
 .useinter{
     font-family: Inter;
 }
+.usemario{
+    font-family: SuperMario;
+}
+body{
+    user-select: none;
+      
+}
+html{
+    scrollbar-width: none;
+    -ms-overflow-style:none;
+}
+body::-webkit-scrollbar{
+    overflow-y: scroll;  
+    display: none;
+}

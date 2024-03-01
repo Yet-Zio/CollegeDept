@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {CaretDown} from '@phosphor-icons/react'
 import {motion, AnimatePresence} from "framer-motion"
 
