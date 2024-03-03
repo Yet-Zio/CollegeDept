@@ -1,5 +1,5 @@
 import React from "react";
-import {ChartBar, ChalkboardTeacher, Student, Envelope} from "@phosphor-icons/react/dist/ssr"
+import {ChartBar, ChalkboardTeacher, Student, Envelope, Scroll} from "@phosphor-icons/react/dist/ssr"
 
 const SideIcon = (sideopt) => {
   switch (sideopt) {
@@ -9,6 +9,8 @@ const SideIcon = (sideopt) => {
       return <ChalkboardTeacher size={32} className="text-gray-300" weight="thin" />
     case "batches":
       return <Student size={32} className="text-gray-300" weight="thin" />
+    case "requests":
+      return <Scroll size={32} className="text-gray-300" weight="thin"/>
     case "queries":
       return <Envelope size={32} className="text-gray-300" weight="thin" />
   }
