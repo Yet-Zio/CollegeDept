@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import AdminHome from "./pages/AdminHome"
 import AdminTeachers from "./pages/AdminTeachers"
+import AdminRequests from "./pages/AdminRequests"
 import AdminQueries from "./pages/AdminQueries"
 import AdminBatches from "./pages/AdminBatches";
 
@@ -16,6 +17,8 @@ export default function AdminDashboard() {
         return <AdminTeachers/>
       case "batches":
         return <AdminBatches/>
+      case "requests":
+        return <AdminRequests/>
       case "queries":
         return <AdminQueries/>
       default:
