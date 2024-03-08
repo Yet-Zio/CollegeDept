@@ -57,3 +57,27 @@ export const getTeacher = async(req, res, next) =>{
         next(error);
     }
 }
+
+export const setFaculty = async (req , res , next) => {
+
+    const {batch, teacherID , email} = req.body ; 
+
+    const verifyAdmin = await Teacher.findOne({email});
+
+    if(verifyAdmin.isHOD === false) next(errorHandler(401 , "Unauthorized"))
+
+    try {
+        const updatedTeacher = await Teacher.findOneAndUpdate(
+            { teacherID },
+            { $set: { batch: [{ batch }] } },
+            { new: true }
+        ).exec();
+
+        res
+        .json(updatedTeacher);
+    } catch (error) {
+        next(error);
+    }
+
+
+}
