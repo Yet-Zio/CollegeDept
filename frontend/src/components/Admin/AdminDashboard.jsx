@@ -27,7 +27,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex min-w-screen min-h-screen overflow-hidden">
+    <div className="flex min-w-screen min-h-screen overflow-hidden bg-[#cdd4fa]">
       <Sidebar activePage={pageToRender} pageFunc={setPageToRender} />
       {renderDashPage(pageToRender)}
     </div>
