@@ -1,4 +1,10 @@
-import mongoose from "mongoose";
+import mongoose  from "mongoose";
+
+const facultyAdviserSchema = new mongoose.Schema({
+    batch: {
+        type: String,
+    },
+})
 
 const teacherSchema = new mongoose.Schema({
     firstname:{
@@ -26,10 +32,17 @@ const teacherSchema = new mongoose.Schema({
         type: Date,
         default: "",
     },
+
+    batch:[facultyAdviserSchema],
+
     avatar:{
         type: String,
         default:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
     },
+    isHOD: {
+        type: Boolean , 
+        default: false
+    }
 },{timestamps:true});
 
 
