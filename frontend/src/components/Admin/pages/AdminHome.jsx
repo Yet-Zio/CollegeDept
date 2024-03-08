@@ -55,7 +55,7 @@ export default function AdminHome(props) {
         <p className='text-2xl useinter ps-5 pt-5 text-black font-bold'>Dashboard</p>
         <p className='text-sm useinter ps-4 pt-1 text-slate-500/75 font-semibold'>Hello Admin, Good {currentGreet()}</p>
         <div className="flex w-full pe-10">
-          <div className='flex flex-col bg-[#1F2544] border border-transparent rounded-lg ms-5 mt-3 w-1/6 h-36 p-4 justify-center items-center cursor-pointer hover:bg-[#1F2544]/75 select-none' onClick={() => {pageFunc("teachers")}}>
+          <div className='flex flex-col bg-[#1F2544] border border-transparent rounded-lg ms-5 mt-3 w-1/5 md:w-1/6 h-20 md:h-36 p-4 justify-center items-center cursor-pointer hover:bg-[#1F2544]/75 select-none' onClick={() => {pageFunc("teachers")}}>
             <span className='text-3xl useinter font-bold text-white'>{teacher.length}</span>
             <span className='text-sm useinter font-semibold text-white'>Teachers</span>
             <div className='hidden md:flex'>

@@ -13,6 +13,15 @@ export default function AdminRequests() {
       <RequestAccordion number="1" name="Leena U" email="leena.usha@gmail.com" message="I need a leave pls☠️"/>
       <RequestAccordion number="2" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
       <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
+      <RequestAccordion number="3" name="Anto" email="antotheprohacker@gmail.com" message="Bro I don't even work here but still I need leave."/>
     </div>
   )
 }
