@@ -1,5 +1,5 @@
 import './navbar.css'
-import logo from '../../assets/PineTools.com_logo.png'
+import logo from '../../assets/collegelogo.png'
 import colapse from '../../assets/collapse-xxl.png'
 import search from '../../assets/search-icon-2044x2048-psdrpqwp.png'
 function NavBar() {

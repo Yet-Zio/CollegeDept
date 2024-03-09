@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImage from '../../assets/PineTools.com_logo.png';
+import logoImage from '../../assets/collegelogo.png';
 
 export default function SideLogo() {
   return (

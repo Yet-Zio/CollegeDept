@@ -9,6 +9,7 @@ import AdminDashboard from './components/Admin/AdminDashboard'
 import HomePage from "./pages/HomePage";
 import Menu from "./components/homepage/Menu";
 import ContactUs from "./components/contactUs/ContactUs";
+import StudenDashboard from "./components/Student/StudenDashboard";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/menu" element={<Menu /> }/>
           <Route path="/studentlogin" element={<StudentsLogin/>}/>
           <Route path="/admin" element={<AdminDashboard/>}/>
+          <Route path="/student" element={<StudenDashboard/>}/>
           <Route path="/contact-us" element={<ContactUs/>}/>
         </Routes>
     </Router>
