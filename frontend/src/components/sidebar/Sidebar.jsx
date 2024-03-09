@@ -40,9 +40,12 @@ export default function Sidebar(props) {
           <SideOption activePage={activePage} name="Queries" option="queries" pageFunc={pageFunc}/>
         </>
       case "student":
-        <SideOption activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
+        return <>
+        <SideOption forwhich="student" activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
+        </>
       default:
-        <SideOption activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
+        return <>
+        </>
     }
   }
   return (
