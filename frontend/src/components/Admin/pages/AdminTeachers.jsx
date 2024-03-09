@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Trash, Pencil, Plus} from '@phosphor-icons/react'
+import {Trash, Pencil, Plus, Stamp} from '@phosphor-icons/react'
 import axios from 'axios';
 
 export default function AdminTeachers() {
@@ -23,6 +23,8 @@ export default function AdminTeachers() {
   const [email , setEmail] = useState("");
   const [teacherID , setTeacherID] = useState("");
   const [response ,  setResponse] = useState("");
+  const [isThSelected, setIsThSelected] = useState("");
+  const [isBatSelected, setIsBatSelected] = useState("");
 
   useEffect(() => {
     const fetchTeachers= async () => {
@@ -130,6 +132,33 @@ export default function AdminTeachers() {
             <p className='text-xl text-black'>{response}</p>
           </div>
         </form>
+        <div className='flex flex-col mt-10 useinter w-full'>
+          <span className='text-2xl font-medium mb-5'>Manage Lecturer</span>
+          <div className="flex w-full">
+            <select value={isThSelected} onChange={(e) => {setIsThSelected(e.target.value)}} name='selectlect' id='selectlect' className='w-1/4 border border-transparent rounded-lg outline-0 focus:border-[#1F2544]'>
+              <option value=''>Select a teacher...</option>
+              <option value='hey'>hehe</option>
+              {/* <option key={} value={}></option>*/}
+            </select>
+
+            {isThSelected !== "" && (
+              <select value={isBatSelected} onChange={(e) => {setIsBatSelected(e.target.value)}} name='selectbat' id='selectbat' className='ms-3 w-1/4 border border-transparent rounded-lg outline-0 focus:border-[#1F2544]'>
+                <option value=''>Select a batch...</option>
+                <option value='hey'>hehe</option>
+                {/* <option key={} value={}></option>*/}
+              </select>
+            )}
+          </div>
+          {isBatSelected !== "" && (
+            <div className="flex flex-col w-1/2 items-center">
+                <button
+                className="mt-5 w-1/3 flex pt-3 pb-3 bg-[#474F7A] justify-center items-center rounded-lg font-sans text-white hover:bg-[#474F7A]/75"
+                >
+                  <span className='hidden md:flex'>Assign as Faculty Advisor</span><Stamp className='md:hidden'/>
+                </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
