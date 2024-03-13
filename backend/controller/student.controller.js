@@ -2,9 +2,13 @@ import Student from "../models/students.model.js";
 import bcrypt from 'bcrypt';
 import mongoose from "mongoose";
 import ContactUs from "../models/contactUs.model.js";
+import { errorHandler } from "../utils/errorHandler.js";
 
 
 export const addStudent = async(req , res , next)=>{
+
+    if(req.user.id !== req.params.id) return next(errorHandler(403, 'forbidden'))
+
     const {email , studentID , firstname , lastname , batch} = req.body;
     
     const handPassword = bcrypt.hashSync( email , 10 );

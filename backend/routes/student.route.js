@@ -1,9 +1,10 @@
 import express from "express";
 import { addStudent, contactUs, getBatch} from "../controller/student.controller.js";
+import { verifyUser } from "../utils/verifyUser.js";
 
-const router = express.Router(); // Call express.Router() to create a new router instance
+const router = express.Router(); 
 
-router.post('/addStudent', addStudent);
+router.post('/addStudent',verifyUser, addStudent);
 router.post('/contactUs', contactUs);
 router.get('/getBatch', getBatch);
 

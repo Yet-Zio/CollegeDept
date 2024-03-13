@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import authRouter from './routes/auth.route.js'
 import studentRouter from './routes/student.route.js'
 import teacherRouter from './routes/teacher.route.js'
+import adminRouter from './routes/admin.route.js'
+import associateRouter from './routes/associate.route.js'
 import cookieParser from 'cookie-parser';
 import corsMiddleware from './utils/cors.js'
 
@@ -40,6 +42,8 @@ app.listen(PORT, () => {
 app.use('/api/auth',authRouter);
 app.use('/api/student',studentRouter);
 app.use('/api/teacher',teacherRouter);
+app.use('/api/admin',adminRouter);
+app.use('/api/associate',associateRouter);
 
 
 // creating middleware
