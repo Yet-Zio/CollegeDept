@@ -33,11 +33,11 @@ export default function Sidebar(props) {
     switch(props.forwhich){
       case "admin":
         return <>
-          <SideOption activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
-          <SideOption activePage={activePage} name="Teachers" option="teachers" pageFunc={pageFunc}/>
-          <SideOption activePage={activePage} name="Batches" option="batches" pageFunc={pageFunc}/>
-          <SideOption activePage={activePage} name="Requests" option="requests" pageFunc={pageFunc}/>
-          <SideOption activePage={activePage} name="Queries" option="queries" pageFunc={pageFunc}/>
+          <SideOption forwhich="admin" activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
+          <SideOption forwhich="admin" activePage={activePage} name="Teachers" option="teachers" pageFunc={pageFunc}/>
+          <SideOption forwhich="admin" activePage={activePage} name="Batches" option="batches" pageFunc={pageFunc}/>
+          <SideOption forwhich="admin" activePage={activePage} name="Requests" option="requests" pageFunc={pageFunc}/>
+          <SideOption forwhich="admin" activePage={activePage} name="Queries" option="queries" pageFunc={pageFunc}/>
         </>
       case "student":
         return <>
