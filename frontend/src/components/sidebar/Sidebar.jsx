@@ -33,15 +33,19 @@ export default function Sidebar(props) {
     switch(props.forwhich){
       case "admin":
         return <>
-          <SideOption activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
-          <SideOption activePage={activePage} name="Teachers" option="teachers" pageFunc={pageFunc}/>
-          <SideOption activePage={activePage} name="Batches" option="batches" pageFunc={pageFunc}/>
-          <SideOption activePage={activePage} name="Requests" option="requests" pageFunc={pageFunc}/>
-          <SideOption activePage={activePage} name="Queries" option="queries" pageFunc={pageFunc}/>
+          <SideOption forwhich={props.forwhich} activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
+          <SideOption forwhich={props.forwhich} activePage={activePage} name="Teachers" option="teachers" pageFunc={pageFunc}/>
+          <SideOption forwhich={props.forwhich} activePage={activePage} name="Batches" option="batches" pageFunc={pageFunc}/>
+          <SideOption forwhich={props.forwhich} activePage={activePage} name="Requests" option="requests" pageFunc={pageFunc}/>
+          <SideOption forwhich={props.forwhich} activePage={activePage} name="Queries" option="queries" pageFunc={pageFunc}/>
         </>
       case "student":
         return <>
-        <SideOption forwhich="student" activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
+        <SideOption forwhich={props.forwhich} activePage={activePage} name="Dashboard" option="dashboard" pageFunc={pageFunc}/>
+        <SideOption forwhich={props.forwhich} activePage={activePage} name="Profile" option="profile" pageFunc={pageFunc}/>
+        <SideOption forwhich={props.forwhich} activePage={activePage} name="Homeworks" option="homeworks" pageFunc={pageFunc}/>
+        <SideOption forwhich={props.forwhich} activePage={activePage} name="Schedules" option="schedules" pageFunc={pageFunc}/>
+        <SideOption forwhich={props.forwhich} activePage={activePage} name="Announcements" option="announcements" pageFunc={pageFunc}/>
         </>
       default:
         return <>
