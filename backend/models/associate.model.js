@@ -8,7 +8,10 @@ const articleSchema = new mongoose.Schema({
 
     author: String,
     
-    date: String ,
+    date: {
+        type: Date ,
+        default: Date.now
+    } ,
 })
 
 const associateSchema = new mongoose.Schema({

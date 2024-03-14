@@ -38,15 +38,21 @@ export const addArticle = async (req , res , next) => {
 
     if(req.user.id !== req.params.id) return next(errorHandler(403, 'forbidden'))
 
-    const {title , body , author , date } = req.body ;
+    const {title , body , author  } = req.body ;
 
     const findUser = await Associate.findOne({_id:req.params.id})
 
     if(!findUser) return next(errorHandler(401 , "User cant be found"))
 
-    
+    findUser.article.push({title , body , author , date})
 
-
+    try {
+        await addArticle.save();
+        res
+        .json({message:"Article Added Successfully"})
+    } catch (error) {
+        next(error);
+    }
 
 
 

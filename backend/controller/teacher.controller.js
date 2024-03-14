@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import Teacher from '../models/teachers.model.js';
 import jwt from 'jsonwebtoken'
+import leaveLetter from '../models/leaveLetter.model.js';
 
 export const addTeacher = async(req, res, next) =>{
     const{firstname, lastname,  teacherID, email} = req.body;
@@ -80,6 +81,32 @@ export const setFaculty = async (req , res , next) => {
     } catch (error) {
         next(error);
     }
+
+
+}
+
+export const applyLeave = async (req , res , next) => {
+
+    if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
+
+    const {teacher , approved , message} = req.body ;
+
+    const findTeacher = await Teacher.findOne({_id:teacher})
+
+    if(!findTeacher) return next(errorHandler(404 , 'Teacher Not Found'));
+
+    const addLeaveLetter = new leaveLetter({teacher , approved , message});
+
+    try {
+        
+        await addLeaveLetter.save()
+        res
+        .json({message: "Applied Successfully"})
+
+    } catch (error) {
+        next(error);
+    }
+
 
 
 }
