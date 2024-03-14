@@ -7,3 +7,7 @@
     font-family: 'SuperMario';
     src: url('./fonts/SuperMario256.ttf');
 }
+@font-face {
+    font-family: 'Heading';
+    src: url('./fonts/University.otf');
+}

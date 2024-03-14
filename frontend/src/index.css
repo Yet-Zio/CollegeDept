@@ -9,6 +9,9 @@
 .usemario{
     font-family: SuperMario;
 }
+.useHeading{
+    font-family: Heading;
+}
 body{
     user-select: none;
       

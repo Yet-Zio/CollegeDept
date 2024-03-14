@@ -72,6 +72,7 @@
     justify-content: center;
     align-items: center;
     color: white;
+
   }
   .line{
     position: absolute;
@@ -88,11 +89,11 @@
  .logo{
     height: 4dvh;
     width: 4dvh;
-    padding-bottom: 3px;
+    /* padding-bottom: 3px; */
  }
   .c-logo span{
-    font-weight: bolder;
-    font-size: 1.4rem;
+    /* font-weight: bold; */
+    font-size: 1.2rem; 
     padding-left: 4px;
   }
   
@@ -108,12 +109,12 @@
         font-size: 2rem;
     }
     .title-scrolled{
-        font-size: 1.6rem !important;
+        font-size: 1rem !important;
       }
   }
   @media screen and (min-width:1200px) {
     .c-logo span{
-        font-size: 2.4rem;
+        font-size: 2rem;
     }
     .title-scrolled{
         font-size: 2rem !important;
@@ -123,9 +124,9 @@
         width: 4dvh;
       }
      .logo{
-        height: 5dvh;
-        width: 5dvh;
-        padding-bottom: 3px;
+        height: 6dvh;
+        width: 6dvh;
+       
      }
   }
  

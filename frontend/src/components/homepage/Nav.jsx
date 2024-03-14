@@ -32,7 +32,7 @@ export default function Nav() {
           </Link>
           <div className="c-logo" >
             <img src={logo} alt="" className={` ${isScrolled ? 'logo-scrolled' : 'logo'}`}/>
-           <span className={`usemario ${isScrolled ? 'title-scrolled' : ''}`}>DEPT OF C.S</span>
+           <span className={`useHeading  ${isScrolled ? 'title-scrolled' : ''}`}>DEPT OF CS</span>
           </div>
           <div className="search c-border">
             <img src={search}/>
