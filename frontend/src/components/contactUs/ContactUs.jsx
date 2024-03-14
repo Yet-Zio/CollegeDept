@@ -6,8 +6,8 @@ const handleSubmit = (e) =>{
 }
 function ContactUs() {
   return (
-    <div className='h-screen w-screen flex justify-center items-center bg-white'>
-        <div className='flex justify-center p-3  rounded-lg border-black border-4 shadow-xl'>
+    <div className='h-screen w-screen flex justify-center items-center bg-black'>
+        <div className='flex justify-center p-10  rounded-lg border-black bg-white border-4 shadow-xl'>
             <div className='flex flex-col gap-4 '>
                 <div>
                     <p className='text-[#dc8733] text-2xl font-bold'>Get In Touch</p>
