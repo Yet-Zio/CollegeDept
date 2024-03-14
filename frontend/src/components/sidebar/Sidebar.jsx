@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import SideLogo from './SideLogo'
 import SideOption from './SideOption'
+import SideLogout from './SideLogout'
 
 export default function Sidebar(props) {
   
@@ -60,6 +61,9 @@ export default function Sidebar(props) {
             <SideLogo/>
         </div>
         {renderSidebarNavs()}
+        <div className="flex flex-col w-full flex-grow items-center justify-end">
+          <SideLogout forwhich={props.forwhich}/>
+        </div>
     </div>
     </>
   )

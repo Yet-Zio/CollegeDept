@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import StudentLoginImg from "./StudentLoginImg";
+import collegelogoImg from '../../assets/collegelogo.png';
 import {
   Eye,
   EyeSlash,
@@ -34,7 +35,7 @@ export default function StudentsLogin() {
       <div className="w-full h-full lg:w-5/12 lg:h-5/6 2xl:w-9/12 2xl:h-5/6 bg-white flex justify-center items-center border-2 border-transparent rounded-lg gap-5">
         <form
           onSubmit={handleLogin}
-          className="w-full h-full 2xl:ms-20 login-form lg:w-full lg:h-full 2xl:w-1/3 2xl:h-5/6 rounded-lg flex flex-col 2xl:border-2 p-7"
+          className="overflow-hidden w-full h-full 2xl:ms-20 login-form lg:w-full lg:h-full 2xl:w-1/3 2xl:h-[500px] rounded-lg flex flex-col 2xl:border-2 p-7"
         >
           <span className="text-xl text-[#81689D] font-sans font-bold">
             Login
@@ -115,17 +116,6 @@ export default function StudentsLogin() {
             className="mt-5 flex pt-3 pb-3 bg-[#474F7A] justify-center items-center rounded-lg font-sans text-white hover:bg-[#474F7A]/75"
           >
             Login
-          </button>
-          <span className="mt-5 text-sm text-gray-300 self-center font-sans flex justify-center items-center">
-            <Minus size={32} />
-            or login with
-            <Minus size={32} />
-          </span>
-          <button
-            type="submit"
-            className="mt-5 flex pt-3 pb-3 bg-transparent justify-center items-center border-2 border-red-400 rounded-lg font-sans text-red-400 hover:bg-gray-300/20 font-semibold"
-          >
-            <GoogleLogo size={20} className="me-2" /> Google
           </button>
         </form>
         <div className="hidden w-1/2 h-1/2 2xl:flex justify-center items-center">
