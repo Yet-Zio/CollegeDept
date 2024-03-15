@@ -31,7 +31,7 @@ export default function StudentsLogin() {
   };
 
   return (
-    <section className="w-screen h-screen lg:bg-white xl:bg-[#1F2544]/75 flex justify-center items-center">
+    <section className="w-screen h-screen lg:bg-white xl:bg-[#1F2544]/5 flex justify-center items-center">
       <div className="w-full h-full lg:w-5/12 lg:h-5/6 2xl:w-9/12 2xl:h-5/6 bg-white flex justify-center items-center border-2 border-transparent rounded-lg gap-5">
         <form
           onSubmit={handleLogin}
