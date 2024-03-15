@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import StudentLoginImg from "./StudentLoginImg";
-import collegelogoImg from '../../assets/collegelogo.png';
 import {
   Eye,
   EyeSlash,
-  GoogleLogo,
-  Minus,
+  Student
 } from "@phosphor-icons/react/dist/ssr";
 import axios from 'axios'
 
@@ -30,19 +28,28 @@ export default function StudentsLogin() {
     
   };
 
+  const setTitle = () => {
+    useEffect(() => {
+      document.title = "Student Login - Department of CS"
+    }, [])
+  }
+
+  setTitle()
+
   return (
-    <section className="w-screen h-screen lg:bg-white xl:bg-[#1F2544]/75 flex justify-center items-center">
+    <section className="w-screen h-screen lg:bg-white xl:bg-[#1F2544]/5 flex justify-center items-center">
       <div className="w-full h-full lg:w-5/12 lg:h-5/6 2xl:w-9/12 2xl:h-5/6 bg-white flex justify-center items-center border-2 border-transparent rounded-lg gap-5">
         <form
           onSubmit={handleLogin}
           className="overflow-hidden w-full h-full 2xl:ms-20 login-form lg:w-full lg:h-full 2xl:w-1/3 2xl:h-[500px] rounded-lg flex flex-col 2xl:border-2 p-7"
         >
+          <Student className="self-center text-[#474F7A]" size={64} weight="fill"/>
           <span className="text-xl text-[#81689D] font-sans font-bold">
             Login
           </span>
           <span className="text-xs font-sans text-gray-500">
             Not a student? Go to{" "}
-            <Link to="/" className="text-[#474F7A] underline">
+            <Link to="/teacherlogin" className="text-[#474F7A] underline">
               Staff Login
             </Link>
           </span>
