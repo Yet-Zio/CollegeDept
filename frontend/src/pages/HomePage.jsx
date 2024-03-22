@@ -1,5 +1,6 @@
 import Div1 from "../components/homepage/Div1";
-import Nav from "../components/homepage/Nav";
+import Footer from "../components/Shared/Footer";
+import Nav from "../components/Shared/Nav";
 
 export default function HomePage() {
   
@@ -7,6 +8,7 @@ export default function HomePage() {
     <>
     <Nav />
     <Div1 />
+    <Footer />
     </>
   )
 }

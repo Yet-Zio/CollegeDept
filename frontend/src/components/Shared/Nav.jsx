@@ -10,7 +10,6 @@ export default function Nav() {
     const handleScroll = () => {
       const scrolled = window.scrollY > 5;
       setIsScrolled(scrolled);
-      console.log('Scroll position:', window.scrollY); // Log the scroll position
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -25,7 +24,7 @@ export default function Nav() {
       <div className={`c-nav ${isScrolled ? 'scrolled' : 'notscrolled'}`}>
         <div className={`${isScrolled ? 'dissapearonscroll' : 'line'}`}></div>
         <div className="c-container">
-          <Link to={'/menu'} className="colapse-btn c-border">
+          <Link to={'/'} className="colapse-btn c-border">
               <span></span>
               <span></span>
               <span></span>
