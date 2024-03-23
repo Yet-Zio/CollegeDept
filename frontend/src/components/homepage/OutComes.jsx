@@ -19,10 +19,10 @@ export default function(){
                         </svg>
                     </span>
 
-                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">New Components</h1>
+                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Explore, Learn, Excel</h1>
 
                     <p className="text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
+                    Our programme offers a diverse curriculum covering language, foundation, core, and elective courses. From mastering programming languages to advanced software engineering, you'll explore various facets of computer science to excel in your career.
                     </p>
                 </div>
 
@@ -34,10 +34,10 @@ export default function(){
                         </svg>
                     </span>
 
-                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">elegant Dark Mode</h1>
+                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Hands-on Projects</h1>
 
                     <p className="text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
+                    Get ready to dive into real-world software projects! Our programme emphasizes practical learning, where you'll develop software solutions from start to finish. Gain valuable experience and build an impressive portfolio for your future career.
                     </p>
                 </div>
 
@@ -48,10 +48,10 @@ export default function(){
                         </svg>
                     </span>
 
-                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Easy to customiztions</h1>
+                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Stay Ahead of the Curve</h1>
 
                     <p className="text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
+                    With a focus on emerging trends, our curriculum is designed to keep you updated with the latest in technology. Choose from open and elective courses to tailor your learning journey and stay ahead in the fast-paced tech industry.
                     </p>
                 </div>
 
@@ -62,10 +62,10 @@ export default function(){
                         </svg>
                     </span>
 
-                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Simple & clean designs</h1>
+                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Community and Collaboration</h1>
 
                     <p className="text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
+                    Join a vibrant community of learners and educators. Engage in collaborative projects, workshops, and discussions to enhance your teamwork and communication skills. Together, we'll journey towards success in the world of computing.
                     </p>
                 </div>
             </div>

@@ -88,7 +88,7 @@ export default function () {
                             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300">Bijo Prasad</p>
 
                             <div className="flex mt-3 -mx-2">
-                            <a href="https://discord.com/users/576714964518174736" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500dark:hover:text-blue-400" aria-label="Reddit">
+                            <a href="https://discord.com/users/576714964518174736" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Reddit">
                             <DiscordLogo className="w-6 h-6 fill-current" size={32}/>
                                 </a>
 

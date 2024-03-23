@@ -89,10 +89,8 @@
  .logo{
     height: 4dvh;
     width: 4dvh;
-    /* padding-bottom: 3px; */
  }
   .c-logo span{
-    /* font-weight: bold; */
     font-size: 1.2rem; 
     padding-left: 4px;
   }
@@ -106,22 +104,22 @@
   }
   @media  screen and (min-width:718px) {
     .c-logo span{
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
     .title-scrolled{
-        font-size: 1rem !important;
+        font-size: 1.4rem !important;
       }
   }
   @media screen and (min-width:1200px) {
     .c-logo span{
-        font-size: 2rem;
+        font-size: 1.9rem;
     }
     .title-scrolled{
-        font-size: 2rem !important;
+      font-size: 1.4rem !important;
     }
     .logo-scrolled{
-        height: 4dvh;
-        width: 4dvh;
+        height: 3.4dvh;
+        width: 3.4dvh;
       }
      .logo{
         height: 6dvh;
