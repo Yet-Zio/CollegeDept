@@ -1,4 +1,5 @@
 import logo from '../../assets/collegedepticon.png'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (<>
@@ -56,17 +57,17 @@ export default function Footer() {
             <div className="mt-6 lg:mt-0 lg:flex-1">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <div>
-                        <h3 className="text-gray-700 uppercase dark:text-white">About</h3>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Company</a>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">community</a>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Careers</a>
+                        <h3 className="text-gray-700 uppercase dark:text-white">Quick Links</h3>
+                        <Link href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Menu</Link>
+                        <Link to={"/studentlogin"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">StudenLogin</Link>
+                        <Link to={"/teacherlogin"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Teacherlogin</Link>
                     </div>
 
                     <div>
                         <h3 className="text-gray-700 uppercase dark:text-white">Blog</h3>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Tec</a>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Music</a>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Videos</a>
+                        <Link href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">News</Link>
+                        <Link href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Article</Link>
+                        <Link href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Activities</Link>
                     </div>
 
                     <div>
@@ -78,8 +79,9 @@ export default function Footer() {
 
                     <div>
                         <h3 className="text-gray-700 uppercase dark:text-white">Contact</h3>
-                        <span className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">+1 526 654 8965</span>
-                        <span className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">example@email.com</span>
+                        <Link to={"/contact-us"} className='block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline'>contact-us</Link>
+                        <span className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">(0471)224 8416</span>
+                        <span className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">departmentofcs@emc.com</span>
                     </div>
                 </div>
             </div>
