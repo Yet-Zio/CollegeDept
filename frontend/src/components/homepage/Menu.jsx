@@ -1,34 +1,119 @@
-import { CaretRight } from "@phosphor-icons/react";
-import { useEffect } from "react";
-import {useDispatch,useSelector} from 'react-redux'
+import { CaretRight, Student, GraduationCap } from "@phosphor-icons/react";
+import React, { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { change } from "../../redux/menu/MenuOptSlice";
-import RecomendedTools from "./RecomendedTools";
-export default function Menu(){
-    const selectedMenu =useSelector(state=>state.menuOpt)
-    const MenuDispach = useDispatch()
-  useEffect(()=>{
-    MenuDispach(change({isHover:"text-[#f5700a]"}))
-  },[])
+const RecomendedTools = React.lazy(() => import("./RecomendedTools"));
+const DisplayRecomentation = React.lazy(() => import("./DisplayRecomentation"));
+import { Link } from "react-router-dom";
+import Spinner from "../Shared/Spinner";
+import AboutCs from "./Recomendedtools/AboutCs";
+export default function Menu() {
+  const selectedMenu = useSelector((state) => state.menuOpt);
+  const MenuDispach = useDispatch();
+  useEffect(() => {
+    MenuDispach(change({ isHover: "text-[#f5700a]" }));
+  }, []);
   const ResetAll = () => {
-    MenuDispach(change({isLogin: false, isAssociation: false, isContactUs: false, isAbout: false}))
+    MenuDispach(
+      change({
+        isAboutCs: true,
+        isLogin: false,
+        isAssociation: false,
+        isContactUs: false,
+        isAbout: false,
+        isLinux: false,
+        isSpring: false,
+        isReact: false,
+        isAngular: false,
+        isVscode: false,
+        isTailwind: false,
+      })
+    );
   };
   const triggerMouserOver = (value) => {
-    console.log(selectedMenu)
     switch (value) {
       case 1:
-        MenuDispach(change({isLogin: true, isAssociation: false, isContactUs: false, isAbout: false,isRecomendedTools:false}))
+        MenuDispach(
+          change({
+            isAboutCs:true,
+            isLogin: true,
+            isAssociation: false,
+            isContactUs: false,
+            isAbout: false,
+            isRecomendedTools: false,
+            isLinux: false,
+            isSpring: false,
+            isReact: false,
+            isAngular: false,
+            isVscode: false,
+            isTailwind: false,
+          })
+        );
         break;
       case 2:
-        MenuDispach(change({isLogin: false, isAssociation: true, isContactUs: false, isAbout: false,isRecomendedTools:false}))
+        MenuDispach(
+          change({
+            isAboutCs: true,
+            isLogin: false,
+            isAssociation: true,
+            isContactUs: false,
+            isAbout: false,
+            isRecomendedTools: false,
+            isLinux: false,
+            isSpring: false,
+            isReact: false,
+            isAngular: false,
+            isVscode: false,
+            isTailwind: false,
+          })
+        );
         break;
       case 3:
-        MenuDispach(change({isLogin: false, isAssociation: false, isContactUs: true, isAbout: false,isRecomendedTools:false}))
+        MenuDispach(
+          change({
+            isAboutCs: true,
+            isLogin: false,
+            isAssociation: false,
+            isContactUs: true,
+            isAbout: false,
+            isRecomendedTools: false,
+            isLinux: false,
+            isSpring: false,
+            isReact: false,
+            isAngular: false,
+            isVscode: false,
+            isTailwind: false,
+          })
+        );
         break;
       case 4:
-        MenuDispach(change({isLogin: false, isAssociation: false, isContactUs: false, isAbout: true,isRecomendedTools:false}))
+        MenuDispach(
+          change({
+            isAboutCs: true,
+            isLogin: false,
+            isAssociation: false,
+            isContactUs: false,
+            isAbout: true,
+            isRecomendedTools: false,
+            isLinux: false,
+            isSpring: false,
+            isReact: false,
+            isAngular: false,
+            isVscode: false,
+            isTailwind: false,
+          })
+        );
         break;
       case 5:
-        MenuDispach(change({isLogin: false, isAssociation: false, isContactUs: false, isAbout: false,isRecomendedTools:true}))
+        MenuDispach(
+          change({
+            isLogin: false,
+            isAssociation: false,
+            isContactUs: false,
+            isAbout: false,
+            isRecomendedTools: true,
+          })
+        );
         break;
       default:
         break;
@@ -37,19 +122,54 @@ export default function Menu(){
   const triggerMouserLeave = (value) => {
     switch (value) {
       case 1:
-        MenuDispach(change({isAssociation: false, isContactUs: false, isAbout: false,isRecomendedTools:false}))
+        MenuDispach(
+          change({
+            isAssociation: false,
+            isContactUs: false,
+            isAbout: false,
+            isRecomendedTools: false,
+          })
+        );
         break;
       case 2:
-        MenuDispach(change({isLogin: false, isContactUs: false, isAbout: false,isRecomendedTools:false}))
+        MenuDispach(
+          change({
+            isLogin: false,
+            isContactUs: false,
+            isAbout: false,
+            isRecomendedTools: false,
+          })
+        );
         break;
       case 3:
-        MenuDispach(change({isLogin: false, isAssociation: false, isAbout: false,isRecomendedTools:false}))
+        MenuDispach(
+          change({
+            isLogin: false,
+            isAssociation: false,
+            isAbout: false,
+            isRecomendedTools: false,
+          })
+        );
         break;
       case 4:
-        MenuDispach(change({isLogin: false, isAssociation: false, isContactUs: false,isRecomendedTools:false}))
+        MenuDispach(
+          change({
+            isLogin: false,
+            isAssociation: false,
+            isContactUs: false,
+            isRecomendedTools: false,
+          })
+        );
         break;
       case 5:
-        MenuDispach(change({isLogin: false, isAssociation: false, isContactUs: false, isAbout: false}))
+        MenuDispach(
+          change({
+            isLogin: false,
+            isAssociation: false,
+            isContactUs: false,
+            isAbout: false,
+          })
+        );
         break;
       default:
         break;
@@ -57,14 +177,15 @@ export default function Menu(){
   };
   return (
     <>
-      <div className="w-full h-full bg-[#151515] fixed z-10 flex justify-center items-center">
+      <div className="w-full h-full bg-[#151515] fixed z-10 flex justify-center items-center useinter">
         <div
-          onMouseLeave={() => {ResetAll();
-            MenuDispach(change({isRecomendedTools: false}))
+          onMouseLeave={() => {
+            ResetAll();
+            MenuDispach(change({ isRecomendedTools: false }));
           }}
-          className="h-[50%] w-[70%] mt-[10dvh] flex justify-evenly items-center"
+          className="h-[55%] w-[90%] flex justify-evenly items-center"
         >
-          <div className="w-[30%] h-[100%] text-[#dbdbdb] font-bold text-lg flex flex-col justify-center">
+          <div className="w-[20%] h-[100%] text-[#dbdbdb] font-bold text-lg flex flex-col justify-center">
             <div
               onMouseEnter={() => triggerMouserOver(1)}
               onMouseLeave={() => triggerMouserLeave(1)}
@@ -116,49 +237,61 @@ export default function Menu(){
               <CaretRight size={28} />
             </div>
           </div>
-          <div
-            onMouseLeave={() => ResetAll()}
-            className="w-[30%] h-[100%] text-[#dbdbdb] font-bold text-xl flex flex-col justify-center items-center"
-
-          >
+          <div className="w-[14%] h-[100%] text-[#dbdbdb] font-bold text-xl flex flex-col justify-center items-center">
             {selectedMenu.isLogin && (
               <>
-                <div className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a] ">
+                <Link
+                  to={"studentlogin"}
+                  className="h-[10%] w-full flex justify-between items-center hover:text-[#f5700a] "
+                >
                   Login as Student
-                </div>
-                <div className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a] ">
+                  <Student size={32} />
+                </Link>
+                <Link
+                  to={"teacherlogin"}
+                  className="h-[10%] w-full flex justify-between items-center hover:text-[#f5700a] "
+                >
                   Login as Teacher
-                </div>
+                  <GraduationCap size={32} />
+                </Link>
               </>
             )}
             {selectedMenu.isAssociation && (
               <>
-                <div
-                className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a] "
-                >association</div>
+                <div className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a] ">
+                  association
+                </div>
               </>
             )}
             {selectedMenu.isContactUs && (
               <>
-                <div
-                className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a] "
-                >Contact us</div>
+                <div className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a] ">
+                  Contact us
+                </div>
               </>
             )}
             {selectedMenu.isAbout && (
               <>
-                <div
-                className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a]"
-                > isabout</div>
+                <div className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a]">
+                  {" "}
+                  isabout
+                </div>
               </>
             )}
             {selectedMenu.isRecomendedTools && (
               <>
-               <RecomendedTools/>
+                <Suspense fallback={<Spinner />}>
+                  <RecomendedTools />
+                </Suspense>
               </>
             )}
           </div>
-         {/* here is the about section */}
+          <div className="w-[30%] hidden xl:flex flex-col justify-center items-center ">
+          {selectedMenu.isAboutCs && <AboutCs/>}
+            <Suspense fallback={<Spinner />}>
+              <DisplayRecomentation />
+            </Suspense>
+          </div>
         </div>
       </div>
     </>

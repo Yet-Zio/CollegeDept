@@ -4,7 +4,7 @@ import Hikigaya from '../../assets/hikigaya.jpeg'
 import Yetzio from '../../assets/zoropray.png'
 
 //those who change this is a gay!!!!!!!!!!!
-export default function () {
+export default function Creators() {
     return (
         <>
             <section className=" dark:bg-[#000000]">
@@ -34,15 +34,15 @@ export default function () {
                             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300">Mahesh P.S</p>
 
                             <div className="flex mt-3 -mx-2">
-                                <a href="https://discord.com/users/566294402050555934" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Reddit">
+                                <a href="https://discord.com/users/566294402050555934" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Reddit" rel="noopener noreferrer">
                                 <DiscordLogo className="w-6 h-6 fill-current" size={32}/>
                                 </a>
 
-                                <a href="https://www.instagram.com/mahesh_yet_zio/" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Facebook">
+                                <a href="https://www.instagram.com/mahesh_yet_zio/" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Facebook" rel="noopener noreferrer">
                                     <InstagramLogo size={32} className="w-6 h-6 fill-current" />
                                 </a>
 
-                                <a href="https://github.com/Yet-Zio" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Github">
+                                <a href="https://github.com/Yet-Zio" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Github" rel="noopener noreferrer">
                                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -61,15 +61,15 @@ export default function () {
                             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300">Anandhu Suresh</p>
 
                             <div className="flex mt-3 -mx-2">
-                            <a href="https://discord.com/users/952130719877070848" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Reddit">
+                            <a href="https://discord.com/users/952130719877070848" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Reddit" rel="noopener noreferrer">
                                    <DiscordLogo className="w-6 h-6 fill-current" size={32}/>
                                 </a>
 
-                                <a href="https://www.instagram.com/rocks__d___xebec/" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300  hover:text-[#E77500]" aria-label="Facebook">
+                                <a href="https://www.instagram.com/rocks__d___xebec/" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300  hover:text-[#E77500]" aria-label="Facebook" rel="noopener noreferrer">
                                     <InstagramLogo size={32} className="w-6 h-6 fill-current" />
                                 </a>
 
-                                <a href="https://github.com/Dr-At0mic" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300  hover:text-[#E77500]" aria-label="Github">
+                                <a href="https://github.com/Dr-At0mic" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300  hover:text-[#E77500]" aria-label="Github" rel="noopener noreferrer">
                                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -88,15 +88,15 @@ export default function () {
                             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300">Bijo Prasad</p>
 
                             <div className="flex mt-3 -mx-2">
-                            <a href="https://discord.com/users/576714964518174736" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Reddit">
+                            <a href="https://discord.com/users/576714964518174736" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-[#E77500]" aria-label="Reddit" rel="noopener noreferrer">
                             <DiscordLogo className="w-6 h-6 fill-current" size={32}/>
                                 </a>
 
-                                <a href="https://www.instagram.com/kirito_._007/" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300  hover:text-[#E77500]" aria-label="Facebook">
+                                <a href="https://www.instagram.com/kirito_._007/" target="_blank" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300  hover:text-[#E77500]" aria-label="Facebook" rel="noopener noreferrer">
                                     <InstagramLogo size={32} className="w-6 h-6 fill-current" />
                                 </a>
 
-                                <a href="https://github.com/hikigaya007" target='_blank' className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300  hover:text-[#E77500]" aria-label="Github">
+                                <a href="https://github.com/hikigaya007" target='_blank' className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300  hover:text-[#E77500]" aria-label="Github" rel="noopener noreferrer">
                                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Eye,
   EyeSlash,
   Asterisk
 } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "react-router-dom";
-import collegelogoImg from '../../assets/collegelogo.png';
 
 export default function AdminLogin() {
   const [passInput, setPassInput] = useState(false);

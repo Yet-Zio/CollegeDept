@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import "./nav.css";
 import search from "../../assets/search-icon-2044x2048-psdrpqwp.png";
 import logo from "../../assets/collegedepticon.png";
 import { X } from "@phosphor-icons/react";
-import Menu from "../homepage/Menu";
+import Spinner from "./Spinner";
+const Menu = React.lazy(()=>import("../homepage/Menu"))
 
 // eslint-disable-next-line react/prop-types
 export default function Nav({ sendDataToParent }) {
@@ -20,7 +21,6 @@ export default function Nav({ sendDataToParent }) {
     };
   }, []);
 
-  //seperation being frm here
   const [isColapseActive, setCollapseActive] = useState(false);
   const collapseButtonTrigger = () => {
     setCollapseActive(!isColapseActive);
@@ -63,7 +63,10 @@ export default function Nav({ sendDataToParent }) {
         </div>
       </div>
       {isColapseActive && (
-        <Menu />
+         <Suspense fallback={<Spinner/>}>
+             <Menu />
+         </Suspense>
+       
       )}
     </>
   );
