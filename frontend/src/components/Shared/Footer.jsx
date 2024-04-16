@@ -59,8 +59,8 @@ export default function Footer() {
                     <div>
                         <h3 className="text-gray-700 uppercase dark:text-white">Quick Links</h3>
                         <Link href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Menu</Link>
-                        <Link to={"/studentlogin"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">StudenLogin</Link>
-                        <Link to={"/teacherlogin"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Teacherlogin</Link>
+                        <Link to={"/studentlogin"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Student Login</Link>
+                        <Link to={"/teacherlogin"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Staff Login</Link>
                     </div>
 
                     <div>
@@ -79,7 +79,7 @@ export default function Footer() {
 
                     <div>
                         <h3 className="text-gray-700 uppercase dark:text-white">Contact</h3>
-                        <Link to={"/contact-us"} className='block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline'>contact-us</Link>
+                        <Link to={"/contact-us"} className='block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline'>Contact Us</Link>
                         <span className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">(0471)224 8416</span>
                         <span className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">departmentofcs@emc.com</span>
                     </div>

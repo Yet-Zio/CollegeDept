@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import ContactUs from "./components/contactUs/ContactUs";
 import StudenDashboard from "./components/Student/StudenDashboard";
 import TeacherLogin from "./components/Auth/TeacherLogin";
-import AdminLogin from "./components/Auth/AdminLogin";
+import AssocLogin from "./components/Auth/AssocLogin";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/studentlogin" element={<StudentsLogin />} />
         <Route path="/student" element={<StudenDashboard />} />
         <Route path="/teacherlogin" element={<TeacherLogin />} />
-        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/assoclogin" element={<AssocLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
