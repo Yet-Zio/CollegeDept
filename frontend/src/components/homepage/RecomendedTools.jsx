@@ -7,7 +7,6 @@ export default function RecomendedTools() {
   const MenuDispach = useDispatch();
 
   const triggerMouserOver = (value) => {
-    console.log(selectedMenu);
     switch (value) {
       case 1:
         MenuDispach(

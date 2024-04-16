@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  primaryOptions: 0,
+  SecondaryOptions:0,
+  isWdithLow: true,
   isAboutCs: true,
   isLogin: false,
   isAssociation: false,

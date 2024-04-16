@@ -15,12 +15,12 @@ export default function DisplayRecomentation() {
   return (
     <>
       <Suspense fallback={<Spinner />}>
-        {selectedMenu.isLinux && <AboutLinux />}
-        {selectedMenu.isSpring && <AboutSpring />}
-        {selectedMenu.isReact && <AboutReact />}
-        {selectedMenu.isAngular && <AboutAngular />}
-        {selectedMenu.isVscode && <AboutVscode />}
-        {selectedMenu.isTailwind && <AboutTailwind />}
+        {selectedMenu.isLinux && <AboutLinux/>}
+        {selectedMenu.isSpring && <AboutSpring/>}
+        {selectedMenu.isReact && <AboutReact/>}
+        {selectedMenu.isAngular && <AboutAngular/>}
+        {selectedMenu.isVscode && <AboutVscode/>}
+        {selectedMenu.isTailwind && <AboutTailwind/>}
       </Suspense>
     </>
   );
