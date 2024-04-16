@@ -6,7 +6,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "react-router-dom";
 
-export default function AdminLogin() {
+export default function AssocLogin() {
   const [passInput, setPassInput] = useState(false);
   const [isPassHidden, setisPassHidden] = useState(true);
 
@@ -27,16 +27,16 @@ export default function AdminLogin() {
       <form onSubmit={handleLogin} className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 border-gray-500/15 rounded-xl p-7">
         <Asterisk className="self-center text-[#2C7777]" size={64} weight="fill"/>
         <span className="useinter text-xl text-[#163B3B] font-sans font-bold">
-          Admin
+          Association Login
         </span>
         <span className="useinter mt-7 text-[#2C7777] font-sans font-medium">
-          Email ID
+          Student ID
         </span>
         <input
           className="useinter mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-[#6AC8C8] focus:border-[#6AC8C8] text-sm"
-          name="adminemail"
-          id="adminemail"
-          placeholder="admin@cs.emmanuelcollege.ac.in"
+          name="associd"
+          id="associd"
+          placeholder="320XXXXXXXX"
         ></input>
         <span className="useinter mt-3 text-[#2C7777] font-sans font-medium">
           Password
