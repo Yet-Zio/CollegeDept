@@ -1,22 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  RecomendedToolsOptions: 0,
   primaryOptions: 0,
-  SecondaryOptions:0,
   isWdithLow: true,
-  isAboutCs: true,
-  isLogin: false,
-  isAssociation: false,
-  isContactUs: false,
-  isAbout: false,
-  isRecomendedTools: false,
   isHover: "",
-  isSpring: false,
-  isAngular: false,
-  isReact: false,
-  isLinux: false,
-  isVscode: false,
-  isTailwind: false,
 };
 const MenuOptSlice = createSlice({
   name: "MenuStates",

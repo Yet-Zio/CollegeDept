@@ -62,6 +62,7 @@ export default function Nav({ sendDataToParent }) {
           </div>
         </div>
       </div>
+      {/* check weather the screen is low or not if its low then dont show the <Menu /> show the small menu for small screen */}
       {isColapseActive && (
          <Suspense fallback={<Spinner/>}>
              <Menu />
