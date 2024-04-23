@@ -65,13 +65,12 @@ export default function Nav({ sendDataToParent }) {
           </div>
         </div>
       </div>
-      {/* check weather the screen is low or not if its low then dont show the <Menu /> show the small menu for small screen */}
       {(isColapseActive)&&(
          <Suspense fallback={<Spinner/>}>
              <Menu />
          </Suspense>
       )}
-      {(selectedMenu.isWdithLow && isColapseActive) && 
+      {(selectedMenu.isSmallMenu && isColapseActive) && 
         <div
         className={`${isScrolled ? "top-[5dvh] scrolled" : " notscrolled top-[10dvh] bg-[black]"} 
         fixed h-[80dvh] duration-200 left-0 w-[55%] z-10  flex justify-center items-center`}>

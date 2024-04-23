@@ -4,6 +4,7 @@ const initialState = {
   RecomendedToolsOptions: 0,
   primaryOptions: 0,
   isWdithLow: true,
+  isSmallMenu: false,
   isHover: "",
 };
 const MenuOptSlice = createSlice({

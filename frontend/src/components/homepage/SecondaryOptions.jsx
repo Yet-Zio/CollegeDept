@@ -1,4 +1,4 @@
-import { GraduationCap, Student } from "@phosphor-icons/react";
+import { Alien, Article, Buildings, ChalkboardTeacher, FloppyDiskBack, GraduationCap, Student, UsersThree, } from "@phosphor-icons/react";
 import React, { Suspense } from "react";
 import {  useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -14,14 +14,14 @@ export default function SecondaryOptions() {
         {(selectedMenu.primaryOptions===1) && (
                 <>
                 <Link
-                  to={"studentlogin"}
+                  to={"/studentlogin"}
                   className="h-[10%] w-full flex justify-evenly items-center hover:text-[#f5700a]"
                 >
                   <Student size={32} />
                   Login as Student
                 </Link>
                 <Link
-                  to={"teacherlogin"}
+                  to={"/teacherlogin"}
                   className="h-[10%] w-full flex justify-evenly items-center hover:text-[#f5700a]"
                 >
                   <GraduationCap size={32} />
@@ -32,23 +32,38 @@ export default function SecondaryOptions() {
             )}
             {(selectedMenu.primaryOptions==2) && (
               <>
-                <div className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a] ">
-                  association
-                </div>
+                <Link to={"/home-assoc"} className="h-[10%] w-full flex justify-evenly items-center hover:text-[#f5700a] ">
+                <Article size={32} />
+                  Association Home
+                </Link>
+                <Link to={"/assoclogin"} className="h-[10%] w-full flex justify-evenly items-center hover:text-[#f5700a] ">
+                <UsersThree size={32} />
+                  Association Login
+                </Link>
               </>
             )}
             {(selectedMenu.primaryOptions==3) && (
               <>
-                <div className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a] ">
-                  Contact us
-                </div>
+                <Link to={"/contact-us"} className="h-[10%] w-full flex justify-evenly items-center hover:text-[#f5700a] ">
+                <FloppyDiskBack size={32} weight="duotone" />
+                  Contact Us
+                </Link>
               </>
             )}
             {(selectedMenu.primaryOptions==4) && (
               <>
-                <div className="h-[10%] w-full flex justify-start items-center hover:text-[#f5700a]">
-                  isabout
-                </div>
+                <Link to={"/about-creators"} className="h-[10%] w-full flex justify-evenly items-center hover:text-[#f5700a]">
+                <Alien size={32} weight="duotone" />
+                  About Creators
+                </Link>
+                <Link to={"/about-staff"} className="h-[10%] w-full flex justify-evenly items-center hover:text-[#f5700a]">
+                <ChalkboardTeacher size={32} weight="duotone" />
+                  About Teachers
+                </Link>
+                <Link to={"/about-deapartment"} className="h-[10%] w-full flex justify-evenly items-center hover:text-[#f5700a]">
+                <Buildings size={32} weight="duotone" />
+                  About Department
+                </Link>
               </>
             )}
             {(selectedMenu.primaryOptions==5) && (
