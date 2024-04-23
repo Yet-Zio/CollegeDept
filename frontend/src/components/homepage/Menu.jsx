@@ -14,8 +14,8 @@ export default function Menu() {
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
-      if (screenWidth < 860) MenuDispach(change({ isWdithLow: true }));
-      else MenuDispach(change({ isWdithLow: false ,primaryOptions: 0}));
+      if (screenWidth < 860) MenuDispach(change({ isWdithLow: true,isSmallMenu: true }));
+      else MenuDispach(change({ isWdithLow: false ,primaryOptions: 0, isSmallMenu: false}));
     };
 
     window.addEventListener("resize", handleResize);
@@ -27,8 +27,8 @@ export default function Menu() {
   useEffect(() => {
     MenuDispach(change({ isHover: "text-[#f5700a]" }));
     if (screenWidth < 860) {
-      MenuDispach(change({ isWdithLow: true }));
-    } else MenuDispach(change({ isWdithLow: false, primaryOptions: 0 }));
+      MenuDispach(change({ isWdithLow: true, isSmallMenu: true }));
+    } else MenuDispach(change({ isWdithLow: false, primaryOptions: 0 , isSmallMenu: false}));
   }, [MenuDispach, screenWidth]);
 
   const ResetAll = () => {
