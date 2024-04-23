@@ -7,6 +7,7 @@ const leaveLetterSchema = new mongoose.Schema({
         ref: 'Teacher'
     },
     approved:{
+        type: String,
         enum: ["Pending","Approved" , "Declined"],
         default: "Pending"
     },
