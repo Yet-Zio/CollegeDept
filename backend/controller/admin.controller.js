@@ -2,6 +2,7 @@ import Associate from "../models/associate.model.js";
 import { errorHandler } from "../utils/errorHandler.js";
 import Teacher from "../models/teachers.model.js";
 import bcrypt from 'bcrypt';
+import LeaveLetter from "../models/leaveLetter.model.js";
 
 export const addAssociate = async (req , res , next) => {
 
@@ -30,5 +31,27 @@ export const addAssociate = async (req , res , next) => {
         next(error);
     }
     
+}
+
+export const manageLeaveLetter = async (req , res , next) => {
+
+    if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
+
+    const verifyAdmin = await Teacher.findOne({_id: req.params.id});
+
+    if(verifyAdmin.isHOD === false) next(errorHandler(401 , "Unauthorized"))
+
+    const {teacher , approved , message} = req.body ; 
+
+    const addLeaveLetter = new LeaveLetter({teacher ,approved , message })
+
+    try {
+        await addLeaveLetter.save()
+    } catch (error) {
+        
+    }
+    
+
+
 }
 

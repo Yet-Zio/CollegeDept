@@ -11,9 +11,13 @@ const leaveLetterSchema = new mongoose.Schema({
         default: "Pending"
     },
     message: String,
+    date: {
+        type: Date,
+        default: Date.now
+    }
 
 })
 
-const leaveLetter = mongoose.model('LeaveLetter' , leaveLetterSchema);
+const LeaveLetter = mongoose.model('LeaveLetter' , leaveLetterSchema);
 
-export default leaveLetter;
+export default LeaveLetter;
