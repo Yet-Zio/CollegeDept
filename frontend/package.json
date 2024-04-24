@@ -13,11 +13,13 @@
     "@phosphor-icons/react": "^2.0.15",
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.7",
+    "framer-motion": "^11.1.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.1",
-    "sweetalert2": "^11.10.8"
+    "sweetalert2": "^11.10.8",
+    "swiper": "^11.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
