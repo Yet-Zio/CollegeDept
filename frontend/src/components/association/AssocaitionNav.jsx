@@ -1,10 +1,14 @@
 import { useState } from "react"
 import {Link} from "react-router-dom"
 import logo from "../../assets/collegedepticon.png"
-export default function AssocaitionNav() {
+// eslint-disable-next-line react/prop-types
+export default function AssocaitionNav({sendDataToParent}) {
     const [isColpase, setColapse] = useState(false);
     const buttonTrigger=()=>{
         setColapse(!isColpase);
+    }
+    const navLinkTrigger = (val)=>{
+        sendDataToParent(val);
     }
   return (
     <>
@@ -30,10 +34,10 @@ export default function AssocaitionNav() {
             </div>
             <div  className={`${isColpase?"translate-x-0 opacity-100":"opacity-0 -translate-x-full"} absolute inset-x-0 z-20 flex-1 w-full px-6  py-4 transition-all duration-300 ease-in-out bg-[#151515] lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center lg:justify-end justify-between`}>
                 <div className="flex flex-col font-semibold text-white xl:text-lg md:text-lg text-sm lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center">
-                    <Link to={"/home-assoc"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Home</Link>
+                    <Link onClick={()=>{navLinkTrigger(0)}} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Home</Link>
                     <Link to={"/"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Dept Home</Link>
-                    <Link to={"/"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Event</Link>
-                    <Link to={"/"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Articles</Link>
+                    <Link onClick={()=>{navLinkTrigger(1)}} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Event</Link>
+                    <Link onClick={()=>{navLinkTrigger(2)}} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Articles</Link>
                     <Link to={"/assoclogin"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Login</Link>
     
                     <div className="relative mt-4 lg:mt-0 lg:mx-4">

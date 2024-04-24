@@ -1,54 +1,61 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import StudentLoginImg from "./StudentLoginImg";
-import {
-  Eye,
-  EyeSlash,
-  Student,
-  ChalkboardTeacher,
-
-} from "@phosphor-icons/react/dist/ssr";
-import axios from 'axios'
+import { Eye, EyeSlash, Student } from "@phosphor-icons/react/dist/ssr";
+import axios from "axios";
 
 export default function StudentsLogin() {
   const [passInput, setPassInput] = useState(false);
   const [isPassHidden, setisPassHidden] = useState(true);
-  const [studentID , setStudentID] = useState("");
-  const [batch, setBatch] = useState("")
-  const [password , setPassword] = useState("");
+  const [studentID, setStudentID] = useState("");
+  const [batch, setBatch] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/api/auth/signin", {studentID , batch, password})
-      .then((res) =>{
-        console.log(res)
+      .post("http://localhost:3000/api/auth/signin", {
+        studentID,
+        batch,
+        password,
       })
-      .catch((error)=>{
-        console.log(error)
+      .then((res) => {
+        console.log(res);
       })
-    
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const setTitle = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-      document.title = "Student Login - Department of CS"
-    }, [])
-  }
+      document.title = "Student Login - Department of CS";
+    }, []);
+  };
 
-  setTitle()
+  setTitle();
 
   return (
     // #dc8733 bg: #151515
-    <div className="flex flex-col min-h-screen min-w-screen bg-[#151515] xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761] md:justify-center items-center">
-      <form onSubmit={handleLogin} className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 dark:bg-[#151515] border-gray-500/10 rounded-xl p-7">
-        <Student className="self-center text-[#dc8733]" size={64} weight="fill"/>
+    <div className="flex flex-col min-h-screen min-w-screen bg-[#151515] xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761] justify-center items-center">
+      <form
+        onSubmit={handleLogin}
+        className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 dark:bg-[#151515] border-gray-500/10 rounded-xl p-7 mb-[10dvh] md:mb-0"
+      >
+        <Student
+          className="self-center text-orange-600"
+          size={64}
+          weight="fill"
+        />
         <span className="useinter text-xl text-white font-sans font-bold">
           Student Login
         </span>
         <span className="useinter mt-2 text-xs font-sans text-gray-400">
           Not a student? Go to{" "}
-          <Link to="/teacherlogin" className="useinter text-[#dc8733] underline">
+          <Link
+            to="/teacherlogin"
+            className="useinter text-orange-600 hover:text-orange-800 underline"
+          >
             Staff Login
           </Link>
         </span>
@@ -56,19 +63,19 @@ export default function StudentsLogin() {
           Student ID
         </span>
         <input
-          className="useinter mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-[#dc8733] focus:border-[#dc8733] text-sm text-white"
+          className="useinter mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-orange-400 focus:border-orange-600 text-sm text-white"
           name="studentid"
           id="studentid"
           placeholder="320XXXXXXXX"
-          onChange={(e)=>setStudentID(e.target.value)}
+          onChange={(e) => setStudentID(e.target.value)}
         ></input>
         <span className="useinter mt-3 text-white font-sans font-medium">
           Password
         </span>
         <div
           className={`flex w-full h-10 mt-2 justify-evenly items-center border-2 rounded-lg text-white ${
-            passInput ? "border-[#dc8733]" : "border-gray-500/15"
-          } hover:border-[#dc8733] font-sans`}
+            passInput ? "border-orange-600" : "border-gray-500/15"
+          } hover:border-orange-400 font-sans`}
         >
           <input
             type={isPassHidden ? "password" : "text"}
@@ -82,7 +89,7 @@ export default function StudentsLogin() {
             placeholder="Enter 6 characters or more"
             name="password"
             id="password"
-            onChange={(e)=>setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           {isPassHidden ? (
             <Eye
@@ -104,18 +111,18 @@ export default function StudentsLogin() {
           Batch
         </span>
         <input
-          className="useinter w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-[#dc8733] focus:border-[#dc8733] text-sm text-white"
+          className="useinter w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-orange-400 focus:border-orange-600 text-sm text-white"
           name="batch"
           id="batch"
           placeholder="20XX"
-          onChange={(e)=>setBatch(e.target.value)}
+          onChange={(e) => setBatch(e.target.value)}
         ></input>
-        <Link to="/" className="useinter text-[#dc8733] mt-3 text-sm underline">
-          Forgot Password?
-        </Link>
+        <span className="useinter text-white mt-3 text-sm underline">
+          <Link className="hover:text-orange-600">  Forgot Password?</Link>
+        </span>
         <button
           type="submit"
-          className="useinter mt-5 flex pt-3 pb-3 bg-[#dc8733] justify-center items-center rounded-lg font-sans text-white hover:bg-[#dc8733]/75"
+          className="useinter mt-5 flex pt-3 pb-3 bg-orange-600 justify-center items-center rounded-lg font-sans text-white hover:bg-orange-800"
         >
           Login
         </button>

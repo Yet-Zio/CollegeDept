@@ -24,28 +24,28 @@ export default function AssocLogin() {
   setTitle()
 
   return (
-    <div className="flex flex-col min-h-screen min-w-screen md:justify-center items-center bg-[#E1F4F4]">
-      <form onSubmit={handleLogin} className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 border-gray-500/15 rounded-xl p-7">
-        <Asterisk className="self-center text-[#2C7777]" size={64} weight="fill"/>
-        <span className="useinter text-xl text-[#163B3B] font-sans font-bold">
+    <div className="flex flex-col min-h-screen min-w-screen justify-center items-center bg-[#151515] xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761]">
+      <form onSubmit={handleLogin} className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 border-gray-500/15 rounded-xl p-7 bg-[#151515] mb-[10dvh] md:mb-0">
+        <Asterisk className="self-center mb-0 md:mt-[4dvh] text-orange-600" size={64} weight="fill"/>
+        <span className="useinter text-xl text-white font-sans mt-[3dvh] font-extrabold  mb-[3dvh]">
           Association Login
         </span>
-        <span className="useinter mt-7 text-[#2C7777] font-sans font-medium">
+        <span className="useinter text-[#e9e7e7] font-sans font-medium">
           Student ID
         </span>
         <input
-          className="useinter mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-[#6AC8C8] focus:border-[#6AC8C8] text-sm"
+          className="useinter mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-orange-400 focus:border-orange-800 text-sm"
           name="associd"
           id="associd"
           placeholder="320XXXXXXXX"
         ></input>
-        <span className="useinter mt-3 text-[#2C7777] font-sans font-medium">
+        <span className="useinter mt-3 text-[#e9e7e7] font-sans font-medium">
           Password
         </span>
         <div
           className={`flex w-full h-10 mt-2 justify-evenly items-center border-2 rounded-lg ${
-            passInput ? "border-[#6AC8C8]" : "border-gray-500/15"
-          } hover:border-[#6AC8C8] font-sans`}
+            passInput ? "border-orange-800" : "border-gray-500/15"
+          } hover:border-orange-400 font-sans`}
         >
           <input
             type={isPassHidden ? "password" : "text"}
@@ -62,7 +62,7 @@ export default function AssocLogin() {
           />
           {isPassHidden ? (
             <Eye
-              className="text-gray-900/50 hover:bg-gray-700/10 w-1/6 h-full p-2"
+              className="text-white hover:bg-gray-700/10 w-1/6 h-full p-2"
               onClick={() => {
                 setisPassHidden(!isPassHidden);
               }}
@@ -76,12 +76,12 @@ export default function AssocLogin() {
             />
           )}
         </div>
-        <Link to="/" className="useinter text-[#2C7777] mt-3 text-sm underline">
-          Forgot Password?
-        </Link>
+        <span  className="useinter text-[#e9e7e7] mt-[4dvh] text-sm underline">
+          <Link className="hover:text-orange-500"> Forgot Password?</Link>
+        </span>
         <button
           type="submit"
-          className="useinter mt-5 flex pt-3 pb-3 bg-[#2C7777] justify-center items-center rounded-lg font-sans text-white hover:bg-[#2C7777]/75"
+          className="useinter mt-5 flex pt-3 pb-3 bg-orange-600 justify-center items-center rounded-lg font-sans text-white hover:bg-orange-800"
         >
           Login
         </button>
