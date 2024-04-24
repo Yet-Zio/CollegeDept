@@ -13,7 +13,7 @@ export const loginAssociate = async (req , res , next) => {
 
     if(!findMember) return next(errorHandler(401 , "Please enter a valid email"));
 
-    const checkPassword = bcrypt.compareSync(password , findMember.password) ;
+    const checkPassword = bcrypt.compareSync(password , findMember.password);
 
     if(!checkPassword) return next(errorHandler(401 , "Invalid Credentials"))
 
@@ -53,7 +53,5 @@ export const addArticle = async (req , res , next) => {
     } catch (error) {
         next(error);
     }
-
-
 
 }

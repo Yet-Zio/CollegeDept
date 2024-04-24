@@ -3,6 +3,7 @@ import { errorHandler } from "../utils/errorHandler.js";
 import Teacher from "../models/teachers.model.js";
 import bcrypt from 'bcrypt';
 import LeaveLetter from "../models/leaveLetter.model.js";
+import Event from "../models/event.model.js";
 
 export const addAssociate = async (req , res , next) => {
 
@@ -35,18 +36,50 @@ export const addAssociate = async (req , res , next) => {
 
 export const manageLeaveLetter = async (req , res , next) => {
 
+    try {
+
     if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
 
     const verifyAdmin = await Teacher.findOne({_id: req.params.id});
 
-    if(verifyAdmin.isHOD === false) next(errorHandler(401 , "Unauthorized"))
+    if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
 
-    const {teacher , approved , message} = req.body ; 
+    const { status , id } = req.body ; 
 
-    const addLeaveLetter = new LeaveLetter({teacher ,approved , message })
+    const updatedLeaveLetter = await LeaveLetter.findByIdAndUpdate(
+        id, 
+        { $set: {approved: status } }, 
+        { new: true } 
+    );
+
+    if (!updatedLeaveLetter) {
+        return next(errorHandler(404, "Leave letter not found"));
+    }
+
+    res.status(200).json({ message: "Leave letter updated successfully" });
+    
+    } catch (error) {
+        
+    }
+    
+
+
+}
+
+export const addEvent = async (req , res , next) => {
+
+    if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
+
+    const verifyAdmin = await Teacher.findOne({_id: req.params.id});
+
+    if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
+
+    const {title ,description} = req.body ; 
+
+    const addEvent = new Event({title , description})
 
     try {
-        await addLeaveLetter.save()
+        await addEvent.save()
     } catch (error) {
         
     }
