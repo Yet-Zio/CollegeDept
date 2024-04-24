@@ -12,6 +12,8 @@ import AboutCreators from "./pages/AboutCreators";
 import AboutDepartment from "./pages/AboutDepartment";
 import AboutStaffs from "./pages/AboutStaffs";
 import RecomendedTools from "./pages/RecomendedTools";
+import AssocationEventBody from "./components/association/AssocationEventBody";
+import AssocationArticleBody from "./components/association/AssocationArticleBody";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/about-deapartment" element={<AboutDepartment />} />
         <Route path="/about-staff" element={<AboutStaffs />} />
         <Route path="/recomended-tools" element={<RecomendedTools />} />
+        <Route path="/event" element={<AssocationEventBody/>}/>
+        <Route path="/article" element={<AssocationArticleBody/>}/>
       </Routes>
     </Router>
   );

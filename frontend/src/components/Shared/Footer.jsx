@@ -9,14 +9,14 @@ export default function Footer() {
         <div className="lg:flex">
             <div className="w-full -mx-6 lg:w-2/5">
                 <div className="px-6">
-                <div className='flex'>
-                    <a href="#">
+                <Link to={"/"} className='flex'>
+                    <span>
                         <img className="w-auto h-7" src={logo} alt="" />
-                    </a>
+                    </span>
                     <span className='text-[#FFFFFF] useHeading ps-2'>
                         DEPT OF CS
                     </span>
-                    </div>
+                    </Link>
 
                     <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">Failure Cannot Decide Your Future rather Its just a step towards Your Dream</p>
                 </div>
@@ -32,17 +32,17 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="text-gray-700 uppercase dark:text-white">Blog</h3>
-                        <Link href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">News</Link>
-                        <Link href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Article</Link>
-                        <Link href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Activities</Link>
+                        <h3 className="text-gray-700 uppercase dark:text-white">Features</h3>
+                        <Link to={"/notcreateyet"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">News</Link>
+                        <Link to={"/event"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">events</Link>
+                        <Link to={"/article"} className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Articles</Link>
                     </div>
 
                     <div>
-                        <h3 className="text-gray-700 uppercase dark:text-white">Products</h3>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Mega cloud</a>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Aperion UI</a>
-                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Meraki UI</a>
+                        <h3 className="text-gray-700 uppercase dark:text-white">About Dept of Cs</h3>
+                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">About Staff</a>
+                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">About Department</a>
+                        <a href="#" className="block mt-2 text-sm text-gray-600 dark:hover:text-[#E77500] hover:underline">Gallery</a>
                     </div>
 
                     <div>
@@ -58,7 +58,7 @@ export default function Footer() {
         <hr className="h-px my-6 bg-grey-200 border-none dark:bg-[#e774008b]" />
 
         <div>
-            <p className="text-center text-gray-500 dark:text-gray-400">© Brand 2020 - All rights reserved</p>
+            <p className="text-center text-gray-500 dark:text-gray-400">© CopyRight ... All rights reserved</p>
         </div>
     </div>
 </footer>

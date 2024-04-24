@@ -49,7 +49,6 @@ export default function Menu() {
         <div
           onMouseLeave={() => {
             ResetAll();
-            console.log(selectedMenu)
           }}
           className={`h-[55%] w-[90%] flex justify-evenly items-center text-white `}
         >

@@ -1,14 +1,10 @@
 import { useState } from "react"
 import {Link} from "react-router-dom"
 import logo from "../../assets/collegedepticon.png"
-// eslint-disable-next-line react/prop-types
-export default function AssocaitionNav({sendDataToParent}) {
+export default function AssocaitionNav() {
     const [isColpase, setColapse] = useState(false);
     const buttonTrigger=()=>{
         setColapse(!isColpase);
-    }
-    const navLinkTrigger = (val)=>{
-        sendDataToParent(val);
     }
   return (
     <>
@@ -34,10 +30,10 @@ export default function AssocaitionNav({sendDataToParent}) {
             </div>
             <div  className={`${isColpase?"translate-x-0 opacity-100":"opacity-0 -translate-x-full"} absolute inset-x-0 z-20 flex-1 w-full px-6  py-4 transition-all duration-300 ease-in-out bg-[#151515] lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center lg:justify-end justify-between`}>
                 <div className="flex flex-col font-semibold text-white xl:text-lg md:text-lg text-sm lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center">
-                    <Link onClick={()=>{navLinkTrigger(0)}} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Home</Link>
+                    <Link to={"/home-assoc"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Home</Link>
                     <Link to={"/"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Dept Home</Link>
-                    <Link onClick={()=>{navLinkTrigger(1)}} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Event</Link>
-                    <Link onClick={()=>{navLinkTrigger(2)}} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Articles</Link>
+                    <Link to={"/event"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Event</Link>
+                    <Link to={"/article"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Articles</Link>
                     <Link to={"/assoclogin"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Login</Link>
     
                     <div className="relative mt-4 lg:mt-0 lg:mx-4">
@@ -50,8 +46,6 @@ export default function AssocaitionNav({sendDataToParent}) {
                         <input type="text" className="w-full py-1 pl-10 pr-4 text-gray-700 placeholder-gray-600 bg-[#292929] border-b border-gray-600 dark:placeholder-gray-300 dark:focus:border-gray-300 lg:w-56 lg:border-transparent focus:outline-none focus:border-gray-600" placeholder="Search" />
                     </div>
                 </div>
-    
-                
             </div>
         </div>
     </div>

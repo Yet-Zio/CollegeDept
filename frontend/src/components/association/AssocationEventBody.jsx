@@ -1,6 +1,12 @@
+import Footer from "../Shared/Footer";
+import AssocaitionNav from "./AssocaitionNav";
 
 export default function AssocationEventBody() {
   return (
-    <div className="text-white">AssocationEventBody</div>
+   <>
+     <AssocaitionNav/>
+     
+      <Footer />
+   </>
   )
 }
