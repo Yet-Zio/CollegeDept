@@ -34,7 +34,7 @@ export default function AssocaitionNav() {
                     <Link to={"/"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Dept Home</Link>
                     <Link to={"/"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Event</Link>
                     <Link to={"/"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Articles</Link>
-                    <Link to={"/"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">blog</Link>
+                    <Link to={"/assoclogin"} className="mt-2  duration-300 transform lg:mt-0 lg:mx-4 hover:text-[#DC8733]">Login</Link>
     
                     <div className="relative mt-4 lg:mt-0 lg:mx-4">
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3">

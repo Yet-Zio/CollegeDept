@@ -52,7 +52,7 @@ export default function UpCommingEvent() {
           <div className="container flex flex-col justify-center w-full px-6 py-10 mx-auto">
             <div className="flex items-center">
               <div className="flex flex-col w-full lg:mb-[7dvh] lg:mt-[5dvh]">
-                <h1 className="text-5xl font-extrabold text-center lg:text-7xl 2xl:text-8xl">
+                <h1 className="text-3xl font-extrabold text-center lg:text-7xl 2xl:text-8xl">
                 <span className="text-transparent bg-gradient-to-br bg-clip-text from-blue-500 via-red-500 to-black">
                       Event&nbsp;
                   </span>
