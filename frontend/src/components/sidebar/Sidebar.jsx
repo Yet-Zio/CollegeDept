@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+/* eslint-disable react/prop-types */
 import SideLogo from './SideLogo'
 import SideOption from './SideOption'
 import SideLogout from './SideLogout'

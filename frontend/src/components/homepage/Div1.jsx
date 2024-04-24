@@ -27,7 +27,7 @@ export default function Div1() {
           </div>
         </div>
         <div className="seperator"></div>
-        <div className="lower">
+        <div className="lower overflow-hidden">
           <div className="c-col">
             <div className="imagecontainer">
             <img src={photo} className="image" />
@@ -49,7 +49,7 @@ export default function Div1() {
                 <span className="title">
                 Advancing Scholarly Knowledge
                 </span>
-                <span className="text">
+                <span className="text ">
                 {Knowledge}
                 </span>
               </div>
