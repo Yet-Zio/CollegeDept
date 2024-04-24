@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
-import {Trash} from '@phosphor-icons/react'
+import {CloudLightning, Trash} from '@phosphor-icons/react'
 import axios from 'axios';
 
 export default function AdminBatches() {
 
     const [batch , setBatch] = useState([]);
+
+    const [student , setStudent] = useState([]);
 
     useEffect(() =>{
         axios
@@ -20,8 +22,20 @@ export default function AdminBatches() {
       },[])
 
         const  handleStudentFetch = (e) =>{
-            setSelectedOption(e);
-            console.log("hhh",selectedOption);
+            let batch = e.target.value ; 
+            setSelectedOption(batch)
+            console.log(batch)
+            setStudent([]);
+
+            axios.post("http://localhost:3000/api/student/getStudent" , {batch})
+            .then((res) => {
+                setStudent(res.data);
+                console.log(res)
+                console.log(student)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
         };
 
         
@@ -59,7 +73,7 @@ export default function AdminBatches() {
             <div className='flex flex-col'>
                 <span className='text-2xl useinter mt-10 mb-5'>Students</span>
                 <select name='selectedbatch' id='selectedbatch' className='w-1/4 border border-transparent rounded-lg outline-0 focus:border-[#1F2544]'
-                    onChange={(e)=> handleStudentFetch(e.target.value)}>
+                    onChange={handleStudentFetch}>
                     <option value="">Select a batch...</option>
                     {batch.map((option, index) => (
                         <option key={index} value={option}>{option}</option>
@@ -82,20 +96,18 @@ export default function AdminBatches() {
                     </thead>
 
                     <tbody className="divide-y divide-gray-700">
-                    <tr>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">1</td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">ABHIJITH </td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">MURALI M</td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">STUDENTXXXX</td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700 flex"><Trash size={24} className='text-red-500 cursor-pointer me-4'/></td>
-                    </tr>
-                    <tr>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">2</td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">ABHIJITH </td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">S RAJ</td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">STUDENTXXXX</td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700 flex"><Trash size={24} className='text-red-500 cursor-pointer me-4'/></td>
-                    </tr>
+                    {student.map((std , index) => {
+                        return(
+                            <tr key={std._id}>
+                                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{index+1}</td>
+                                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{std.firstname}</td>
+                                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{std.className}</td>
+                                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{std.studentID}</td>
+                                <td className="whitespace-nowrap px-4 py-2 text-gray-700 flex"><Trash size={24} className='text-red-500 cursor-pointer me-4'/></td>
+                            </tr>
+    
+                        )
+                    })}
                     </tbody>
                 </table>
             </div>

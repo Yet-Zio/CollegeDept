@@ -42,6 +42,7 @@ export const contactUs = async(req , res ,next) =>{
     }
 }
 
+
 export const getBatch = async (req, res, next) => {
     try {
         const db = mongoose.connection;
@@ -66,5 +67,24 @@ export const getBatch = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+}
+
+
+export const getStudent = async (req , res , next) => {
+
+    const{batch} = req.body ;
+
+    try {
+        
+    const model = mongoose.model(batch , Student.schema);
+
+    const fetchStudents = await model.find();
+
+    res.status(200).json(fetchStudents);
+
+    } catch (error) {
+        next(error);
+    }
+
 }
 
