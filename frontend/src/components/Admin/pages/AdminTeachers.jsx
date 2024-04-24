@@ -63,7 +63,7 @@ export default function AdminTeachers() {
   },[])
 
   const handleAssignFaculty = (e) => {
-
+      e.preventDefault();
      axios.post("http://localhost:3000/api/teacher/setFaculty" , {teacherID: isThSelected , batch: isBatSelected})
      .then((res) => {
       console.log(res)
@@ -200,10 +200,10 @@ export default function AdminTeachers() {
           {isBatSelected !== "" && (
             <div className="flex flex-col w-1/2 items-center">
                 <button
+                onClick={handleAssignFaculty}
                 className="mt-5 w-1/3 flex pt-3 pb-3 bg-[#474F7A] justify-center items-center rounded-lg font-sans text-white hover:bg-[#474F7A]/75"
                 >
                   <span 
-                  onClick={handleAssignFaculty}
                   className='hidden md:flex'>Assign as Faculty Advisor</span><Stamp className='md:hidden'/>
                 </button>
             </div>
