@@ -4,9 +4,9 @@ export default function EventsPrev() {
     const slideItems = [
         {
           id: 1,
-          title: "Artificial intelligence (AI) ",
+          title: "Internet of Things India Expo",
           description:
-            "Unlocking the potential of AI Empowering machines to revolutionize industries, enrich lives, and shape the future of humanity.",
+            "Join 1015 participating brands from 36 countries and over 44,000 tech enthusiasts for three days of marveling at the latest innovations at IOT India. ",
           imageurl:
             "https://assets-global.website-files.com/61845f7929f5aa517ebab941/6440f9477c2a321f0dd6ab61_How%20Artificial%20Intelligence%20(AI)%20Is%20Used%20In%20Biometrics.jpg",
         },
@@ -49,39 +49,7 @@ export default function EventsPrev() {
             "mmersive experiences in the digital age: Opening new frontiers with virtual reality technology",
           imageurl:
             "https://www.analyticsinsight.net/wp-content/uploads/2021/11/Virtual-reality.jpg",
-        },
-        {
-          id: 7,
-          title: "5G Technology",
-          description:
-            "Revolutionizing connectivity Unleashing the potential of 5G for faster, more reliable communication",
-          imageurl:
-            "https://stl.tech/wp-content/uploads/2020/11/shutterstock_1014919753.jpg",
-        },
-        {
-          id: 8,
-          title: "Medical Breakthroughs",
-          description:
-            "Innovations in healthcare Transforming lives through groundbreaking medical discoveries and treatments.",
-          imageurl:
-            "https://imageio.forbes.com/specials-images/imageserve/5dbb4182d85e3000078fddae/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds",
-        },
-        {
-          id: 9,
-          title: "Artificial Intelligence in Healthcare",
-          description:
-            "Empowering healthcare with AI Enhancing diagnosis, treatment, and patient care through intelligent technologies",
-          imageurl:
-            "https://www.mobihealthnews.com/sites/default/files/Doctor%20using%20hologram%2C%20virtual%20screen_Mobi%20-%20Getty_MR.Cole_Photographer_compressed.jpg",
-        },
-        {
-          id: 10,
-          title: "Augmented Reality (AR)",
-          description:
-            "Blurring the lines between reality and imagination: Augmented reality shaping the way we interact with the world around us",
-          imageurl:
-            "https://rockpaperreality.com/wp-content/uploads/AR-in-Travel-and-Tourism.jpg",
-        },
+        }
       ];
   return (
     <>
