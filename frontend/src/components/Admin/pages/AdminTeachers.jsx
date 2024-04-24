@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Trash, Pencil, Plus, Stamp} from '@phosphor-icons/react'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 export default function AdminTeachers() {
   const handleAddTeacher = (e) => {
@@ -9,9 +10,19 @@ export default function AdminTeachers() {
     .post("http://localhost:3000/api/teacher/addTeacher",{firstname , lastname, email , teacherID})
     .then((res) =>{
       console.log(res.data);
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Teacher Added Successfully",
+      });
       setResponse(res.data);
     })
     .catch((error) =>{
+      Swal.fire({
+        icon: "error",
+        title: "",
+        text: "Teacher Added Successfully",
+      });
       console.log(error);
     })
   }
@@ -26,6 +37,8 @@ export default function AdminTeachers() {
   const [isThSelected, setIsThSelected] = useState("");
   const [isBatSelected, setIsBatSelected] = useState("");
 
+  const [batch , setBatch] = useState([]);
+
   useEffect(() => {
     const fetchTeachers= async () => {
       const res = await axios.get("http://localhost:3000/api/teacher/getTeacher");
@@ -34,6 +47,34 @@ export default function AdminTeachers() {
 
     fetchTeachers();
   }, []);
+
+
+  useEffect(() =>{
+    axios
+    .get("http://localhost:3000/api/student/getBatch")
+    .then((res) =>{
+      setBatch([...res.data]);
+      console.log(batch);
+      console.log(res.data);
+    })
+    .catch((error) =>{
+      console.log(error)
+    })
+  },[])
+
+  const handleAssignFaculty = (e) => {
+
+     axios.post("http://localhost:3000/api/teacher/setFaculty" , {teacherID: isThSelected , batch: isBatSelected})
+     .then((res) => {
+      console.log(res)
+     })
+     .catch((err) => {
+      console.log(err)
+     })
+
+  }
+  
+
 
   return (
     <div className='flex w-screen min-h-screen bg-[#cdd4fa] ps-7'>
@@ -137,15 +178,22 @@ export default function AdminTeachers() {
           <div className="flex w-full">
             <select value={isThSelected} onChange={(e) => {setIsThSelected(e.target.value)}} name='selectlect' id='selectlect' className='w-1/4 border border-transparent rounded-lg outline-0 focus:border-[#1F2544]'>
               <option value=''>Select a teacher...</option>
-              <option value='hey'>hehe</option>
-              {/* <option key={} value={}></option>*/}
+              {teacher.map((teach) => {
+                  return(
+                    <option key={teach._id} value={teach.teacherID}>{teach.firstname +" "+ teach.lastname}</option>
+                  )
+                })}
             </select>
 
             {isThSelected !== "" && (
               <select value={isBatSelected} onChange={(e) => {setIsBatSelected(e.target.value)}} name='selectbat' id='selectbat' className='ms-3 w-1/4 border border-transparent rounded-lg outline-0 focus:border-[#1F2544]'>
-                <option value=''>Select a batch...</option>
-                <option value='hey'>hehe</option>
-                {/* <option key={} value={}></option>*/}
+                <option value='' >Select a batch...</option>
+                {batch.map((year) => {
+                  return(
+                    <option key={year} value={year}>{year}</option>
+                  )
+                })}
+                
               </select>
             )}
           </div>
@@ -154,7 +202,9 @@ export default function AdminTeachers() {
                 <button
                 className="mt-5 w-1/3 flex pt-3 pb-3 bg-[#474F7A] justify-center items-center rounded-lg font-sans text-white hover:bg-[#474F7A]/75"
                 >
-                  <span className='hidden md:flex'>Assign as Faculty Advisor</span><Stamp className='md:hidden'/>
+                  <span 
+                  onClick={handleAssignFaculty}
+                  className='hidden md:flex'>Assign as Faculty Advisor</span><Stamp className='md:hidden'/>
                 </button>
             </div>
           )}

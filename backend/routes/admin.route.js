@@ -3,9 +3,9 @@ import { addAssociate, addEvent, manageLeaveLetter } from "../controller/admin.c
 
 const router = express.Router(); // Call express.Router() to create a new router instance
 
-router.post('/add-associate', addAssociate);
-router.post('/manage-leave', manageLeaveLetter);
-router.post('/add-event', addEvent);
+router.post('/addAssociate', addAssociate);
+router.post('/manageLeave', manageLeaveLetter);
+router.post('/addEvent', addEvent);
 
 
 export default router;

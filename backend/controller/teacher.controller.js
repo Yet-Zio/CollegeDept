@@ -63,11 +63,11 @@ export const setFaculty = async (req , res , next) => {
 
     const {batch, teacherID} = req.body ; 
 
-    const {email} = req.params.email ; 
+    // const {email} = req.params.email ; 
 
-    const verifyAdmin = await Teacher.findOne({email});
+    // const verifyAdmin = await Teacher.findOne({email});
 
-    if(verifyAdmin.isHOD === false) next(errorHandler(401 , "Unauthorized"))
+    // if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
 
     try {
         await Teacher.findOneAndUpdate(
