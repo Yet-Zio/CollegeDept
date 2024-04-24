@@ -1,7 +1,8 @@
-/* eslint-disable react/prop-types */
+
 import SideLogo from './SideLogo'
 import SideOption from './SideOption'
 import SideLogout from './SideLogout'
+import React from 'react'
 
 export default function Sidebar(props) {
   
