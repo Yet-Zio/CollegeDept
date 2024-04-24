@@ -15,6 +15,7 @@ export default function AssocLogin() {
   }
 
   const setTitle = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       document.title = "Admin Login - Department of CS"
     }, [])

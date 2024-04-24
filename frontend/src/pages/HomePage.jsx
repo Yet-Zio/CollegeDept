@@ -69,7 +69,7 @@ export default function HomePage() {
             id="upCommingEvent"
             initial={{ opacity: .3, x: -200 }}
             animate={controls}
-            className="bg-black" // Add a CSS class for styling if needed
+            className="bg-black"
           >
             <UpCommingEvent />
           </motion.div>
