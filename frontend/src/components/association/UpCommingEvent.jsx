@@ -89,7 +89,7 @@ export default function UpCommingEvent() {
              initial={{ x: -200, opacity: .1 }}
              animate={{ x: 0, opacity: 1 }}
              transition={{ duration: 1 }}
-              className="mt-10 lg:mt-0 lg:flex lg:items-center"
+              className="mt-10 lg:mt-0 lg:flex lg:justify-center lg:items-center"
             >
               <img
                 className="object-cover object-center w-full lg:w-[32rem] rounded-lg h-96"
@@ -115,11 +115,11 @@ export default function UpCommingEvent() {
               </div>
             </motion.div>
 
-            <div className="flex items-center justify-between mt-12 lg:justify-start lg:ml-5">
+            <div className=" container flex items-center justify-between mt-12 lg:w-[90%]">
               <button
                 onClick={() => previousBtnTrigger()}
                 title="Previous"
-                className="p-2 mr-2 text-[#DC8733] transition-colors duration-300 border rounded-md flex rtl:-scale-x-100 hover:bg-[#dc8833a5]"
+                className="p-2 mr-2 text-[#DC8733] transition-colors duration-300 border rounded-md flex rtl:-scale-x-100 hover:bg-[#dc8833a5] xl:ml-[20dvh] "
               >
                  <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +135,7 @@ export default function UpCommingEvent() {
               <button
                 onClick={() => nextBtnTrigger()}
                 title="Next"
-                className="p-2 text-[#DC8733] transition-colors duration-300 border rounded-md rtl:-scale-x-100 flex  hover:bg-[#dc8833a5]"
+                className="p-2 text-[#DC8733] transition-colors duration-300 border rounded-md rtl:-scale-x-100 flex  hover:bg-[#dc8833a5] xl:mr-[10dvh]"
               >
                 Next
                 <svg

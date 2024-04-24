@@ -12,8 +12,8 @@ export default function AssocaitionNav() {
     <div className="container px-6 py-4 mx-auto">
         <div className="lg:flex lg:items-center">
             <div className="flex items-center justify-between">
-               <Link to={"/home-assoc"} className="md:text-xl xl:text-2xl text-sm font-semibold flex text-[#DC8733]">
-                <img src={logo} className="xl:h-[3dvh] xl:w-[3dvh] md:h-[2.6dvh] md:w-[2.6dvh] w-[2dvh] h-[2dvh]" alt="" />
+               <Link to={"/home-assoc"} className="md:text-xl xl:text-2xl text-sm font-semibold items-center flex text-[#DC8733]">
+                <img src={logo} className="xl:h-[30px] xl:w-[30px] md:h-[2.6dvh] md:w-[2.6dvh] w-[2dvh] h-[2dvh]" alt="" />
                 Association
                </Link>
                 <div className="flex lg:hidden" onClick={()=> buttonTrigger()} >
