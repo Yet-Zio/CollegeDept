@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import Teacher from '../models/teachers.model.js';
 import jwt from 'jsonwebtoken'
 import leaveLetter from '../models/leaveLetter.model.js';
+import Homework from '../models/homework.model.js';
 
 export const addTeacher = async(req, res, next) =>{
     const{firstname, lastname,  teacherID, email} = req.body;
@@ -108,5 +109,31 @@ export const applyLeave = async (req , res , next) => {
     }
 
 
+
+}
+
+export const assignHomework = async(req , res , next) => {
+
+
+    try {
+
+        if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
+
+        const {id} = req.params;
+
+        const {subject , details , batch} = req.body ;
+
+        const homework = new Homework({teacher: id , subject , details , batch})
+
+        await homework.save();
+
+        res
+        .status(200)
+        .json("Homeword Assigned Successfully")
+
+        
+    } catch (error) {
+        next(error)
+    }
 
 }

@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import mongoose from "mongoose";
 import ContactUs from "../models/contactUs.model.js";
 import { errorHandler } from "../utils/errorHandler.js";
+import Homework from "../models/homework.model.js";
 
 
 export const addStudent = async(req , res , next)=>{
@@ -81,6 +82,22 @@ export const getStudent = async (req , res , next) => {
     const fetchStudents = await model.find();
 
     res.status(200).json(fetchStudents);
+
+    } catch (error) {
+        next(error);
+    }
+
+}
+
+export const getHomework = async(req , res , next) => {
+
+    try {
+        
+        const fetchHomework = await Homework.find();
+
+        res
+        .status(200)
+        .json(fetchHomework);
 
     } catch (error) {
         next(error);
