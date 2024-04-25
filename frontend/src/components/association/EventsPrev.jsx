@@ -53,7 +53,7 @@ export default function EventsPrev() {
       ];
   return (
     <>
-    <Slider slideItems={slideItems} title="Latest Events" path="/articlepage" id="2"/>
+    <Slider slideItems={slideItems} title="Latest Events" path="/event" id="2"/>
     </>
   )
 }

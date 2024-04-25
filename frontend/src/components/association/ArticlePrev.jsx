@@ -85,7 +85,7 @@ export default function ArticlePrev() {
       ];
   return (
     <>
-    <Slider slideItems={slideItems} title="Article" path="/articlepage" id="1"/>
+    <Slider slideItems={slideItems} title="Article" path="/article" id="1"/>
     </>
   )
 }
