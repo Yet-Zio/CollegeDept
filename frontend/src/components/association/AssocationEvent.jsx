@@ -1,11 +1,12 @@
 import Footer from "../Shared/Footer";
 import AssocaitionNav from "./AssocaitionNav";
+import EventBody from "./EventBody";
 
-export default function AssocationArticleBody() {
+export default function AssocationEvent() {
   return (
    <>
-         <AssocaitionNav/>
-  
+     <AssocaitionNav/>
+      <EventBody />
       <Footer />
    </>
   )
