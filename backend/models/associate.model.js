@@ -6,6 +6,8 @@ const articleSchema = new mongoose.Schema({
 
     body : String,
 
+    description: String,
+
     author: String,
     
     date: {

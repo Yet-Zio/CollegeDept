@@ -3,6 +3,8 @@ import bcrypt from 'bcrypt';
 import mongoose from "mongoose";
 import ContactUs from "../models/contactUs.model.js";
 import { errorHandler } from "../utils/errorHandler.js";
+import Homework from "../models/homework.model.js";
+import Announcement from "../models/announcement.model.js";
 
 
 export const addStudent = async(req , res , next)=>{
@@ -81,6 +83,42 @@ export const getStudent = async (req , res , next) => {
     const fetchStudents = await model.find();
 
     res.status(200).json(fetchStudents);
+
+    } catch (error) {
+        next(error);
+    }
+
+}
+
+export const getHomework = async(req , res , next) => {
+
+    try {
+        
+        const fetchHomework = await Homework.find();
+
+        res
+        .status(200)
+        .json(fetchHomework);
+
+    } catch (error) {
+        next(error);
+    }
+
+}
+
+export const getAnnouncement = async(req , res , next) => {
+
+    try {
+        
+        const batch = req.params.batch ;
+
+        const fetchAnnouncement = await Announcement.find({batch})
+
+        res
+        .status(200)
+        .json(fetchAnnouncement)
+
+
 
     } catch (error) {
         next(error);
