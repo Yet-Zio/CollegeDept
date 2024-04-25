@@ -34,7 +34,7 @@ export default function AssocLogin() {
           Student ID
         </span>
         <input
-          className="useinter mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-orange-400 focus:border-orange-800 text-sm"
+          className="useinter mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-orange-400 text-white focus:border-orange-800 text-sm"
           name="associd"
           id="associd"
           placeholder="320XXXXXXXX"
@@ -49,7 +49,7 @@ export default function AssocLogin() {
         >
           <input
             type={isPassHidden ? "password" : "text"}
-            className="useinter bg-transparent ms-2 h-full w-4/5 outline-0 text-sm"
+            className="useinter bg-transparent ms-2 h-full text-white w-4/5 outline-0 text-sm"
             onFocus={() => {
               setPassInput(!passInput);
             }}

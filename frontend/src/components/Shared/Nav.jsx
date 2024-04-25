@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from "react";
 import "./nav.css";
-import search from "../../assets/search-icon-2044x2048-psdrpqwp.png";
+// import search from "../../assets/search-icon-2044x2048-psdrpqwp.png";
 import logo from "../../assets/collegedepticon.png";
 import { X } from "@phosphor-icons/react";
 import Spinner from "./Spinner";
@@ -60,8 +60,11 @@ export default function Nav({ sendDataToParent }) {
               DEPT OF CS
             </span>
           </div>
-          <div className="search c-border">
-            <img src={search} />
+          <div className="search">
+            {/* <img src={search} /> */}
+            <span className="h-[40px] w-[50px] rounded-full bg-white ">
+
+            </span>
           </div>
         </div>
       </div>

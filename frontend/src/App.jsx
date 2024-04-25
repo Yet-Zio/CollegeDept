@@ -15,6 +15,7 @@ import RecomendedTools from "./pages/RecomendedTools";
 import AssocationEvent from "./components/association/AssocationEvent";
 import AssocationArticle from "./components/association/AssocationArticle";
 import NotFound from "./pages/NotFound.jsx";
+import ArticleViewMore from "./components/association/ArticleViewMore.jsx";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/recomended-tools" element={<RecomendedTools />} />
         <Route path="/event" element={<AssocationEvent/>}/>
         <Route path="/article" element={<AssocationArticle/>}/>
+        <Route path="/article/item/:id" element={<ArticleViewMore/>}/>
         <Route path="/*" element={<NotFound/>}/>
       </Routes>
     </Router>

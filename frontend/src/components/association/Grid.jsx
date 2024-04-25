@@ -1,8 +1,13 @@
+import { useNavigate} from 'react-router-dom'
 /* eslint-disable react/prop-types */
 
 // eslint-disable-next-line react/prop-types
 export default function Grid({ContentItem}) {
+  const navigate = useNavigate();
   const MAX_DESCRIPTION_LENGTH = 120
+  const ButtonTrigger = (val)=>{
+    navigate(`/article/item/${val}`);
+  }
   return (
     <>
     <div className="flex justify-center items-center">
@@ -29,7 +34,7 @@ export default function Grid({ContentItem}) {
                       {/* {item.description} */}
                   </span>
                   <span className="flex justify-end w-full">
-                    <button className=" bg-orange-400 text-[#262626] pt-1 pb-1 ps-3 pe-3 rounded-sm font-extrabold shadow-sm hover:shadow-none hover:translate-y-[1px] hover:translate-x-[1px] duration-100 hover:text-[black] hover:font-bold hover:bg-orange-600 shadow-white  me-6">
+                    <button onClick={()=>ButtonTrigger(item.id)} className=" bg-orange-400 text-[#262626] pt-1 pb-1 ps-3 pe-3 rounded-sm font-extrabold shadow-sm hover:shadow-none hover:translate-y-[1px] hover:translate-x-[1px] duration-100 hover:text-[black] hover:font-bold hover:bg-orange-600 shadow-white  me-6">
                       View
                     </button>
                   </span>

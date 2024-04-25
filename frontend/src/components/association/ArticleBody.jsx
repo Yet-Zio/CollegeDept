@@ -3,6 +3,8 @@ import Pagination from "./Pagination.jsx";
 export default function ArticleBody() {
 //   const MAX_DESCRIPTION_LENGTH = 90;
 
+  
+
   const ContentItem = [
     {
       id: 1,
@@ -161,7 +163,7 @@ export default function ArticleBody() {
     <>
       <Pagination PageCount={Math.ceil(ContentItem.length / 20)} top={1} />
       <Grid ContentItem={ContentItem} />
-      <Pagination PageCount={Math.ceil(ContentItem.length / 20)} />
+      <Pagination PageCount={Math.ceil(ContentItem.length / 20*20)} />
     </>
   );
 }
