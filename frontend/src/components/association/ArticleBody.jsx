@@ -1,6 +1,5 @@
 import Grid from "./Grid";
-import PaginationBottom from "./PaginationBottom";
-
+import Pagination from "./Pagination.jsx";
 export default function ArticleBody() {
 //   const MAX_DESCRIPTION_LENGTH = 90;
 
@@ -137,15 +136,7 @@ export default function ArticleBody() {
         id: 17,
         title: "5G Technology",
         description:
-          "Revolutionizing connectivity Unleashing the potential of 5G for faster, more reliable communication",
-        imageurl:
-          "https://stl.tech/wp-content/uploads/2020/11/shutterstock_1014919753.jpg",
-      },
-      {
-        id: 18,
-        title: "Medical Breakthroughs",
-        description:
-          "Innovations in healthcare Transforming lives through groundbreaking medical discoveries and treatments.",
+          "Revolutionizing connectivity Unleashing the potential of 5G for faster, more PaginationBottomries and treatments.",
         imageurl:
           "https://imageio.forbes.com/specials-images/imageserve/5dbb4182d85e3000078fddae/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds",
       },
@@ -168,9 +159,9 @@ export default function ArticleBody() {
   ];
   return (
     <>
-        <PaginationBottom />
+      <Pagination PageCount={Math.ceil(ContentItem.length / 20)} top={1} />
       <Grid ContentItem={ContentItem} />
-      <PaginationBottom PageCount={Math.ceil(ContentItem.length / 20)} />
+      <Pagination PageCount={Math.ceil(ContentItem.length / 20)} />
     </>
   );
 }
