@@ -3,6 +3,7 @@ import Teacher from '../models/teachers.model.js';
 import jwt from 'jsonwebtoken'
 import leaveLetter from '../models/leaveLetter.model.js';
 import Homework from '../models/homework.model.js';
+import Announcement from '../models/announcement.model.js';
 
 export const addTeacher = async(req, res, next) =>{
     const{firstname, lastname,  teacherID, email} = req.body;
@@ -132,6 +133,30 @@ export const assignHomework = async(req , res , next) => {
         .json("Homeword Assigned Successfully")
 
         
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+export const addAnnouncement = async(req , res , next) => {
+
+    try {
+
+        if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized"))
+
+        const {id} = req.params;
+
+        const {batch , details} = req.body;
+
+        const newAnnouncement = new Announcement({batch , details , teacher: id})
+
+        await newAnnouncement.save();
+
+        res 
+        .status(200)
+        .json("Announcement Added")
+
     } catch (error) {
         next(error)
     }
