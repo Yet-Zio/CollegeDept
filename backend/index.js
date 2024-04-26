@@ -11,6 +11,11 @@ import corsMiddleware from './utils/cors.js'
 
 dotenv.config();
 
+const pub = "./public"
+if(!fs.existsSync(pub)){
+    fs.mkdirSync(pub)
+}
+
 
 const PORT = process.env.PORT || 3000 ;
 
