@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import StudentsLogin from "./components/Auth/StudentsLogin";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import HomePage from "./pages/HomePage";
@@ -16,30 +21,185 @@ import AssocationEvent from "./components/association/AssocationEvent";
 import AssocationArticle from "./components/association/AssocationArticle";
 import NotFound from "./pages/NotFound.jsx";
 import ArticleViewMore from "./components/association/ArticleViewMore.jsx";
+import { useEffect, useState } from "react";
+import Loader from "./components/Common/Loader.jsx";
 
 function App() {
-  return (
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+  return loading ? (
+    <Loader />
+  ) : (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/studentlogin" element={<StudentsLogin />} />
-        <Route path="/student" element={<StudenDashboard />} />
-        <Route path="/teacherlogin" element={<TeacherLogin />} />
-        <Route path="/assoclogin" element={<AssocLogin />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/home-assoc" element={<AssociationHome />} />
-        <Route path="/about-creators" element={<AboutCreators />} />
-        <Route path="/about-deapartment" element={<AboutDepartment />} />
-        <Route path="/about-staff" element={<AboutStaffs />} />
-        <Route path="/recomended-tools" element={<RecomendedTools />} />
-        <Route path="/event" element={<AssocationEvent/>}/>
-        <Route path="/article" element={<AssocationArticle/>}/>
-        <Route path="/article/item/:id" element={<ArticleViewMore/>}/>
-        <Route path="/*" element={<NotFound/>}/>
+        <Route
+          path="/"
+          element={
+            <>
+              <PageTitle title="DEPT OF CS" />
+              <HomePage />
+            </>
+          }
+        />
+        <Route
+          path="/studentlogin"
+          element={
+            <>
+              <PageTitle title="Student Login" />
+              <StudentsLogin />
+            </>
+          }
+        />
+        <Route
+          path="/teacherlogin"
+          element={
+            <>
+              <PageTitle title="Teacher Login" />
+              <TeacherLogin />
+            </>
+          }
+        />
+
+        <Route
+          path="/contact-us"
+          element={
+            <>
+              <PageTitle title="Contact Us" />
+              <ContactUs />
+            </>
+          }
+        />
+
+        <Route
+          path="/about-creators"
+          element={
+            <>
+              <PageTitle title="About Creators" />
+              <AboutCreators />
+            </>
+          }
+        />
+        <Route
+          path="/about-department"
+          element={
+            <>
+              <PageTitle title="About Department" />
+              <AboutDepartment />
+            </>
+          }
+        />
+        <Route
+          path="/about-staff"
+          element={
+            <>
+              <PageTitle title="About Staffs" />
+              <AboutStaffs />
+            </>
+          }
+        />
+        <Route
+          path="/recomended-tools"
+          element={
+            <>
+              <PageTitle title="Recomended Tools" />
+              <RecomendedTools />
+            </>
+          }
+        />
+        <Route
+          path="/student"
+          element={
+            <>
+              <PageTitle title="Student Dashboard" />
+              <StudenDashboard />
+            </>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <>
+              <PageTitle title="Admin Dashboard" />
+              <AdminDashboard />
+            </>
+          }
+        />
+        <Route
+          path="/home-assoc"
+          element={
+            <>
+              <PageTitle title="Association Home" />
+              <AssociationHome />
+            </>
+          }
+        />
+        <Route
+          path="/assoclogin"
+          element={
+            <>
+              <PageTitle title="Association Login" />
+              <AssocLogin />
+            </>
+          }
+        />
+
+        <Route
+          path="/event"
+          element={
+            <>
+              <PageTitle title="Association Events" />
+              <AssocationEvent />
+            </>
+          }
+        />
+        <Route
+          path="/article"
+          element={
+            <>
+              <PageTitle title="Association Articles" />
+              <AssocationArticle />
+            </>
+          }
+        />
+        <Route
+          path="/article/item/:id"
+          element={
+            <>
+              <PageTitle title="Article" />
+              <ArticleViewMore />
+            </>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <>
+              <PageTitle title="404 Not Found" />
+              <NotFound />
+            </>
+          }
+        />
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
+// eslint-disable-next-line react/prop-types
+const PageTitle = ({ title }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return null;
+};

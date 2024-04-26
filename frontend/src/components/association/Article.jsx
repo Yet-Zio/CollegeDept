@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import html2pdf from "html2pdf.js";
+import { useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
 export default function Article({ id }) {
   const item = {
@@ -60,6 +61,9 @@ export default function Article({ id }) {
   
   Reference: Simplilearn (2024).`,
   };
+  useEffect(() => {
+    document.title ="Article-" + item.title ;
+  }, [item.title]);
   const generatePdf = () => {
     const element = document.getElementById("content");
     if (!element) {
