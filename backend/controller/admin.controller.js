@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import LeaveLetter from "../models/leaveLetter.model.js";
 import Event from "../models/event.model.js";
 import ContactUs from "../models/contactUs.model.js";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 export const addAssociate = async (req , res , next) => {
 
@@ -75,9 +76,13 @@ export const addEvent = async (req , res , next) => {
 
     if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
 
+    const imagePath = req.file?.path;
+
+    const uploadImage = await uploadOnCloudinary(imagePath)
+
     const {title ,description} = req.body ; 
 
-    const addEvent = new Event({title , description})
+    const addEvent = new Event({title , description , image: uploadImage.url})
 
     try {
         await addEvent.save()

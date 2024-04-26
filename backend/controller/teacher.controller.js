@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import leaveLetter from '../models/leaveLetter.model.js';
 import Homework from '../models/homework.model.js';
 import Announcement from '../models/announcement.model.js';
+import { uploadOnCloudinary } from '../utils/cloudinary.js';
 
 export const addTeacher = async(req, res, next) =>{
     const{firstname, lastname,  teacherID, email} = req.body;
@@ -124,7 +125,11 @@ export const assignHomework = async(req , res , next) => {
 
         const {subject , details , batch} = req.body ;
 
-        const homework = new Homework({teacher: id , subject , details , batch})
+        const imagePath = req.file?.path;
+
+        const uploadImage = await uploadOnCloudinary(imagePath)
+
+        const homework = new Homework({teacher: id , subject , details , batch , image: uploadImage.url})
 
         await homework.save();
 

@@ -21,7 +21,9 @@ const homeworkSchema = new mongoose.Schema({
     batch: {
         type: String , 
         required: true
-    }
+    },
+    image: String,
+    default: ""
 
 })
 

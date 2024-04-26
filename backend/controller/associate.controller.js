@@ -2,6 +2,7 @@ import Associate from "../models/associate.model.js";
 import bcrypt from 'bcrypt';
 import { errorHandler } from "../utils/errorHandler.js";
 import jwt from 'jsonwebtoken'
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 export const loginAssociate = async (req , res , next) => {
  
@@ -40,11 +41,15 @@ export const addArticle = async (req , res , next) => {
 
     const {title , body , author , description } = req.body ;
 
+    const imagePath = req.file?.path;
+
+    const uploadImage = await uploadOnCloudinary(imagePath)
+
     const findUser = await Associate.findOne({_id:req.params.id})
 
     if(!findUser) return next(errorHandler(401 , "User cant be found"))
 
-    findUser.article.push({title , body , author , description})
+    findUser.article.push({title , body , author , description , image: uploadImage.url})
 
     try {
         await addArticle.save();

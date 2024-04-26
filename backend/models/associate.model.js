@@ -14,6 +14,7 @@ const articleSchema = new mongoose.Schema({
         type: Date ,
         default: Date.now
     } ,
+    image: String
 })
 
 const associateSchema = new mongoose.Schema({
