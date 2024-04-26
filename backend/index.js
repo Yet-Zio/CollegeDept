@@ -8,6 +8,7 @@ import adminRouter from './routes/admin.route.js'
 import associateRouter from './routes/associate.route.js'
 import cookieParser from 'cookie-parser';
 import corsMiddleware from './utils/cors.js'
+import fs from "fs"
 
 dotenv.config();
 

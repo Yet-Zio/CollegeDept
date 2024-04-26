@@ -22,8 +22,11 @@ const homeworkSchema = new mongoose.Schema({
         type: String , 
         required: true
     },
-    image: String,
-    default: ""
+    image: {
+        type: String , 
+        default: ""
+    }
+    
 
 })
 
