@@ -12,7 +12,6 @@ export default function HotTopics() {
     if (index == 2) setIndex(0);
     else setIndex(index + 1);
   };
-
   const [isVisible, setIsVisible] = useState(false);
   const controls = useAnimation();
 
@@ -116,7 +115,7 @@ export default function HotTopics() {
               <p className="text-5xl font-semibold text-orange-500 ">“</p>
 
               <h1 className="text-2xl font-semibold duration-150 text-gray-800 dark:text-white lg:text-3xl lg:w-96 hover:text-orange-600">
-                <Link>{HotTopics[index].title}</Link>
+                <Link to={`/article/item/${HotTopics[index].id}`}>{HotTopics[index].title}</Link>
               </h1>
 
               <p className="max-w-lg mt-6 text-gray-500 dark:text-gray-400 ">

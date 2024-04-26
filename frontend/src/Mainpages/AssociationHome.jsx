@@ -5,8 +5,11 @@ export default function AssociationHome() {
   return (
     <>
       <AssocaitionNav/>
+      <div className="mt-10">
       <AssociationMainBody/>
       <Footer />
+      </div>
+      
     </>
   )
 }

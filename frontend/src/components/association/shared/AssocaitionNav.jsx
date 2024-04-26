@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/collegedepticon.png";
+import logo from "../../../assets/collegedepticon.png";
 
 export default function AssocaitionNav() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -139,7 +139,7 @@ export default function AssocaitionNav() {
   };
   return (
     <>
-      <nav className="bg-[#151515]">
+      <nav className="bg-[#151515] fixed top-0 w-[100%] z-50">
         <div className="container px-6 py-4 mx-auto">
           <div className="lg:flex lg:items-center">
             <div className="flex items-center justify-between">

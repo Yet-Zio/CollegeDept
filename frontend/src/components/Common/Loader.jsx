@@ -1,9 +1,9 @@
 export default function Loader() {
   return (
     <>
-      <div className="flex h-screen items-center justify-center bg-[#0f0f0f]">
-        <div className="h-16 w-16 border-orange-900 animate-spin rounded-full border-8 border-solid border-t-transparent"></div>
-      </div>
+      <div className="flex justify-center items-center h-screen bg-[#1b1b1b]">
+  <div className="rounded-full h-20 w-20 bg-orange-600 animate-ping"></div>
+</div>
     </>
   );
 }

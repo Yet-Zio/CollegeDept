@@ -118,6 +118,7 @@ export default function Article({ id }) {
   const descriptionArray = item.descritption.split(/\n\s*\n/);
   return (
     <>
+    <div className="mt-16"></div>
       <main
         id="content"
         className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-[#0B0B0B] antialiased"

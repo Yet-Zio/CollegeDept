@@ -5,6 +5,8 @@ import {
   Asterisk
 } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "react-router-dom";
+import AssocaitionNav from "../association/shared/AssocaitionNav";
+import Footer from "../Shared/Footer";
 
 export default function AssocLogin() {
   const [passInput, setPassInput] = useState(false);
@@ -24,8 +26,10 @@ export default function AssocLogin() {
   setTitle()
 
   return (
-    <div className="flex flex-col min-h-screen min-w-screen justify-center items-center bg-[#151515] xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761]">
-      <form onSubmit={handleLogin} className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 border-gray-500/15 rounded-xl p-7 bg-[#151515] mb-[10dvh] md:mb-0">
+   <>
+   <AssocaitionNav/>
+     <div className="flex flex-col min-h-screen min-w-screen justify-center items-center bg-[#151515] xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761]">
+      <form onSubmit={handleLogin} className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 border-gray-500/15 rounded-xl p-7 bg-[#2b2a2a] mb-[10dvh] md:mb-0">
         <Asterisk className="self-center mb-0 md:mt-[4dvh] text-orange-600" size={64} weight="fill"/>
         <span className="useinter text-xl text-white font-sans mt-[3dvh] font-extrabold  mb-[3dvh]">
           Association Login
@@ -87,5 +91,7 @@ export default function AssocLogin() {
         </button>
       </form>
     </div>
+    <Footer/>
+   </>
   );
 }

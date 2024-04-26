@@ -40,7 +40,7 @@ export default function Slider({slideItems,title,path,id}) {
         {slideItems.map((item) => (
           <SwiperSlide className="h-full w-full rounded-md" key={item.id}>
             <div className=" bg-[#101010] h-full w-full flex flex-col justify-center items-center text-white">
-              <Link className="font-extrabold md:text-2xl text-xl text-center pb-14 hover:text-orange-600 duration-150">
+              <Link to={`/article/item/${item.id}`} className="font-extrabold md:text-2xl text-xl text-center pb-14 hover:text-orange-600 duration-150">
                 {item.title}
               </Link>
               <div className="flex pl-2">

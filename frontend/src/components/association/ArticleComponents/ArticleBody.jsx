@@ -161,6 +161,7 @@ export default function ArticleBody() {
   ];
   return (
     <>
+    <div className="mt-16"></div>
       <Pagination PageCount={Math.ceil(ContentItem.length / 20)} top={1} />
       <Grid ContentItem={ContentItem} />
       <Pagination PageCount={Math.ceil(ContentItem.length / 20*20)} />
