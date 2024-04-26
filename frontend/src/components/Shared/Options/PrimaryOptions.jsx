@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { change } from "../../redux/menu/MenuOptSlice";
+import { change } from "../../../redux/menu/MenuOptSlice";
 import { CaretRight } from "@phosphor-icons/react";
 
 export default function PrimaryOptions() {

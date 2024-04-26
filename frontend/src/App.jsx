@@ -5,22 +5,22 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import StudentsLogin from "./components/Auth/StudentsLogin";
-import AdminDashboard from "./components/Admin/AdminDashboard";
+import StudentsLogin from "./components/UserValidation/StudentsLogin.jsx";
+import AdminDashboard from "./components/AdminDashBoard/AdminDashboard.jsx";
 import HomePage from "./pages/HomePage";
 import ContactUs from "./components/contactUs/ContactUs";
-import StudenDashboard from "./components/Student/StudenDashboard";
-import TeacherLogin from "./components/Auth/TeacherLogin";
-import AssocLogin from "./components/Auth/AssocLogin";
+import StudenDashboard from "./components/StudentDashBoard/StudenDashboard.jsx";
+import TeacherLogin from "./components/UserValidation/TeacherLogin.jsx";
+import AssocLogin from "./components/UserValidation/AssocLogin.jsx";
 import AssociationHome from "./pages/AssociationHome";
 import AboutCreators from "./pages/AboutCreators";
 import AboutDepartment from "./pages/AboutDepartment";
 import AboutStaffs from "./pages/AboutStaffs";
 import RecomendedTools from "./pages/RecomendedTools";
-import AssocationEvent from "./components/association/AssocationEvent";
-import AssocationArticle from "./components/association/AssocationArticle";
+import AssocationEvent from "./components/association/eventComponents/AssocationEvent.jsx";
+import AssocationArticle from "./components/association/ArticleComponents/AssocationArticle.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import ArticleViewMore from "./components/association/ArticleViewMore.jsx";
+import ArticleViewMore from "./components/association/ArticleComponents/ArticleViewMore.jsx";
 import { useEffect, useState } from "react";
 import Loader from "./components/Common/Loader.jsx";
 

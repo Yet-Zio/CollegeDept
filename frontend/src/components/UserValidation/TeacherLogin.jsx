@@ -5,6 +5,8 @@ import {
   ChalkboardTeacher
 } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "react-router-dom";
+import Nav from "../Shared/Nav";
+import Footer from "../Shared/Footer";
 
 export default function TeacherLogin() {
   const [passInput, setPassInput] = useState(false);
@@ -24,8 +26,10 @@ export default function TeacherLogin() {
   setTitle()
 
   return (
-    <div className="flex flex-col min-h-screen min-w-screen bg-[#151515] xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761] justify-center items-center useinter">
-      <form onSubmit={handleLogin} className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 dark:bg-[#151515] border-gray-500/10 rounded-xl p-7 mb-[14dvh] md:mb-0">
+    <>
+    <Nav/>
+      <div className="flex flex-col min-h-screen min-w-screen bg-[#151515] xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761] justify-center items-center useinter">
+      <form onSubmit={handleLogin} className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2   dark:bg-[#252525]  border-gray-500/10 rounded-xl p-7 mb-[14dvh] md:mb-0">
         <ChalkboardTeacher className="self-center text-orange-600" size={64} weight="fill"/>
         <span className="useinter text-xl text-white font-sans font-bold mt-3">
           Teacher Login
@@ -93,5 +97,7 @@ export default function TeacherLogin() {
         </button>
       </form>
     </div>
+    <Footer/>
+    </>
   );
 }

@@ -1,13 +1,13 @@
 import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
-import Spinner from "../Shared/Spinner";
-const AboutSpring = React.lazy(() => import("./Recomendedtools/AboutSpring"));
-const AboutLinux = React.lazy(() => import("./Recomendedtools/Aboutlinux"));
-const AboutReact = React.lazy(() => import("./Recomendedtools/AboutReact"));
-const AboutAngular = React.lazy(() => import("./Recomendedtools/AboutAngular"));
-const AboutVscode = React.lazy(() => import("./Recomendedtools/AboutVscode"));
+import Spinner from "../Common/Spinner";
+const AboutSpring = React.lazy(() => import("../Shared/Recomendedtools/AboutSpring"));
+const AboutLinux = React.lazy(() => import("../Shared/Recomendedtools/Aboutlinux"));
+const AboutReact = React.lazy(() => import("../Shared/Recomendedtools/AboutReact"));
+const AboutAngular = React.lazy(() => import("../Shared/Recomendedtools/AboutAngular"));
+const AboutVscode = React.lazy(() => import("../Shared/Recomendedtools/AboutVscode"));
 const AboutTailwind = React.lazy(() =>
-  import("./Recomendedtools/AboutTailwind")
+  import("../Shared/Recomendedtools/AboutTailwind")
 );
 
 export default function DisplayRecomentation() {

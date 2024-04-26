@@ -1,4 +1,4 @@
-import Slider from "./Slider";
+import Slider from "../shared/Slider";
 
 export default function ArticlePrev() {
     const slideItems = [

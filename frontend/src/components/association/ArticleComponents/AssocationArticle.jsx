@@ -1,6 +1,6 @@
-import Footer from "../Shared/Footer";
+import Footer from "../../Shared/Footer";
 import ArticleBody from "./ArticleBody";
-import AssocaitionNav from "./AssocaitionNav";
+import AssocaitionNav from "../shared/AssocaitionNav";
 
 export default function AssocationArticle() {
   return (

@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Footer from "../components/Shared/Footer";
 import Nav from "../components/Shared/Nav";
-import Creators from "../components/homepage/Creators";
-import Div1 from "../components/homepage/Div1";
-import News from "../components/homepage/News";
-import OutComes from "../components/homepage/OutComes";
-import UpCommingEvent from "../components/association/UpCommingEvent";
-import ArticlePrev from "../components/association/ArticlePrev";
+import Creators from "../components/DeptOfCs/Creators";
+import Div1 from "../components/DeptOfCs/Div1";
+import News from "../components/DeptOfCs/News";
+import OutComes from "../components/DeptOfCs/OutComes";
+import UpCommingEvent from "../components/association/eventComponents/UpCommingEvent";
+import ArticlePrev from "../components/association/ArticleComponents/ArticlePrev";
 import { motion, useAnimation } from "framer-motion";
 
 

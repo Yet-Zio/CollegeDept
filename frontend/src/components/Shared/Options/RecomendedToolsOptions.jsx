@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { CaretRight} from "@phosphor-icons/react";
 
-import { change } from "../../redux/menu/MenuOptSlice";
+import { change } from "../../../redux/menu/MenuOptSlice";
 export default function RecomendedTools() {
   const selectedMenu = useSelector((state) => state.menuOpt);
   const MenuDispach = useDispatch();

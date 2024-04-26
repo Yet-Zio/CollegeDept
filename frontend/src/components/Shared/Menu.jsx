@@ -1,11 +1,11 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { change } from "../../redux/menu/MenuOptSlice";
-const DisplayRecomentation = React.lazy(() => import("./DisplayRecomentation"));
-import Spinner from "../Shared/Spinner";
+const DisplayRecomentation = React.lazy(() => import("../DeptOfCs/DisplayRecomentation"));
+import Spinner from "../Common/Spinner";
 import AboutCs from "./Recomendedtools/AboutCs";
-import SecondaryOptions from "./SecondaryOptions";
-import PrimaryOptions from "./PrimaryOptions";
+import SecondaryOptions from "./Options/SecondaryOptions";
+import PrimaryOptions from "./Options/PrimaryOptions";
 
 export default function Menu() {
   const selectedMenu = useSelector((state) => state.menuOpt);

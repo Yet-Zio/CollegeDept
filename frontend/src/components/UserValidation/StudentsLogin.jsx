@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeSlash, Student } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
+import Nav from "../Shared/Nav";
+import Footer from "../Shared/Footer";
 
 export default function StudentsLogin() {
   const [passInput, setPassInput] = useState(false);
@@ -36,11 +38,12 @@ export default function StudentsLogin() {
   setTitle();
 
   return (
-    // #dc8733 bg: #151515
-    <div className="flex flex-col min-h-screen min-w-screen bg-[#151515] xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761] justify-center items-center">
+   <>
+   <Nav/>
+     <div className="flex flex-col min-h-screen min-w-screen xl:bg-gradient-to-r xl:from-[#bbb7b7] xl:via-[#000000] xl:to-[#c19447] xl:dark:from-[#272727] xl:dark:via-[#4b4b4b] xl:dark:to-[#6d6761] justify-center items-center">
       <form
         onSubmit={handleLogin}
-        className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 dark:bg-[#151515] border-gray-500/10 rounded-xl p-7 mb-[10dvh] md:mb-0"
+        className="flex flex-col w-full h-full md:w-[500px] md:h-[600px] md:border-2 dark:bg-[#252525] border-gray-500/10 rounded-xl p-7 mb-[10dvh] md:mb-0"
       >
         <Student
           className="self-center text-orange-600"
@@ -128,5 +131,7 @@ export default function StudentsLogin() {
         </button>
       </form>
     </div>
+    <Footer/>
+   </>
   );
 }

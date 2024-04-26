@@ -2,9 +2,9 @@ import { Alien, Article, Buildings, ChalkboardTeacher, FloppyDiskBack, Graduatio
 import React, { Suspense } from "react";
 import {  useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Spinner from "../Shared/Spinner";
+import Spinner from "../../Common/Spinner";
 
-const RecomendedTools = React.lazy(() => import("./RecomendedTools"));
+const RecomendedTools = React.lazy(() => import("./RecomendedToolsOptions"));
 
 
 export default function SecondaryOptions() {

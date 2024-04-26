@@ -3,10 +3,10 @@ import "./nav.css";
 // import search from "../../assets/search-icon-2044x2048-psdrpqwp.png";
 import logo from "../../assets/collegedepticon.png";
 import { X } from "@phosphor-icons/react";
-import Spinner from "./Spinner";
+import Spinner from "../Common/Spinner";
 import { useSelector } from "react-redux";
-import SmMenu from "../homepage/SmMenu";
-const Menu = React.lazy(()=>import("../homepage/Menu"))
+import SmMenu from "./SmMenu";
+const Menu = React.lazy(()=>import("./Menu"))
 
 // eslint-disable-next-line react/prop-types
 export default function Nav({ sendDataToParent }) {

@@ -1,7 +1,7 @@
-import ArticlePrev from "./ArticlePrev";
-import EventsPrev from "./EventsPrev";
-import HotTopics from "./HotTopics";
-import UpCommingEvent from "./UpCommingEvent";
+import ArticlePrev from "./ArticleComponents/ArticlePrev";
+import EventsPrev from "./eventComponents/EventsPrev";
+import HotTopics from "./ArticleComponents/HotTopics";
+import UpCommingEvent from "./eventComponents/UpCommingEvent";
 
 export default function AssociationMainBody() {
   return (

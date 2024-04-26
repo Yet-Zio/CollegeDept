@@ -1,5 +1,5 @@
-import Grid from "./Grid";
-import Pagination from "./Pagination.jsx";
+import Grid from "../shared/Grid.jsx";
+import Pagination from "../shared/Pagination.jsx";
 export default function ArticleBody() {
 //   const MAX_DESCRIPTION_LENGTH = 90;
 
