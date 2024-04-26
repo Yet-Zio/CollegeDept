@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
-
+import html2pdf from "html2pdf.js";
 // eslint-disable-next-line no-unused-vars
 export default function Article({ id }) {
-  const item ={
-    id:id,
-    ProfileImageUrl: "https://flowbite.com/docs/images/people/profile-picture-2.jpg",
+  const item = {
+    id: id,
+    ProfileImageUrl:
+      "https://flowbite.com/docs/images/people/profile-picture-2.jpg",
     imageurl:
-    "https://assets-global.website-files.com/61845f7929f5aa517ebab941/6440f9477c2a321f0dd6ab61_How%20Artificial%20Intelligence%20(AI)%20Is%20Used%20In%20Biometrics.jpg",
+      "https://assets-global.website-files.com/61845f7929f5aa517ebab941/6440f9477c2a321f0dd6ab61_How%20Artificial%20Intelligence%20(AI)%20Is%20Used%20In%20Biometrics.jpg",
     ByWhom: "Dr_Atomic",
     Postion: "Web Developer",
-    title:"Artificial Inteligence",
+    title: "Artificial Inteligence",
     publishedDate: "Feb. 8, 2022",
-    descritption :`What is Artificial Intelligence?
+    descritption: `What is Artificial Intelligence?
   AI is about giving machines the ability to think and learn like humans do. It’s about creating systems that can analyze vast amounts of structured data, describe data, recognize patterns, and make decisions based on that information. But artificial intelligence isn’t just about crunching the numbers or following algorithms. It’s about understanding the human experience and using that understanding to solve problems and make our lives better.
   
   Think about it this way: just as we humans learn from our experiences and adapt to new situations, AI can do the same. They can take in information, process it, and then use that knowledge to tackle challenges in ways that traditional computer programs simply can’t. And the more structured data they have access to, the smarter and more capable they become.
@@ -58,11 +59,65 @@ export default function Article({ id }) {
   These different types of AI showcase the diverse ways in which artificial intelligence can be applied to solve problems, automate tasks, and enhance human capabilities.
   
   Reference: Simplilearn (2024).`,
-  }
+  };
+  const generatePdf = () => {
+    const element = document.getElementById("content");
+    if (!element) {
+      console.error("Content element not found.");
+      return;
+    }
+    const options = {
+      // margin: [10, 10, 10, 10],
+    };
+    const htmlElement = createContainer(element.cloneNode(true));
+    html2pdf()
+      .from(htmlElement)
+      .set(options)
+      .save()
+      .catch((error) => {
+        console.error("Error generating PDF:", error);
+      });
+  };
+  const createContainer = (element) => {
+
+    const MainBody = document.createElement("div");
+    MainBody.style.display = "flex";
+    MainBody.style.flexDirection = "column";
+    MainBody.style.justifyContent = "center";
+    MainBody.style.alignItems = "center";
+    MainBody.style.width = "100%";
+    MainBody.style.pointerEvents = "none";
+    MainBody.style.backgroundColor = "#0B0B0B";
+    MainBody.style.padding = "30px";
+    
+    const watermarkContainer = document.createElement("div");
+    watermarkContainer.style.position = "absolute";
+    watermarkContainer.style.opacity = "0.3";
+    watermarkContainer.style.width = "100%";
+    watermarkContainer.style.height = "100dvh";
+    watermarkContainer.style.pointerEvents = "none";
+
+    const watermark = document.createElement("div");
+    watermark.style.fontSize = "40px";
+    watermark.style.transform = "rotate(-45deg)";
+    watermark.style.color = "#DCDCDC";
+    watermark.style.textAlign = "center";
+    watermark.style.paddingTop = "200px";
+    watermark.innerHTML = "DEPT OF CS";
+    watermark.style.zIndex="-10"
+    watermarkContainer.appendChild(watermark);
+
+    MainBody.appendChild(element);
+    MainBody.append(watermarkContainer);
+    return MainBody;
+  };
   const descriptionArray = item.descritption.split(/\n\s*\n/);
   return (
     <>
-      <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-[#0B0B0B] antialiased">
+      <main
+        id="content"
+        className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-[#0B0B0B] antialiased"
+      >
         <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
           <article className="mx-auto w-full">
             <header className="mb-4 lg:mb-6">
@@ -85,7 +140,9 @@ export default function Article({ id }) {
                       {item.Postion}
                     </p>
                     <p className="text-base text-gray-500 dark:text-gray-400">
-                      <time title="February 8th, 2022">{item.publishedDate}</time>
+                      <time title="February 8th, 2022">
+                        {item.publishedDate}
+                      </time>
                     </p>
                   </div>
                 </div>
@@ -95,20 +152,66 @@ export default function Article({ id }) {
               </h1>
             </header>
             <div className="flex flex-col justify-evenly">
-             
-            {descriptionArray.map((sentence, index) => (
-            <>
-                {
-                  index === 1 && <img src={item.imageurl} alt="" className="rounded-xl mb-7 mt-7" />
-                } 
-             <span className="text-justify text-sm md:text-lg text-[#c7c7c7]" key={index}>{sentence} <br/><br/></span>
-              
-            </>
-        ))}
-            </div>      
+              {descriptionArray.map((sentence, index) => (
+                <>
+                  {index === 1 && (
+                    <img
+                      src={item.imageurl}
+                      alt=""
+                      className="rounded-xl mb-7 mt-7"
+                    />
+                  )}
+                  <span
+                    className="text-justify text-sm md:text-lg text-[#c7c7c7]"
+                    key={index}
+                  >
+                    {sentence} <br />
+                    <br />
+                  </span>
+                </>
+              ))}
+            </div>
           </article>
         </div>
-      </main> 
+      </main>
+      <main className="bg-[#0B0B0B] antialiased">
+        <div className="flex justify-end px-4 mx-auto max-w-screen-xl ">
+          <article className="mx-auto w-full">
+            <header className="mb-4 lg:mb-6">
+              <address className="flex items-center justify-end mb-6 not-italic">
+                <button
+                  onClick={() => generatePdf()}
+                  className=" mb-3 p-2 text-white bg-orange-400 rounded-md"
+                >
+                  Download
+                </button>
+              </address>
+            </header>
+          </article>
+        </div>
+      </main>
     </>
   );
 }
+// const watermarkContainer = document.createElement('div');
+//     watermarkContainer.style.position = 'absolute';
+//     watermarkContainer.style.opacity = '0.3';
+//     watermarkContainer.style.width = '100%';
+//     watermarkContainer.style.height = '100dvh';
+//     watermarkContainer.style.pointerEvents = 'none';
+
+//     const watermark = document.createElement('div');
+//     watermark.style.fontSize = '40px';
+//     watermark.style.transform = 'rotate(-45deg)';
+//     watermark.style.color = '#DCDCDC';
+//     watermark.style.textAlign = 'center';
+//     watermark.style.paddingTop = '200px';
+//     watermark.innerHTML = 'DEPT OF CS';
+
+//     watermarkContainer.appendChild(watermark);
+//     element.append(watermarkContainer)
+//it will reflect up on the exsiting html content
+// image: { type: 'jpeg', quality: 1 },
+// html2canvas: { scale: 2 }, // Adjust scale as needed
+// jsPDF: { unit: 'px', format: 'a4', orientation: 'portrait' },
+//dropped because the the scleing is too hight the scaling in the html canvas is not relfecting and images not showing dont know the fucking reason  and have fucking time to fix it have to complete the assoc dashboard today itself
