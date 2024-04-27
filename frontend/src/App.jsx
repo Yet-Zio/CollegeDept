@@ -1,29 +1,30 @@
-import "./App.css";
+import { useEffect, useState } from "react";
 import {
+  Route,
   BrowserRouter as Router,
   Routes,
-  Route,
   useLocation,
 } from "react-router-dom";
-import StudentsLogin from "./components/UserValidation/StudentsLogin.jsx";
-import AdminDashboard from "./components/AdminDashBoard/AdminDashboard.jsx";
-import HomePage from "./Mainpages/HomePage";
-import ContactUs from "./components/contactUs/ContactUs";
-import StudenDashboard from "./components/StudentDashBoard/StudenDashboard.jsx";
-import TeacherLogin from "./components/UserValidation/TeacherLogin.jsx";
-import AssocLogin from "./components/UserValidation/AssocLogin.jsx";
+import "./App.css";
 import AssociationHome from "./Mainpages/AssociationHome";
+import HomePage from "./Mainpages/HomePage";
+import NotFound from "./Mainpages/NotFound.jsx";
+import AdminDashboard from "./components/AdminDashBoard/AdminDashboard.jsx";
+import Loader from "./components/Common/Loader.jsx";
+import AssociationDashBoard from "./components/DashBoard/AssociationDashBoard.jsx";
 import AboutCreators from "./components/DeptOfCs/AboutCreators";
 import AboutDepartment from "./components/DeptOfCs/AboutDepartment";
 import AboutStaffs from "./components/DeptOfCs/AboutStaffs";
 import RecomendedTools from "./components/DeptOfCs/RecomendedTools";
-import AssocationEvent from "./components/association/eventComponents/AssocationEvent.jsx";
-import AssocationArticle from "./components/association/ArticleComponents/AssocationArticle.jsx";
-import NotFound from "./Mainpages/NotFound.jsx";
+import StudenDashboard from "./components/StudentDashBoard/StudenDashboard.jsx";
+import AssocLogin from "./components/UserValidation/AssocLogin.jsx";
+import StudentsLogin from "./components/UserValidation/StudentsLogin.jsx";
+import TeacherLogin from "./components/UserValidation/TeacherLogin.jsx";
 import ArticleViewMore from "./components/association/ArticleComponents/ArticleViewMore.jsx";
-import { useEffect, useState } from "react";
-import Loader from "./components/Common/Loader.jsx";
-
+import AssocationArticle from "./components/association/ArticleComponents/AssocationArticle.jsx";
+import AssocationEvent from "./components/association/eventComponents/AssocationEvent.jsx";
+import ContactUs from "./components/contactUs/ContactUs";
+import StudentDashBoard from "./components/DashBoard/StudentDashBoard.jsx";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -170,6 +171,24 @@ function App() {
             <>
               <PageTitle title="Article" />
               <ArticleViewMore />
+            </>
+          }
+        />
+        <Route
+          path="/AssocationDashBoard"
+          element={
+            <>
+              <PageTitle title="AssocDashBoard" />
+              <AssociationDashBoard />
+            </>
+          }
+        />
+         <Route
+          path="/StudentDashBoard"
+          element={
+            <>
+              <PageTitle title="studentDashBoard" />
+              <StudentDashBoard />
             </>
           }
         />
