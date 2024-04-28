@@ -9,6 +9,7 @@ import DashBoardBodyLayout from "./Shared/Layout/DashBoardBodyLayout";
 import ProfileContainer from "./Shared/Layout/ProfileContainer";
 import SideBarLayout from "./Shared/Layout/SideBarLayout";
 import TextEditor from './TextEditor/TextEditor';
+import EventUpload from './Shared/Pages/EventUpload';
 
 const themes = {
     bgColor: "bg-gray-200"
@@ -32,14 +33,14 @@ const AssociateSideBarButtons = [
     id:3,
     ButtonName:"Articles",
     NavigateTo: "Article",
-    Content:<TextEditor/>,
+    Content: <TextEditor/>,
     Logo: <Article size={22} weight="duotone" />
 },
   {
       id:4,
       ButtonName:"Events",
       NavigateTo: "Events",
-      Content:<></>,
+      Content:<EventUpload/>,
       Logo: <EventAvailableSharpIcon fontSize="medium"/>
   },
   {
