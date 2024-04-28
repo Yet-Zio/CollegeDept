@@ -4,22 +4,23 @@ import Buttons from "./Buttons"
 import Logo from "./Logo"
 import { useSelector } from "react-redux";
 
-
 export default function SideBarContainer() {
-  const studentData = useSelector((state) => state.DashBoardDatas);
-console.log(studentData.StudentButtons)
+  let Data = [];
+   Data   = useSelector((state) => state.DashBoardDatas.SideBarButtons);
+  const DashOpt = useSelector((state) => state.DashBoardOpt);
   return (
    <>
-    <div className="w-[90%] h-[96%] flex justify-between flex-col items-center rounded-lg">
+    <div className="w-[100%] h-[96%] flex justify-between flex-col items-center rounded-lg">
         <Logo/>
-        <div className=" h-[60%] w-[100%] flex flex-col justify-evenly items-center ">
-           {studentData.StudentSideBarButtons.map((item)=>{
+        <div className={`w-[100%] flex flex-col justify-evenly items-center ${Data.length<=6?"h-[40%]":"h-[50%]"}`}>
+           {Data.map((item)=>{
+            console.log(item.NavigateTo)
             return (
-                <Buttons ButtonName={item.ButtonName} logo={item.Logo} NavigateTo={item.NavigateTo} key={item.id} currentItem={item.Content}/>
+                <Buttons key={item.id} id={item.id} ButtonName={item.ButtonName} Logo={item.Logo} navigateTo={item.NavigateTo} Content={item.Content}  ActiveColor={DashOpt.SeletedOption===item.id?"bg-orange-600":""}/>
             )
            })}
         </div>
-       <Buttons className=" mb-16" ButtonName={"LogOut"} logo={<Power className="font-extrabold" size={32} weight="bold" />} />
+       <Buttons className=" mb-16"  ButtonName={"LogOut"} logo={<Power className="font-extrabold" size={25} weight="bold" />} />
     </div>
    </>
   )

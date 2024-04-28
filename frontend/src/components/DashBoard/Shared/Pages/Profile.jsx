@@ -2,26 +2,15 @@
 
 import { useSelector } from "react-redux";
 
-export default function Profile() {
+export default function Profile({updateState}) {
   const ProfileSelector = useSelector((state) => state.DashBoardDatas);
-    const UpdateContent=(val)=>{
-      switch (val) {
-        case 1:
-          
-          break;
-      
-        default:
-          break;
-      }
-    }
-    console.log(ProfileSelector)
   return (
     <div className=" w-auto flex h-auto justify-center items-center">
-      <div className="font-sans antialiased text-gray-100 leading-normal tracking-wider bg-cover">
+      <div className="font-sans antialiased text-gray-100 leading-normal tracking-wider ">
         <div className="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
           <div
             id="profile"
-            className="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-gray-900 opacity-75 mx-6 lg:mx-0"
+            className="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-[#111111]  mx-6 lg:mx-0"
           >
             <div key={""} className="p-4 md:p-12 text-center lg:text-left">
               <div
@@ -46,7 +35,7 @@ export default function Profile() {
                 );
               })}
               <div className="pt-12 pb-8">
-                <button onClick={()=>{UpdateContent(1)}} className="bg-orange-700 hover:bg-orange-900 text-white font-bold py-2 px-8 rounded-full">
+                <button onClick={()=>{updateState(true)}} className="bg-orange-600 hover:bg-orange-900 text-white font-bold py-2 px-8 rounded-full">
                   Edit
                 </button>
               </div>

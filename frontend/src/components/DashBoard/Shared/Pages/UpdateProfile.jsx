@@ -1,6 +1,8 @@
 import { useState } from "react";
 import cover from "../../../../assets/coverphoto.jpeg";
-export default function UpdateProfile() {
+import { ArrowFatLinesLeft } from "@phosphor-icons/react";
+// eslint-disable-next-line react/prop-types
+export default function UpdateProfile({updateState}) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [sex, setSex] = useState("");
@@ -14,11 +16,11 @@ export default function UpdateProfile() {
     <>
       <section className="py-10 my-auto">
         <div className="lg:w-[80%] md:w-[90%] xs:w-[96%] mx-auto flex gap-4 h-[100dvh]">
-          <div className="lg:w-[88%] md:w-[80%] sm:w-[88%] xs:w-full mx-auto shadow-2xl p-4 rounded-xl h-fit self-center dark:bg-[#111621]">
+          <div className="lg:w-[88%] md:w-[80%] sm:w-[88%] xs:w-full mx-auto shadow-2xl p-4 rounded-xl h-fit self-center dark:bg-[#111111]">
             <div>
-              <h1 className="lg:text-3xl md:text-2xl sm:text-xl xs:text-xl font-serif font-extrabold mb-2 dark:text-orange-600">
-                Update Profile
-              </h1>
+              <button onClick={()=>{updateState(false)}} className="lg:text-3xl md:text-2xl sm:text-xl xs:text-xl font-serif font-extrabold mb-2 dark:text-orange-600">
+              <ArrowFatLinesLeft size={32} weight="duotone" />
+              </button>
               <form onSubmit={handleSubmit}>
                 <div
                   style={{ backgroundImage: `url(${cover})` }}
@@ -34,7 +36,7 @@ export default function UpdateProfile() {
                     />
                     <label htmlFor="upload_profile">
                       <svg
-                        className="w-6 h-5 text-blue-700"
+                        className="w-6 h-5 text-orange-700"
                         fill="none"
                         strokeWidth="1.5"
                         stroke="currentColor"
@@ -119,7 +121,7 @@ export default function UpdateProfile() {
                     />
                   </div>
                 </div>
-                <div className="w-full rounded-lg bg-blue-500 mt-4 text-white text-lg font-semibold">
+                <div className="w-full rounded-lg bg-orange-600 mt-4 text-white hover:text-[#acabab] text-lg font-semibold hover:bg-orange-900 active:translate-x-0.5 active:translate-y-0.5 active:scale-95 duration-200 ">
                   <button type="submit" className="w-full p-4">
                     Submit
                   </button>

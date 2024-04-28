@@ -25,6 +25,7 @@ import AssocationArticle from "./components/association/ArticleComponents/Assoca
 import AssocationEvent from "./components/association/eventComponents/AssocationEvent.jsx";
 import ContactUs from "./components/contactUs/ContactUs";
 import StudentDashBoard from "./components/DashBoard/StudentDashBoard.jsx";
+import TeacherDashBoard from './components/DashBoard/TeacherDashBoard.jsx'
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -180,6 +181,15 @@ function App() {
             <>
               <PageTitle title="AssocDashBoard" />
               <AssociationDashBoard />
+            </>
+          }
+        />
+        <Route
+          path="/TeacherDashBoard"
+          element={
+            <>
+              <PageTitle title="AssocDashBoard" />
+              <TeacherDashBoard/>
             </>
           }
         />

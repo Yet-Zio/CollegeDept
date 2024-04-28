@@ -1,21 +1,22 @@
 
 import { Link } from "react-router-dom";
 import { DashBoardOptchange } from "../../../../redux/menu/DashBoardOpt";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 
 // eslint-disable-next-line react/prop-types
-export default function Buttons({ButtonName, logo,id,currentItem}) {
+export default function Buttons({id,ButtonName ,Logo,navigateTo,Content,ActiveColor}) {
   const ChangeCurrentContent  = useDispatch();
-  const changeCurrentItems = ()=>{
-    ChangeCurrentContent(DashBoardOptchange({CurrentContent:currentItem}))
+  const changeCurrentItems = (val)=>{
+    console.log(navigateTo)
+    ChangeCurrentContent(DashBoardOptchange({CurrentContent:Content, SeletedOption:val,CurrentPath:navigateTo}))
   }
   return (
    <>
      <Link onClick={()=>{
-      changeCurrentItems()
-     }} key={id} className=" flex justify-between items-center h-14 w-[90%] rounded-xl bg-orange-500  hover:bg-gradient-to-r hover:from-[#f0608b] hover:via-[#bf09f7] hover:to-[#1a42f5] duration-200 active:scale-95 active:translate-x-0.5 active:translate-y-1" >
-            <span className="ms-6 font-semibold text-[#110925] text-lg">{ButtonName}</span>
-            <span className="me-6">{logo}</span>
+      changeCurrentItems(id)
+     }} key={id} className={`flex justify-between items-center h-12 w-[80%] rounded-xl bg-[#111111] hover:bg-orange-600 duration-200 active:scale-95 active:translate-x-0.5 active:translate-y-1 ${ActiveColor}`} >
+            <span className="ms-4 font-semibold text-[white] text-sm">{ButtonName}</span>
+            <span className="me-4 text-white">{Logo}</span>
         </Link>
    </>
   )

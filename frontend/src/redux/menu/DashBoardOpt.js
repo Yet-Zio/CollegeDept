@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    CurrentContent: ""
+    CurrentContent: "",
+    SeletedOption:1,
+    CurrentPath : ""
+    
 };
 const DasbBoardOptSlice = createSlice({
   name: "AssocDashBoardStates",

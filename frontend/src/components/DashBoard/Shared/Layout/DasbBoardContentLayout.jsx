@@ -4,7 +4,7 @@ export default function DasbBoardContentLayout() {
   const rednerElement = useSelector((state) => state.DashBoardOpt);
   return (
     <>
-        <div className="w-auto max-h-[100dvh]">
+        <div className="w-auto max-h-[100dvh] overflow-hidden">
             {rednerElement.CurrentContent}
         </div>
     </>
