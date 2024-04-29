@@ -5,16 +5,11 @@ const articleSchema = new mongoose.Schema({
     title: String ,  
 
     body : String,
-
-    description: String,
-
-    author: String,
     
     date: {
         type: Date ,
         default: Date.now
     } ,
-    image: String
 })
 
 const associateSchema = new mongoose.Schema({

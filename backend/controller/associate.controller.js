@@ -3,6 +3,8 @@ import bcrypt from 'bcrypt';
 import { errorHandler } from "../utils/errorHandler.js";
 import jwt from 'jsonwebtoken'
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import Event from "../models/event.model.js";
+import Notification from "../models/associateNotification.model.js";
 
 export const loginAssociate = async (req , res , next) => {
  
@@ -58,5 +60,29 @@ export const addArticle = async (req , res , next) => {
     } catch (error) {
         next(error);
     }
+
+}
+
+export const countAssociate = async(req , res , next) => {
+
+  try {
+    
+    const {id} = req.params;
+
+    const fetchUser = await Associate.findById(id);
+
+    let articleCount = fetchUser.article.length;
+
+    const eventCount = await Event.countDocuments({ owner: id });
+
+    const notificationCount = await Notification.countDocuments({member: id});
+
+    res 
+    .status(200)
+    .json({articleCount , eventCount , notificationCount})
+
+  } catch (error) {
+    next(error)
+  }
 
 }

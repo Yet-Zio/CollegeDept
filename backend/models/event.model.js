@@ -8,7 +8,11 @@ const eventSchema = new mongoose.Schema(
             default: Date.now
         },
         description: String,
-        image: String
+        image: String,
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Associate'
+        }
     }
 )
 

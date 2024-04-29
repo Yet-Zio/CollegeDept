@@ -53,7 +53,7 @@ export const teacherSignin = async (req , res , next ) =>{
 
 export const getTeacher = async(req, res, next) =>{
     try {
-        const teacher = await Teacher.find();
+        const teacher = await Teacher.find().select('-password -isHOD')
         res
         .status(200)
         .json(teacher)
