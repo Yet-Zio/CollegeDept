@@ -1,10 +1,12 @@
 import SettingsApplicationsSharpIcon from "@mui/icons-material/SettingsApplicationsSharp";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { DashBoardOptchange } from "../../../../redux/menu/DashBoardOpt";
 
 export default function DasbBoardNavBar() {
   const DashOpt = useSelector((state) => state.DashBoardOpt);
+  const updatePrimarySideBar = useDispatch()
   return (
     <>
       <div className="h-[8dvh] sm:w-[80%] w-[100%] absolute top-0">
@@ -23,8 +25,10 @@ export default function DasbBoardNavBar() {
               placeholder=" &nbsp;Search"
             />
 
-            {true && (
-              <button className="mx-2 md:mx-4 text-white text-2xl sm:text-3xl flex justify-center items-center hover:text-orange-400 transition-colors duration-200">
+            {(
+              <button 
+              onClick={()=>updatePrimarySideBar(DashBoardOptchange({PrimarySideBarEnabled: !DashOpt.PrimarySideBarEnabled}))}
+              className="mx-2 md:mx-4 text-white text-2xl sm:text-3xl flex justify-center items-center hover:text-orange-400 transition-colors duration-200">
                 <MenuIcon fontSize="inherit" color="inherit" />
               </button>
             )}

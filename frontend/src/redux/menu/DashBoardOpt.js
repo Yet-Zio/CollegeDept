@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     CurrentContent: "",
     SeletedOption:1,
-    CurrentPath : ""
+    CurrentPath : "",
+    PrimarySideBarEnabled: true
     
 };
 const DasbBoardOptSlice = createSlice({
