@@ -2,14 +2,37 @@
 import { Power } from "@phosphor-icons/react";
 import Buttons from "./Buttons";
 import Logo from "./Logo";
-import { useSelector } from "react-redux";
+import { useSelector  , useDispatch} from "react-redux";
+import { logout } from "../../../../redux/user/userSlice";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function SideBarContainer() {
   let Data = [];
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   Data = useSelector((state) => state.DashBoardDatas.SideBarButtons);
   const DashOpt = useSelector((state) => state.DashBoardOpt);
-  const handleLogOut = () => {
-    console.log("bijo is gay")
+
+  const handleLogOut = async() => {
+    await axios.get('http://localhost:3000/api/auth/signout')
+    .then((res) => {
+      dispatch(logout());
+      navigate('/');
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "Logout Failed",
+        icon: "error"
+      });
+    })
+  
+  
+
   }
   return (
     <>

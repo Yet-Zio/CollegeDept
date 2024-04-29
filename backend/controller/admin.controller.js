@@ -71,27 +71,24 @@ export const manageLeaveLetter = async (req , res , next) => {
 
 export const addEvent = async (req , res , next) => {
 
-    if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
-
-    const verifyAdmin = await Teacher.findOne({_id: req.params.id});
-
-    if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
-
     const imagePath = req.file?.path;
 
     const uploadImage = await uploadOnCloudinary(imagePath)
 
+    console.log(uploadImage)
+
     const {title ,description} = req.body ; 
 
-    const addEvent = new Event({title , description , image: uploadImage.url})
+    const addEvent = new Event({title , description , image: uploadImage.url , owner: req.params.id})
 
     try {
         await addEvent.save()
+        res 
+        .status(200)
+        .json("Uploaded successfully")
     } catch (error) {
-        
+        next(error)
     }
-    
-
 
 }
 

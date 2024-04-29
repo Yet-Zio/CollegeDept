@@ -6,17 +6,24 @@ import { login } from "../../../../redux/user/userSlice";
 import Swal from 'sweetalert2'
 // eslint-disable-next-line react/prop-types
 export default function UpdateProfile({updateState}) {
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [gender, setSex] = useState("");
-  const [dob, setDateOfBirth] = useState("");
 
   const currentUser = useSelector((state) => state.user.currentUser);
+
+  const [firstname, setFirstName] = useState(currentUser.firstname || "");
+  const [lastname, setLastName] = useState(currentUser.lastname || "");
+  const [gender, setSex] = useState(currentUser.gender || "");
+  const [dob, setDateOfBirth] = useState(currentUser.dob || "");
+  
+
+  console.log(firstname , lastname , gender , dob)
+
+
 
   const dispatch = useDispatch();
 
   const handleSubmit = async(event) => {
     event.preventDefault();
+
     await axios.post(`http://localhost:3000/api/associate/updateAssociate/${currentUser._id}`,{firstname , lastname , gender , dob})
     .then((res) => {
       console.log(res.data)
@@ -96,7 +103,7 @@ export default function UpdateProfile({updateState}) {
                     <input
                       type="text"
                       id="first_name"
-                      value={currentUser.firstname}
+                      defaultValue={currentUser.firstname}
                       onChange={(e) => setFirstName(e.target.value)}
                       className="mt-2 p-4 w-full border-[1px] rounded-lg dark:text-gray-200 dark:border-orange-600 dark:bg-[#111111]"
                       placeholder="First Name"
@@ -109,7 +116,7 @@ export default function UpdateProfile({updateState}) {
                     <input
                       type="text"
                       id="last_name"
-                      value={currentUser.lastname}
+                      defaultValue={currentUser.lastname}
                       onChange={(e) => setLastName(e.target.value)}
                       className="mt-2 p-4 w-full border-[1px] rounded-lg dark:text-gray-200 dark:border-orange-600 dark:bg-[#111111]"
                       placeholder="Last Name"
@@ -120,7 +127,7 @@ export default function UpdateProfile({updateState}) {
                   <div className="w-full">
                     <h3 className="dark:text-gray-300 mb-2">Sex</h3>
                     <select
-                      value={currentUser.gender}
+                      defaultValue={currentUser.gender}
                       onChange={(e) => setSex(e.target.value)}
                       className="w-full text-grey border-[1px]  rounded-lg p-4 pl-2 pr-2 dark:text-gray-200 dark:border-orange-600 dark:bg-[#111111]"
                     >
@@ -139,7 +146,7 @@ export default function UpdateProfile({updateState}) {
                     <h3 className="dark:text-gray-300 mb-2">Date Of Birth</h3>
                     <input
                       type="date"
-                      value={currentUser.dob}
+                      defaultValue={currentUser.dob}
                       onChange={(e) => setDateOfBirth(e.target.value)}
                       className="text-grey p-4 w-full border-[1px] rounded-lg dark:text-gray-200 dark:border-orange-600 dark:bg-[#111111]"
                     />

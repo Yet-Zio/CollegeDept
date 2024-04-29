@@ -2,7 +2,6 @@ import Associate from "../models/associate.model.js";
 import bcrypt from 'bcrypt';
 import { errorHandler } from "../utils/errorHandler.js";
 import jwt from 'jsonwebtoken'
-import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import Event from "../models/event.model.js";
 import Notification from "../models/associateNotification.model.js";
 
@@ -37,31 +36,26 @@ export const loginAssociate = async (req , res , next) => {
 
 }
 
-export const addArticle = async (req , res , next) => {
-
-    if(req.user.id !== req.params.id) return next(errorHandler(403, 'forbidden'))
-
-    const {title , body , author , description } = req.body ;
-
-    const imagePath = req.file?.path;
-
-    const uploadImage = await uploadOnCloudinary(imagePath)
-
-    const findUser = await Associate.findOne({_id:req.params.id})
-
-    if(!findUser) return next(errorHandler(401 , "User cant be found"))
-
-    findUser.article.push({title , body , author , description , image: uploadImage.url})
+export const addArticle = async (req, res, next) => {
+    const { title, body } = req.body;
 
     try {
-        await addArticle.save();
-        res
-        .json({message:"Article Added Successfully"})
+        
+        const findUser = await Associate.findById(req.params.id);
+       
+        if (!findUser) return next(errorHandler(401, "User not found"));
+        
+        findUser.article.push({ title, body });
+        
+        await findUser.save();
+
+     
+        res.json({ message: "Article Added Successfully" });
     } catch (error) {
+       
         next(error);
     }
-
-}
+};
 
 export const countAssociate = async(req , res , next) => {
 

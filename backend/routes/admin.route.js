@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/addAssociate', addAssociate);
 router.post('/manageLeave', manageLeaveLetter);
 router.post('/addNews', addNews);
-router.post('/addEvent', upload.single("image") ,addEvent);
+router.post('/addEvent/:id', upload.single("image") ,addEvent);
 router.get('/getContact', getContactUs);
 router.get('/getNews', getNews);
 
