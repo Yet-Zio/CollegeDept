@@ -9,13 +9,16 @@ export default function SideBarLayout({ themes }) {
   const primarySideBar = useSelector(
     (state) => state.DashBoardOpt.PrimarySideBarEnabled
   );
+  const onInit = useSelector(
+    (state) => state.DashBoardOpt.onInit
+  );
   const [width, setWidth] = useState(window.innerWidth);
-  const updatePrimarySideBar = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
-      updatePrimarySideBar(
+      dispatch(
         DashBoardOptchange({ PrimarySideBarEnabled: width > 768 })
       );
     };
@@ -26,12 +29,15 @@ export default function SideBarLayout({ themes }) {
     };
   }, [width]);
 
+
+
+
   return (
     <>
       <AnimatePresence>
         {primarySideBar && (
           <motion.div
-            initial={{ x: -300, opacity: 1 }}
+            initial={onInit?{ x: 0, opacity: 1 }:{x: -300, opacity: 1}}
             animate={{ x: 0, opacity: 1 }}
             exit={width <= 768 ? { x: -window.innerWidth, opacity: 1 } : { x:-300,  opacity: 1 }}
             transition={{ duration: 0.4 }}

@@ -39,6 +39,7 @@ export default function DasbBoardNavBar() {
                 updatePrimarySideBar(
                   DashBoardOptchange({
                     PrimarySideBarEnabled: !DashOpt.PrimarySideBarEnabled,
+                    onInit: false
                   })
                 )
               }

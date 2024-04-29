@@ -4,7 +4,8 @@ const initialState = {
     CurrentContent: "",
     SeletedOption:1,
     CurrentPath : "",
-    PrimarySideBarEnabled: true
+    PrimarySideBarEnabled: true,
+    onInit: true,
     
 };
 const DasbBoardOptSlice = createSlice({
