@@ -1,44 +1,35 @@
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
-
 const modules = {
   toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
+    [{ 'header': [] }, { 'font': [] }],
     [{ size: [] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
     [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
+      { 'list': 'ordered' },
+      { 'list': 'bullet' },
+      { 'indent': '-1' },
+      { 'indent': '+1' },
     ],
-    ["link", "image", "video"],
-    ["clean"],
+    ['link', 'image', 'video'],
+    ['clean'],
+    [{ 'color': [] }, { 'background': [] }],
+    [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
   ],
 
   clipboard: {
     matchVisual: false,
   },
+  
 };
 
 const formats = [
-  "header",
-  "font",
-  "size",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-  "image",
-  "video",
-  "clean",
+  'header', 'font', 'size', 'color',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'indent',
+  'link', 'image', 'video',
+  'align',
 ];
 
 export default function TextEditor() {
@@ -51,9 +42,14 @@ export default function TextEditor() {
 
   return (
     <>
-      <ReactQuill
-        style={{ height: "80dvh" }}
-        className="mt-20 w-[100%]"
+     <div className="overflow-hidden">
+     <div className="w-[100%] h-[100dvh] flex justify-center items-center flex-col overflow-auto">
+      <div className="w-[100%] flex justify-between items-center">
+        <input className="md:ms-12 ms-4 placeholder:text-gray-700 py-1 rounded-md" placeholder=" Title" type="text" />
+        <button className="px-4 py-2 rounded-md mt-2 mb-2 me-12 hover:bg-orange-800 bg-orange-600">upload</button>
+      </div>
+     <ReactQuill
+        style={{ height: window.innerWidth<380? "60dvh":"80dvh", width:"94%" ,marginBottom:window.innerWidth<570? "0":"4dvh"}}
         theme="snow"
         placeholder="Type here"
         value={htmlText}
@@ -61,12 +57,8 @@ export default function TextEditor() {
         modules={modules}
         formats={formats}
       />
-      <div className=" w-[100%] flex justify-between items-center mt-16 h-[5dvh]">
-        <input type="text" className="px-4 py-2 mb-4 ms-4 text-sm font-medium tracking-wide placeholder:text-black capitalize transition-colors duration-300  bg-gray-200 rounded-lg hover:bg-orange-700 focus:outline-none focus:ring focus:ring-orange-300 focus:ring-opacity-50 shadow text-black shadow-black" placeholder="Title" required />
-        <button onClick={(e)=>{e.preventDefault()}} className=" px-3 py-2 mb-4 me-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 active:shadow-none active:translate-x-0.5 active:translate-y-0.5 transform bg-orange-600 rounded-lg hover:bg-orange-700 focus:outline-none focus:ring focus:ring-orange-300 focus:ring-opacity-50 shadow shadow-black">
-                    Upload <DriveFolderUploadIcon/>
-                </button>
-      </div>
+     </div>
+     </div>
     </>
   );
 }

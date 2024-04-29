@@ -8,6 +8,8 @@ export default function Buttons({id,ButtonName ,Logo,navigateTo,Content,ActiveCo
   const ChangeCurrentContent  = useDispatch();
   const changeCurrentItems = (val)=>{
     ChangeCurrentContent(DashBoardOptchange({CurrentContent:Content, SeletedOption:val,CurrentPath:navigateTo}))
+    if(window.innerWidth<768)
+      ChangeCurrentContent(DashBoardOptchange({PrimarySideBarEnabled:false}))
   }
   return (
    <>

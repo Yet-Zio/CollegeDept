@@ -26,6 +26,7 @@ import AssocationEvent from "./components/association/eventComponents/Assocation
 import ContactUs from "./components/contactUs/ContactUs";
 import StudentDashBoard from "./components/DashBoard/StudentDashBoard.jsx";
 import TeacherDashBoard from './components/DashBoard/TeacherDashBoard.jsx'
+import AdminDashBoard from "./components/DashBoard/AdminDashBoard.jsx";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -124,7 +125,7 @@ function App() {
           path="/admin"
           element={
             <>
-              <PageTitle title="Admin Dashboard" />
+              <PageTitle title="Admindashboard" />
               <AdminDashboard />
             </>
           }
@@ -176,7 +177,7 @@ function App() {
           }
         />
         <Route
-          path="/AssocationDashBoard"
+          path="/AssociationDashBoard"
           element={
             <>
               <PageTitle title="AssocDashBoard" />
@@ -199,6 +200,15 @@ function App() {
             <>
               <PageTitle title="studentDashBoard" />
               <StudentDashBoard />
+            </>
+          }
+        />
+         <Route
+          path="/AdminDashBoard"
+          element={
+            <>
+              <PageTitle title="Welcome Back Admin" />
+              <AdminDashBoard />
             </>
           }
         />

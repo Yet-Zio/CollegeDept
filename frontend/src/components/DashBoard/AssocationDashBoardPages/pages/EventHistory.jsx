@@ -98,7 +98,7 @@ export default function EventHistory({ updateEventState }) {
         <ClearIcon />
       </button>
       <div className="w-[100%] h-[100dvh]  flex justify-end items-center">
-        <div className="h-[100%] w-[100%] overflow-auto flex flex-col justify-start items-start mt-52">
+        <div className="h-[100%] w-[100%] overflow-auto flex flex-col justify-start items-start mt-52 me-2">
           {!(Events.length === 0) &&
             Events.map((item, index) => {
               return <AccordionDropDown key={index} itemData={item} />;

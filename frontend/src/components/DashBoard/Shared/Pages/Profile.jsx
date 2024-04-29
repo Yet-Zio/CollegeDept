@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export default function Profile({updateState}) {
   const ProfileSelector = useSelector((state) => state.DashBoardDatas);
   return (
-    <div className=" w-auto flex h-auto justify-center items-center">
+    <div className=" w-auto max-h-screen flex h-auto justify-center items-center">
       <div className="font-sans antialiased text-gray-100 leading-normal tracking-wider ">
         <div className="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-56  lg:my-0">
           <div

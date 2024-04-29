@@ -99,7 +99,7 @@ export default function ArticleHistory({ updateArticleState }) {
         <ClearIcon />
       </button>
       <div className="w-[100%] h-[100dvh]  flex justify-end items-center">
-        <div className="h-[100%] w-[100%] overflow-auto flex flex-col justify-start items-start mt-52">
+        <div className="h-[100%] w-[100%] overflow-auto flex flex-col justify-start items-start mt-52 me-2">
           {!(Article.length === 0) &&
             Articles.map((item, index) => {
               return <AccordionDropDown key={index} itemData={item} />;
