@@ -6,11 +6,12 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { ChangeDashData } from "../../redux/menu/DashBoardData";
 import { DashBoardOptchange } from "../../redux/menu/DashBoardOpt";
+import StaffMangerLayout from './AdminDashBoardPages/layout/StaffMangerLayout';
+import HistoryContainer from './AssocationDashBoardPages/pages/HistoryContainer';
 import DashBoardBodyLayout from "./Shared/Layout/DashBoardBodyLayout";
 import SideBarLayout from "./Shared/Layout/SideBarLayout";
 import EventUpload from './Shared/Pages/EventUpload';
 import Notification from './Shared/Pages/Notification';
-import HistoryContainer from './AssocationDashBoardPages/pages/HistoryContainer';
 
 const themes = {
     bgColor: "bg-gray-200"
@@ -27,7 +28,7 @@ const themes = {
     id:2,
     ButtonName:"Articles",
     NavigateTo: "Article",
-    Content:<></>,
+    Content:<StaffMangerLayout/>,
     Logo: <Article size={22} weight="duotone" />
 },
   {

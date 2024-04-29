@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import AdminHome from "./pages/AdminHome"
 import AdminTeachers from "./pages/AdminTeachers"
@@ -25,15 +25,6 @@ export default function AdminDashboard() {
         return <AdminHome />;
     }
   };
-
-  const setTitle = () => {
-    useEffect(() => {
-      document.title = "Admin - Department of CS"
-    }, [])
-  }
-
-  setTitle()
-
   return (
     <div className="flex min-w-screen min-h-screen overflow-hidden bg-[#cdd4fa]">
       <Sidebar forwhich="admin" activePage={pageToRender} pageFunc={setPageToRender} />

@@ -8,9 +8,8 @@ export default function SideBarContainer() {
   let Data = [];
   Data = useSelector((state) => state.DashBoardDatas.SideBarButtons);
   const DashOpt = useSelector((state) => state.DashBoardOpt);
-  const handleLogOut = (e) => {
-    e.preventDefault();
-    console.log("ananthu sus gay")
+  const handleLogOut = () => {
+    console.log("bijo is gay")
   }
   return (
     <>
