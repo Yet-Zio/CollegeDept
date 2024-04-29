@@ -8,6 +8,10 @@ export default function SideBarContainer() {
   let Data = [];
   Data = useSelector((state) => state.DashBoardDatas.SideBarButtons);
   const DashOpt = useSelector((state) => state.DashBoardOpt);
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    console.log("ananthu sus gay")
+  }
   return (
     <>
       <div className="w-[100%] h-[96%] flex justify-between flex-col items-center rounded-lg">
@@ -37,6 +41,8 @@ export default function SideBarContainer() {
           className=" mb-16"
           ButtonName={"Log out"}
           Logo={<Power className="font-extrabold" size={25} weight="bold" />}
+          logout = {handleLogOut}
+          
         />
       </div>
     </>

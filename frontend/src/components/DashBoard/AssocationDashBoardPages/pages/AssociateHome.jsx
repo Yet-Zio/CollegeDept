@@ -61,7 +61,7 @@ export default function AssociateHome() {
                     onClick={(e)=>changeCurrentItems(e,1)}
                     >
                       <div className="relative py-3 px-20 lg  flex flex-col justify-center items-center leading-none rounded-lg bg-white shadow-sm hover:bg-gray-400 duration-200 hover:shadow-none shadow-black ">
-                       <span className="text-2xl font-semibold">View+</span>
+                       <span className="text-2xl font-semibold">View</span>
                        <span className="text-3xl font-extralight italic">Profile</span>
                        <span><User size={150} weight="duotone" /></span>
                       </div>

@@ -3,7 +3,39 @@
 import { useSelector } from "react-redux";
 
 export default function Profile({updateState}) {
-  const ProfileSelector = useSelector((state) => state.DashBoardDatas);
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const StudentProfile = [
+    {
+      id: 1,
+      Title: "Photo",
+      content: `${currentUser.avatar}`,
+    },
+    {
+      id: 2,
+      Title: "Name",
+      content: currentUser.firstname + " " + currentUser.lastname
+    },
+    {
+      id: 2,
+      Title: "Register Number",
+      content: currentUser.studentID,
+    },
+    {
+      id: 3,
+      Title: "EmailAddress",
+      content: currentUser.email
+    },
+    {
+      id: 4,
+      Title: "Department",
+      content: "BSC Computer Science",
+    },
+    {
+      id: 5,
+      Title: "DOB",
+      content: currentUser.dob,
+    }
+  ]
   return (
     <div className=" w-auto max-h-screen flex h-auto justify-center items-center">
       <div className="font-sans antialiased text-gray-100 leading-normal tracking-wider ">
@@ -15,14 +47,14 @@ export default function Profile({updateState}) {
             <div key={""} className="p-4 md:p-12 text-center lg:text-left">
               <div
                 className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
-                style={{ backgroundImage: `url(${ProfileSelector.StudentProfile[0].content})` }}
+                style={{ backgroundImage: `url(${currentUser.avatar})` }}
               ></div>
 
               <h1 className="text-3xl font-bold pt-8 lg:pt-0">
-                {ProfileSelector.StudentProfile[1].content}
+                {currentUser.firstname + " " + currentUser.lastname}
               </h1>
               <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-orange-500 opacity-25"></div>
-              {ProfileSelector.StudentProfile.map((item,index) => {
+              {StudentProfile.map((item,index) => {
                 return (
                   <>
                   { !(index === 0 || index === 1) &&
@@ -44,7 +76,7 @@ export default function Profile({updateState}) {
 
           <div className="w-full lg:w-2/5">
             <img
-              src={ProfileSelector.StudentProfile[0].content}
+              src={currentUser.avatar}
               className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block"
               alt="User profile"
             />

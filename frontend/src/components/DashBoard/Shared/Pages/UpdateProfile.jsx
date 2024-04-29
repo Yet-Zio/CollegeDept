@@ -1,16 +1,40 @@
 import { useState } from "react";
-import cover from "../../../../assets/coverphoto.jpeg";
 import { ArrowFatLinesLeft } from "@phosphor-icons/react";
+import { useSelector , useDispatch} from "react-redux";
+import axios from "axios";
+import { login } from "../../../../redux/user/userSlice";
+import Swal from 'sweetalert2'
 // eslint-disable-next-line react/prop-types
 export default function UpdateProfile({updateState}) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [sex, setSex] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [gender, setSex] = useState("");
+  const [dob, setDateOfBirth] = useState("");
 
-  const handleSubmit = (event) => {
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    // Handle form submission here
+    await axios.post(`http://localhost:3000/api/associate/updateAssociate/${currentUser._id}`,{firstname , lastname , gender , dob})
+    .then((res) => {
+      console.log(res.data)
+      dispatch(login(res.data))
+      Swal.fire({
+        title: "Success",
+        text: "Profile Updated",
+        icon: "success"
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      Swal.fire({
+        title: "Failed",
+        text: "Couldnt Update The Profile",
+        icon: "error"
+      });
+    })
   };
   return (
     <>
@@ -23,10 +47,10 @@ export default function UpdateProfile({updateState}) {
               </button>
               <form onSubmit={handleSubmit}>
                 <div
-                  style={{ backgroundImage: `url(${cover})` }}
+                  style={{ backgroundImage: `url(${currentUser.avatar})` }}
                   className="mx-auto flex justify-center w-[141px] h-[141px] bg-blue-300/20 rounded-full bg-[url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxwcm9maWxlfGVufDB8MHx8fDE3MTEwMDM0MjN8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat"
                 >
-                  <div className="bg-white/90 rounded-full w-6 h-6 text-center ml-28 mt-4">
+                  {/* <div className="bg-white/90 rounded-full w-6 h-6 text-center ml-28 mt-4">
                     <input
                       type="file"
                       name="profile"
@@ -56,7 +80,7 @@ export default function UpdateProfile({updateState}) {
                         />
                       </svg>
                     </label>
-                  </div>
+                  </div> */}
                 </div>
                 <h2 className="text-center mt-1 font-semibold dark:text-gray-300">
                   Upload Profile
@@ -72,7 +96,7 @@ export default function UpdateProfile({updateState}) {
                     <input
                       type="text"
                       id="first_name"
-                      value={firstName}
+                      value={currentUser.firstname}
                       onChange={(e) => setFirstName(e.target.value)}
                       className="mt-2 p-4 w-full border-[1px] rounded-lg dark:text-gray-200 dark:border-orange-600 dark:bg-[#111111]"
                       placeholder="First Name"
@@ -85,7 +109,7 @@ export default function UpdateProfile({updateState}) {
                     <input
                       type="text"
                       id="last_name"
-                      value={lastName}
+                      value={currentUser.lastname}
                       onChange={(e) => setLastName(e.target.value)}
                       className="mt-2 p-4 w-full border-[1px] rounded-lg dark:text-gray-200 dark:border-orange-600 dark:bg-[#111111]"
                       placeholder="Last Name"
@@ -96,7 +120,7 @@ export default function UpdateProfile({updateState}) {
                   <div className="w-full">
                     <h3 className="dark:text-gray-300 mb-2">Sex</h3>
                     <select
-                      value={sex}
+                      value={currentUser.gender}
                       onChange={(e) => setSex(e.target.value)}
                       className="w-full text-grey border-[1px]  rounded-lg p-4 pl-2 pr-2 dark:text-gray-200 dark:border-orange-600 dark:bg-[#111111]"
                     >
@@ -115,7 +139,7 @@ export default function UpdateProfile({updateState}) {
                     <h3 className="dark:text-gray-300 mb-2">Date Of Birth</h3>
                     <input
                       type="date"
-                      value={dateOfBirth}
+                      value={currentUser.dob}
                       onChange={(e) => setDateOfBirth(e.target.value)}
                       className="text-grey p-4 w-full border-[1px] rounded-lg dark:text-gray-200 dark:border-orange-600 dark:bg-[#111111]"
                     />

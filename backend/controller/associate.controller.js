@@ -86,3 +86,26 @@ export const countAssociate = async(req , res , next) => {
   }
 
 }
+
+export const updateAssociate = async(req , res , next) => {
+
+    try {
+        
+        const updateUser = await Associate.findByIdAndUpdate(req.params.id , {
+            $set:{
+                firstname : req.body.firstname,
+                lastname: req.body.lastname,
+                dob: req.body.dob,
+                gender: req.body.gender,
+            }
+        }, {new:true})
+
+        const {password , ...rest} = updateUser._doc
+
+        res.status(200).json(rest);
+
+    } catch (error) {
+        next(error);
+    }
+
+}
