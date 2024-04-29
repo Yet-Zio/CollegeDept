@@ -62,7 +62,7 @@ export default function UpdateProfile({updateState}) {
                   Upload Profile
                 </h2>
                 <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full">
-                  <div className="w-full  mb-4 mt-6">
+                  <div className="w-full sm:mb-4 sm:mt-6 mb-0 mt-0">
                     <label
                       htmlFor="first_name"
                       className="mb-2 dark:text-gray-300"
@@ -78,7 +78,7 @@ export default function UpdateProfile({updateState}) {
                       placeholder="First Name"
                     />
                   </div>
-                  <div className="w-full  mb-4 lg:mt-6">
+                  <div className="w-full  sm:mb-4 mb-0 lg:mt-6 mt-0">
                     <label htmlFor="last_name" className=" dark:text-gray-300">
                       Last Name
                     </label>

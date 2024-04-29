@@ -18,7 +18,7 @@ import AssociateHome from './AssocationDashBoardPages/pages/AssociateHome';
 const themes = {
     bgColor: "bg-gray-200"
 }
-const AssociateSideBarButtons = [
+export  const AssociateSideBarButtons = [
   {
       id:1,
       ButtonName:"Home",

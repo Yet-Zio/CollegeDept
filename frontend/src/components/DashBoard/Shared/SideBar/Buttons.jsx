@@ -7,7 +7,6 @@ import { useDispatch} from "react-redux";
 export default function Buttons({id,ButtonName ,Logo,navigateTo,Content,ActiveColor}) {
   const ChangeCurrentContent  = useDispatch();
   const changeCurrentItems = (val)=>{
-    console.log(navigateTo)
     ChangeCurrentContent(DashBoardOptchange({CurrentContent:Content, SeletedOption:val,CurrentPath:navigateTo}))
   }
   return (

@@ -27,6 +27,22 @@ export default function Notification() {
             time:"4:20 pm 24/2/2003",
             Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
         },
+        {   id: 7,
+            time:"4:20 pm 24/2/2003",
+            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
+        },
+        {   id: 8,
+            time:"4:20 pm 24/2/2003",
+            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
+        },
+        {      id: 9,
+            time:"4:20 pm 24/2/2003",
+            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
+        },
+        {   id: 10,
+            time:"4:20 pm 24/2/2003",
+            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
+        },
     ]
   return (
     <>  

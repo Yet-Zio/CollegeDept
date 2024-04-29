@@ -9,7 +9,7 @@ export default function SideBarLayout({ themes}) {
   const primarySideBar = useSelector(state => state.DashBoardOpt.PrimarySideBarEnabled);
   const [width, setWidth] = useState(window.innerWidth);
   const updatePrimarySideBar = useDispatch()
-
+  // const DashOpt = useSelector((state) => state.DashBoardOpt);
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -25,7 +25,7 @@ export default function SideBarLayout({ themes}) {
     <>
      {primarySideBar && 
       <div className={`fixed left-0 z-50 ${width>768 ?themes.bgColor:"bg-transparent"}`}>
-      <div className={`h-[100dvh] md:w-[32dvh] w-[22dvh] flex justify-center items-center`}>
+      <div className={`h-[100dvh] w-[32dvh]  flex justify-center items-center ${width>768?"":"bg-[#111111]"} `}>
         <div className={`h-[96%] w-[90%] rounded-lg justify-center items-center flex bg-[#111111]`}>
           <SideBarContainer/>
         </div>

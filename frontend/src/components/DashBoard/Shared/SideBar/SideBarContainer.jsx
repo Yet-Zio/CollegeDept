@@ -19,7 +19,7 @@ export default function SideBarContainer() {
             )
            })}
         </div>
-       <Buttons className=" mb-16"  ButtonName={"LogOut"} logo={<Power className="font-extrabold" size={25} weight="bold" />} />
+       <Buttons className=" mb-16"  ButtonName={"Log out"} Logo={<Power className="font-extrabold" size={25} weight="bold" />} />
     </div>
    </>
   )
