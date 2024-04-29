@@ -6,7 +6,10 @@ import { AssociateSideBarButtons } from "../../AssociationDashBoard";
 import { DashBoardOptchange } from "../../../../redux/menu/DashBoardOpt";
 export default function AssociateHome() {
   const ChangeCurrentContent  = useDispatch();
-    const ProfileSelector = useSelector((state) => state.DashBoardDatas);
+    const currentUser = useSelector((state) => state.user.currentUser);
+
+    console.log(currentUser);
+
     const changeCurrentItems = (e,index)=>{
       e.preventDefault()
       ChangeCurrentContent(DashBoardOptchange({CurrentContent:AssociateSideBarButtons[index].Content, SeletedOption:AssociateSideBarButtons[index].id,CurrentPath:AssociateSideBarButtons[index].NavigateTo}))
@@ -19,10 +22,10 @@ export default function AssociateHome() {
         <div className="transition duration-500 sm:flex hidden justify-center items-center ease-in-out transform  translate-x-0 translate-y-0 opacity-100">
           <div className="mb-5 sm:mb-10 space-y-5 md:mb-16 text-center">
             <div className="inline-block  w-[50px] h-[50px] sm:w-[100px] sm:h-[100px] rounded-full bg-whitetext-sm font-semibold text-black  text-center text-cn bg-[#202c47] bg-opacity-60 hover:cursor-pointer hover:bg-opacity-40">
-                <img src={ProfileSelector.StudentProfile[0].content} className="rounded-full" alt="" />
+                <img src="" className="rounded-full" alt="" />
             </div>
             <h1 className=" text-xl font-semibold text-black text-center md:text-4xl">
-                Welcome Back <span className="text-orange-600">{ProfileSelector.StudentProfile[1].content}</span> 
+                Welcome Back <span className="text-orange-600">{currentUser.firstname + " " + currentUser.lastname}</span> 
             </h1>
           </div>
         </div>

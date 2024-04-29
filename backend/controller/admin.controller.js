@@ -6,16 +6,17 @@ import LeaveLetter from "../models/leaveLetter.model.js";
 import Event from "../models/event.model.js";
 import ContactUs from "../models/contactUs.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import News from "../models/departmentNews.model.js";
 
 export const addAssociate = async (req , res , next) => {
 
-    if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
+    // if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
 
-    const verifyAdmin = await Teacher.findOne({_id: req.params.id});
+    // const verifyAdmin = await Teacher.findOne({_id: req.params.id});
 
-    if(verifyAdmin.isHOD === false) next(errorHandler(401 , "Unauthorized"))
+    // if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
 
-    const {name , studentID , email} = req.body ;
+    const {firstname , studentID , email , lastname} = req.body ;
 
     const findExistingMember = await Associate.findOne({studentID})
 
@@ -23,11 +24,11 @@ export const addAssociate = async (req , res , next) => {
 
     const password = bcrypt.hashSync(email , 10);
 
-    const newMember = new Associate({name , studentID , email , password});
+    const newMember = new Associate({firstname , studentID , email , password , lastname});
 
 
     try {
-        newMember.save(); 
+        await newMember.save(); 
         res
         .json({message:"Member added successfully"})
     } catch (error) {
@@ -104,6 +105,42 @@ export const getContactUs = async(req , res , next) => {
         res
         .status(200)
         .json(fetchContact);
+
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+export const addNews = async(req , res , next) => {
+
+    try {
+        
+        const {headline  , content} = req.body;
+
+        const addNews = new News({headline , content})
+
+        await addNews.save();
+
+        res
+        .status(200)
+        .json("News added successfully")
+
+    } catch (error) {
+        next(error);
+    }
+
+}
+
+export const getNews = async(req , res , next) => {
+
+    try {
+        
+        const fetchNews = await News.find()
+
+        res
+        .status(200)
+        .json(fetchNews);
 
     } catch (error) {
         next(error)

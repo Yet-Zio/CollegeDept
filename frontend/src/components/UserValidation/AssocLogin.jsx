@@ -1,25 +1,48 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
+
+import { login } from "../../redux/user/userSlice";
+
 import {
   Eye,
   EyeSlash,
   Asterisk
 } from "@phosphor-icons/react/dist/ssr";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import AssocaitionNav from "../association/shared/AssocaitionNav";
 import Footer from "../Shared/Footer";
+import axios from 'axios';
 
 export default function AssocLogin() {
   const [passInput, setPassInput] = useState(false);
   const [isPassHidden, setisPassHidden] = useState(true);
+  const [formData , setFormData] = useState({
+    studentID : 0 ,
+    password: ""
+  });
 
-  const handleLogin = (e) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogin = async(e) => {
     e.preventDefault()
+    console.log(formData)
+    await axios.post(('http://localhost:3000/api/associate/loginAssociate') , formData)
+    .then((res) => {
+      console.log(res)
+      dispatch(login(res.data))
+      navigate('/AssociationDashBoard')
+    })
+    .catch((err) =>  {
+      console.log(err)
+    })
+
   }
 
   const setTitle = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-      document.title = "Admin Login - Department of CS"
+      document.title = "Association Login - Department of CS"
     }, [])
   }
 
@@ -42,6 +65,7 @@ export default function AssocLogin() {
           name="associd"
           id="associd"
           placeholder="320XXXXXXXX"
+          onChange={(e) => {setFormData({...formData , studentID: e.target.value})}}
         ></input>
         <span className="useinter mt-3 text-[#e9e7e7] font-sans font-medium">
           Password
@@ -54,6 +78,7 @@ export default function AssocLogin() {
           <input
             type={isPassHidden ? "password" : "text"}
             className="useinter bg-transparent ms-2 h-full text-white w-4/5 outline-0 text-sm"
+            onChange={(e) => {setFormData({...formData , password: e.target.value})}}
             onFocus={() => {
               setPassInput(!passInput);
             }}
@@ -66,14 +91,14 @@ export default function AssocLogin() {
           />
           {isPassHidden ? (
             <Eye
-              className="text-white hover:bg-gray-700/10 w-1/6 h-full p-2"
+              className="text-white hover:bg-gray-700/10 w-1/6 h-full p-2 cursor-pointer"
               onClick={() => {
                 setisPassHidden(!isPassHidden);
               }}
             />
           ) : (
             <EyeSlash
-              className="text-gray-900/50 hover:bg-gray-700/10 w-1/6 h-full p-2"
+              className="text-white hover:bg-gray-700/10 w-1/6 h-full p-2 cursor-pointer"
               onClick={() => {
                 setisPassHidden(!isPassHidden);
               }}

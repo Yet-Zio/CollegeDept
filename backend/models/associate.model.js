@@ -18,7 +18,11 @@ const articleSchema = new mongoose.Schema({
 })
 
 const associateSchema = new mongoose.Schema({
-    name: {
+    firstname: {
+        type: String,
+       
+    },
+    lastname: {
         type: String,
        
     },
@@ -37,6 +41,10 @@ const associateSchema = new mongoose.Schema({
         unique: true,
     },
     article:[articleSchema],
+    avatar: {
+        type: String,
+        default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+    },
 
 },{timestamps: true})
 
