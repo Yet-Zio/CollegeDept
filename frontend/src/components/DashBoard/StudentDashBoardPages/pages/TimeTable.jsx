@@ -31,11 +31,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }
   
   const rows = [
-    createData('Monday', 'Math', 'English', 'Science', 'History', 'Physical Education'),
+    createData('Monday', 'Math', 'English', 'Science', 'History', 'Education'),
     createData('Tuesday', 'English', 'Math', 'History', 'Science', 'Art'),
     createData('Wednesday', 'Science', 'History', 'Math', 'English', 'Music'),
-    createData('Thursday', 'History', 'Science', 'Physical Education', 'Math', 'English'),
-    createData('Friday', 'Physical Education', 'Art', 'English', 'Math', 'Science'),
+    createData('Thursday', 'History', 'Science', 'Education', 'Math', 'English'),
+    createData('Friday', 'Physical', 'Art', 'English', 'Math', 'Science'),
   ];
   
 export default function TimeTable() {

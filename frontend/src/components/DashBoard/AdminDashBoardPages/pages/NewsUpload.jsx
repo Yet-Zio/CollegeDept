@@ -3,6 +3,8 @@ export default function NewsUpload() {
     <>
       <div className="h-[100dvh] w-[100%] flex justify-center items-center ">
         <form>
+          <p className="mb-1 text-lg font-semibold">Title</p>
+          <input className="px-2 w-[43dvh] mb-3 py-4 placeholder:text-[#a7a6a6] rounded-lg  bg-[#111111]" type="text" placeholder="Title"/>
           <div className="w-[100%] mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-200 dark:border-gray-600">
             <div className="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
               <div className="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600">

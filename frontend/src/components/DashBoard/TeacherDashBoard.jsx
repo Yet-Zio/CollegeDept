@@ -1,5 +1,5 @@
 import CoPresentSharpIcon from '@mui/icons-material/CoPresentSharp';
-import { Bell, Book, House, Notebook, User } from "@phosphor-icons/react";
+import { Bell, House, Notebook, User } from "@phosphor-icons/react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { ChangeDashData } from "../../redux/menu/DashBoardData";
@@ -9,11 +9,14 @@ import SideBarLayout from "./Shared/Layout/SideBarLayout";
 import TeacherProfile from './TeacherDashBoardPages/Pages/TeacherProfile';
 import TeacherNotification from './TeacherDashBoardPages/Pages/TeacherNotification';
 import TeacherHome from './TeacherDashBoardPages/Pages/TeacherHome';
+import TimeTableUPload from './TeacherDashBoardPages/Pages/TimTableUPload';
+import BackupTableIcon from '@mui/icons-material/BackupTable';
+
 
 const themes = {
     bgColor: "bg-gray-200"
 }
-const StudentSideBarButtons = [
+const TeacherSideBarButtons = [
   {
       id:1,
       ButtonName:"Home",
@@ -30,36 +33,43 @@ const StudentSideBarButtons = [
   },
   {
     id:3,
-    ButtonName:"Study Materials",
-    NavigateTo: "",
-    Content:<></>,
-    Logo: <Book weight="bold" size={22} />,
+    ButtonName:"Upload Time Table",
+    NavigateTo: "Upload Time Table",
+    Content:<TimeTableUPload/>,
+    Logo: <BackupTableIcon weight="bold" size={22} />,
+},
+{
+  id:4,
+  ButtonName:"UploadStudy Material",
+  NavigateTo: "Upload Study Material",
+  Content:<></>,
+  Logo: <Notebook weight="bold" size={22} />,
 },
   {
-      id:4,
-      ButtonName:"Homework",
-      NavigateTo: "",
+      id:5,
+      ButtonName:"Upload Homework",
+      NavigateTo: "Upload Homework",
       Content:<></>,
       Logo: <Notebook weight="bold" size={22} />,
   },
   {
-      id:5,
-      ButtonName:"Attendance",
-      NavigateTo: "",
+      id:6,
+      ButtonName:"Upload Attendance",
+      NavigateTo: "Upload Attendance",
       Content: <></>,
       Logo: <CoPresentSharpIcon fontSize="medium"/>
   },
 {
-    id:6,
-    ButtonName:"Leave",
-    NavigateTo: "",
+    id:7,
+    ButtonName:"Request Leave",
+    NavigateTo: "Request Leave",
     Content: <></>,
     Logo: <CoPresentSharpIcon fontSize="medium"/>
 },
   {
-    id:7,
+    id:8,
     ButtonName:"Notifications",
-    NavigateTo: "",
+    NavigateTo: "Notification",
     Content:<TeacherNotification/>,
     Logo: <Bell weight="bold" size={22} />,
 },
@@ -68,8 +78,8 @@ export default function StudentDashBoard() {
   const updateStudentData = useDispatch(); 
   const initializeCurrentContent  = useDispatch();
   useEffect(()=>{
-    updateStudentData(ChangeDashData({SideBarButtons:[... StudentSideBarButtons]}))
-    initializeCurrentContent(DashBoardOptchange({CurrentContent: <></>}))
+    updateStudentData(ChangeDashData({SideBarButtons:[... TeacherSideBarButtons]}))
+    initializeCurrentContent(DashBoardOptchange({CurrentContent: TeacherSideBarButtons[0].Content,CurrentPath: TeacherSideBarButtons[0].NavigateTo}))
   },[])
   return (
    <>

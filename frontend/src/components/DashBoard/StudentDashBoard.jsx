@@ -13,7 +13,7 @@ import HomeWork from './StudentDashBoardPages/pages/HomeWork';
 import StudentHomePage from './StudentDashBoardPages/pages/StudentHomePage';
 import StudyMaterials from './StudentDashBoardPages/pages/StudyMaterials';
 import TimeTable from './StudentDashBoardPages/pages/TimeTable';
-
+import BackupTableIcon from '@mui/icons-material/BackupTable';
 const themes = {
     bgColor: "bg-gray-200"
 }
@@ -21,7 +21,7 @@ const StudentSideBarButtons = [
   {
       id:1,
       ButtonName:"Home",
-      NavigateTo: "",
+      NavigateTo: "Home",
       Content: <StudentHomePage/>,
       Logo: <House weight="bold" size={22} />,
   },
@@ -37,7 +37,7 @@ const StudentSideBarButtons = [
     ButtonName:"Time Table",
     NavigateTo: "Time Table",
     Content: <TimeTable/>,
-    Logo: <Book weight="bold" size={22} />,
+    Logo: <BackupTableIcon weight="bold" size={22} />,
 },
 {
   id:4,
@@ -73,7 +73,7 @@ export default function StudentDashBoard() {
   const initializeCurrentContent  = useDispatch();
   useEffect(()=>{
     updateStudentData(ChangeDashData({SideBarButtons:[... StudentSideBarButtons]}))
-    initializeCurrentContent(DashBoardOptchange({CurrentContent: <></>}))
+    initializeCurrentContent(DashBoardOptchange({CurrentContent: StudentSideBarButtons[0].Content,CurrentPath: StudentSideBarButtons[0].NavigateTo}))
   },[])
   return (
    <>
