@@ -6,16 +6,14 @@ import { useEffect } from "react";
 export default function Article({ id }) {
   const decompressData = async (compressedBase64) => {
     try {
-      // Convert compressed base64 string to Uint8Array
+
       const compressedData = atob(compressedBase64);
       const compressedUint8Array = new Uint8Array(
         compressedData.split('').map((char) => char.charCodeAt(0))
       );
   
-      // Decompress the data using pako
       const decompressedData = Pako.inflate(compressedUint8Array);
   
-      // Convert decompressed data to HTML text
       const htmlText = new TextDecoder().decode(decompressedData);
   
       return htmlText;
