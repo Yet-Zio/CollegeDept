@@ -21,7 +21,7 @@ export default function NotificationList({ NotificationData ,DashBoardId}) {
         {NotificationData.map((item) => {
           return (
             <ListItem
-              key={item.id}
+              key={item._id}
               sx={{
                 marginBottom: "10px",
                 display: "grid",
@@ -44,13 +44,13 @@ export default function NotificationList({ NotificationData ,DashBoardId}) {
                         variant="body2"
                         color="text.primary"
                       >
-                        {item.time}
+                        {item.createdAt}
                       </Typography>
                     </>
                   }
                 />
               </ListItem>
-              <ListItemText primary={item.Message} />
+              <ListItemText primary={item.details} />
               <ListItemText>
               {DashBoardId === 0 && (
     <div className="w-[100%] mt-4 h-[10%] gap-10 justify-center items-center">

@@ -138,3 +138,20 @@ export const getEvent =  async(req , res , next) => {
     }
 
 }
+export const getNotification =  async(req , res , next) => {
+    
+    try {
+        
+        const fetchNotification = await Notification.find({member: req.params.id});
+
+        res
+        .status(200)
+        .json(fetchNotification)
+
+
+
+    } catch (error) {
+        next(error)
+    }
+
+}

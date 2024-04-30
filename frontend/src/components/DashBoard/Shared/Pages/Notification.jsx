@@ -1,49 +1,30 @@
+import { useEffect, useState } from "react";
 import NotificationList from "../List/NotificationList";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function Notification() {
-    const NotificationMessage = [
-        {
-            id: 1,
-            time:"4:20 pm 24/2/2003",
-            Message: "bijo during first break come to my room and on your knees under my bench"
-        },
-        {   id: 2,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-        {   id: 3,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-        {   id: 4,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-        {      id: 5,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-        {   id: 6,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-        {   id: 7,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-        {   id: 8,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-        {      id: 9,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-        {   id: 10,
-            time:"4:20 pm 24/2/2003",
-            Message: "Limited Member Offer: Get 25% off your next massage when you refer a friend. Offer expires [Date]. We hope to see you soon! [Business Name]"
-        },
-    ]
+    const [NotificationMessage , setNotificationMessage] = useState([]);
+
+    const currentUser = useSelector((state) => state.user.currentUser);
+
+    useEffect (() => {
+
+        const fetchNotification = async() => {
+            await axios.get(`http://localhost:3000/api/associate/getNotification/${currentUser._id}`)
+            .then((res) => {
+                console.log(res)
+                setNotificationMessage(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        } 
+
+        fetchNotification();
+
+    }  , [])
+
   return (
     <>  
       <div className="w-[100%] h-[100dvh] flex justify-end items-center">
