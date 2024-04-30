@@ -1,5 +1,7 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2"
 
 /* eslint-disable react/prop-types */
 export default function Announcement() {
@@ -65,23 +67,143 @@ function AnnouncementOptions({ UpdateState1 }) {
 }
 // eslint-disable-next-line no-unused-vars
 function AnnouncementPublishArea({ UpdateState1, forwho, id }) {
-  const batch = ["Batch A", "Batch B", "Batch C", "Batch D"];
+  
   const [selectedBatch, setSelectedBatch] = useState("");
   console.log(forwho);
-  // if(id===1){
-  //     ""
-  // }
-  // else if(id===2){
 
-  // }
-  // else{
+  const [batch , setBatch] = useState([]);
 
-  // }
+
+  const [message , setMessage] = useState("");
+
+  const handleFetchBatch = async() => {
+
+    axios
+        .get("http://localhost:3000/api/student/getBatch")
+        .then((res) =>{
+          setBatch([...res.data]);
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+
+  }
+
+  if(id===1){
+    handleFetchBatch();
+  }
+
+  const handleStudent = async() => {
+    if (!message || !selectedBatch) {
+        Swal.fire({
+          title: "Error",
+          text: "Please fill out all fields",
+          icon: "error"
+        });
+        return; 
+      }
+
+      await axios.post('http://localhost:3000/api/teacher/addAnnouncement' , {batch: selectedBatch , details: message })
+      .then((res) => {
+        console.log(res)
+        Swal.fire({
+            title: "Success",
+            text: "Announcement Added Successfully",
+            icon: "success"
+          });
+      })
+      .catch((err) => {
+        console.log(err)
+        Swal.fire({
+            title: "Error",
+            text: "Something went wrong",
+            icon: "error"
+          });
+      })
+  }
+
+  const handleTeacher = async() => {
+
+    if (!message) {
+        Swal.fire({
+          title: "Error",
+          text: "Please fill out all fields",
+          icon: "error"
+        });
+        return; 
+      }
+
+      await axios.post('http://localhost:3000/api/admin/addTeacherNotification' , {  message })
+      .then((res) => {
+        console.log(res)
+        Swal.fire({
+            title: "Success",
+            text: "Announcement Added Successfully",
+            icon: "success"
+          });
+      })
+      .catch((err) => {
+        console.log(err)
+        Swal.fire({
+            title: "Error",
+            text: "Something went wrong",
+            icon: "error"
+          });
+      })
+
+  }
+
+  const handleAssociate = async() => {
+
+    if (!message) {
+        Swal.fire({
+          title: "Error",
+          text: "Please fill out all fields",
+          icon: "error"
+        });
+        return; 
+      }
+
+      await axios.post('http://localhost:3000/api/admin/addAssociateNotification' , {  message })
+      .then((res) => {
+        console.log(res)
+        Swal.fire({
+            title: "Success",
+            text: "Announcement Added Successfully",
+            icon: "success"
+          });
+      })
+      .catch((err) => {
+        console.log(err)
+        Swal.fire({
+            title: "Error",
+            text: "Something went wrong",
+            icon: "error"
+          });
+      })
+
+  }
+
+  const handleCheck = async(e) => {
+    e.preventDefault();
+    if(id ===1 ){
+
+        handleStudent();
+    }
+    else if(id === 2){
+        handleTeacher();
+    }
+    else{
+        handleAssociate();
+    }
+  }
+
+   
+
   return (
     <form>
      {  id===1 && <select
             className="block w-full mb-4 max-w-md px-4 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none bg-gray-200 focus:border-orange-500"
-            value={selectedBatch}
             onChange={(e) => {
             setSelectedBatch(e.target.value);
             }}
@@ -295,6 +417,7 @@ function AnnouncementPublishArea({ UpdateState1, forwho, id }) {
           </label>
           <textarea
             id="editor"
+            onChange={(e) => setMessage(e.target.value)}
             rows="8"
             style={{ resize: "both" }}
             className="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-[#111111] focus:ring-0 dark:text-white dark:placeholder-gray-400"
@@ -305,6 +428,7 @@ function AnnouncementPublishArea({ UpdateState1, forwho, id }) {
       </div>
       <button
         type="submit"
+        onClick={handleCheck}
         className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-orange-700 rounded-lg focus:ring-4 focus:ring-orange-200 dark:focus:ring-orange-900 hover:bg-orange-800"
       >
         upload Announcement for {forwho}

@@ -62,14 +62,14 @@ const themes = {
     id:6,
     ButtonName:"Leave Requests",
     NavigateTo: "Leave Requests",
-    Content: <Requests/>,
+    Content: <Requests id={'admin'} />,
     Logo: <LocalPostOfficeIcon/>
 },
   {
     id:7,
     ButtonName:"Query",
     NavigateTo: "Query",
-    Content:<Query/>,
+    Content:<Query id={'admin'}/>,
     Logo: <MessageIcon/>
 },
 ]

@@ -90,15 +90,15 @@ export const setFaculty = async (req , res , next) => {
 
 export const applyLeave = async (req , res , next) => {
 
-    if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
+    // if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
 
-    const {teacher , approved , message} = req.body ;
+    const { message} = req.body ;
 
-    const findTeacher = await Teacher.findOne({_id:teacher})
+    // const findTeacher = await Teacher.findOne({_id:teacher})
 
-    if(!findTeacher) return next(errorHandler(404 , 'Teacher Not Found'));
+    // if(!findTeacher) return next(errorHandler(404 , 'Teacher Not Found'));
 
-    const addLeaveLetter = new leaveLetter({teacher , approved , message});
+    const addLeaveLetter = new leaveLetter({teacher: req.params.id , message});
 
     try {
         
@@ -148,13 +148,13 @@ export const addAnnouncement = async(req , res , next) => {
 
     try {
 
-        if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized"))
+        // if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized"))
 
-        const {id} = req.params;
+
 
         const {batch , details} = req.body;
 
-        const newAnnouncement = new Announcement({batch , details , teacher: id})
+        const newAnnouncement = new Announcement({batch , details })
 
         await newAnnouncement.save();
 

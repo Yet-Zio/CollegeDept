@@ -7,6 +7,8 @@ import Event from "../models/event.model.js";
 import ContactUs from "../models/contactUs.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import News from "../models/departmentNews.model.js";
+import Notification from "../models/associateNotification.model.js";
+import TeacherNotification from "../models/teacherNotification.model.js";
 
 export const addAssociate = async (req , res , next) => {
 
@@ -41,16 +43,16 @@ export const manageLeaveLetter = async (req , res , next) => {
 
     try {
 
-    if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
+    // if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
 
-    const verifyAdmin = await Teacher.findOne({_id: req.params.id});
+    // const verifyAdmin = await Teacher.findOne({_id: req.params.id});
 
-    if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
+    // if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
 
-    const { status , id } = req.body ; 
+    const { status  } = req.body ; 
 
-    const updatedLeaveLetter = await LeaveLetter.findByIdAndUpdate(
-        id, 
+    const updatedLeaveLetter = await LeaveLetter.findOneAndUpdate({teacher:req.params.id},
+        
         { $set: {approved: status } }, 
         { new: true } 
     );
@@ -144,4 +146,51 @@ export const getNews = async(req , res , next) => {
     }
 
 }
+export const getLeaveLetter = async(req , res , next) => {
 
+    try {
+        
+        const fetchLeaveLetter = await LeaveLetter.find({approved: "Pending"})
+
+        res
+        .status(200)
+        .json(fetchLeaveLetter);
+
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+export const addAssociateNotification = async(req , res , next) => {
+
+    try {
+        
+        const addDocument = new Notification({details: req.body.message})
+
+        await addDocument.save();
+        res
+        .status(200)
+        .json("Notification sent successfully")
+
+    } catch (error) {
+        next(error)
+    }
+
+}
+export const addTeacherNotification = async(req , res , next) => {
+
+    try {
+        
+        const addDocument = new TeacherNotification({details: req.body.message})
+
+        await addDocument.save();
+        res
+        .status(200)
+        .json("Notification sent successfully")
+
+    } catch (error) {
+        next(error)
+    }
+
+}

@@ -10,10 +10,6 @@ const notificationSchema = new mongoose.Schema({
         type: Date , 
         default: Date.now
     },
-    member: {
-        type: mongoose.Schema.Types.ObjectId , 
-        ref: 'Associate'
-    },
 
 })
 

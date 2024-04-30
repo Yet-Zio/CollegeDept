@@ -14,10 +14,6 @@ const announcementSchema = new mongoose.Schema({
         type: Date , 
         default: Date.now
     },
-    teacher: {
-        type: mongoose.Schema.Types.ObjectId , 
-        ref: 'Teacher'
-    },
 
 })
 
