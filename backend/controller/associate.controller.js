@@ -103,3 +103,38 @@ export const updateAssociate = async(req , res , next) => {
     }
 
 }
+
+export const getArticle =  async(req , res , next) => {
+    
+    try {
+        
+        const fetchArticle = await Associate.findById(req.params.id);
+
+        res
+        .status(200)
+        .json(fetchArticle.article)
+
+
+
+    } catch (error) {
+        next(error)
+    }
+
+}
+export const getEvent =  async(req , res , next) => {
+    
+    try {
+        
+        const fetchEvent = await Event.find({owner: req.params.id});
+
+        res
+        .status(200)
+        .json(fetchEvent)
+
+
+
+    } catch (error) {
+        next(error)
+    }
+
+}

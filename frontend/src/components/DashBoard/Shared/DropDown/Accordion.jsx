@@ -18,15 +18,15 @@ export default function AccordionDropDown({ itemData }) {
     <Accordion expanded={expanded} onChange={handleChange} sx={{width: "99%"}} >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
-        aria-controls={`${itemData.id}-content`}
-        id={`${itemData.id}-header`}
+        aria-controls={`${itemData._id}-content`}
+        id={`${itemData._id}-header`}
       >
         <Typography>
           {itemData.title}
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>{itemData.description }<Link to={`/article/item/${itemData.id}`} className='text-orange-400 hover:text-orange-600'> View </Link></Typography>
+        <Typography>{itemData.description }<Link to={`/article/item/${itemData._id}`} className='text-orange-400 hover:text-orange-600'> View </Link></Typography>
       </AccordionDetails>
     </Accordion>
   );
