@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import pako from 'pako';
 const modules = {
   toolbar: [
     [{ 'header': [] }, { 'font': [] }],
@@ -48,6 +49,18 @@ export default function TextEditor() {
     console.log(newText)
   };
 
+
+const compressData = async ()=>{
+  try {
+    const textUint8Array = new TextEncoder().encode(htmlText);
+    const compressedData = pako.deflate(textUint8Array);
+    const compressedBase64 = btoa(String.fromCharCode.apply(null, compressedData));
+    return compressedBase64;
+  } catch (error) {
+    console.error('Error compressing data:', error);
+    return null;
+  }
+}
   const handleUpload = async(e) =>  {
     e.preventDefault();
     if (!title || !htmlText) {
@@ -58,8 +71,8 @@ export default function TextEditor() {
       });
       return; 
     }
-
-    await axios.post((`http://localhost:3000/api/associate/addArticle/${currentUser._id}`) , {title  , body: htmlText})
+    console.log(await compressData())
+    await axios.post((`http://localhost:3000/api/associate/addArticle/${currentUser._id}`) , {title  , body: await compressData()})
     .then((res) => {
       console.log(res)
       Swal.fire({
