@@ -15,6 +15,7 @@ export default function HistoryContainer() {
         <HistoryOptions
           UpdateState1={SetArticle}
           UpdateState2={SetEvent}
+          
         />
       )}
     </>

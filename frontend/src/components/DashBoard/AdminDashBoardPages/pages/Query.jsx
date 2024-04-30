@@ -85,7 +85,7 @@ const Events = [
   },
 ];
 
-export default function EventHistory({ updateEventState }) {
+export default function Query({ updateEventState }) {
   return (
     <>
       <button
