@@ -1,10 +1,53 @@
+import axios from "axios";
+import { useState } from "react";
+import Swal from "sweetalert2";
+
 export default function NewsUpload() {
+
+  const [formData , setFormData] = useState({
+    headline: "" ,
+    content: ""
+  })
+
+  const handleUpload = async(e) => {
+    e.preventDefault();
+
+    if (!formData.headline || !formData.content) {
+  
+      Swal.fire({
+        title: "Error",
+        text: "Please fill out all fields",
+        icon: "error"
+      });
+      return; 
+    }
+    await axios.post(`http://localhost:3000/api/admin/addNews` , formData)
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        title: "Success",
+        text: "News Uploaded",
+        icon: "success"
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "Something went wrong",
+        icon: "error"
+      });
+    })
+
+  }
+
   return (
-    <>
       <div className="h-[100dvh] w-[100%] flex justify-center items-center ">
         <form>
           <p className="mb-1 text-lg font-semibold">Title</p>
-          <input className="px-2 w-[43dvh] mb-3 py-4 placeholder:text-[#a7a6a6] rounded-lg  bg-[#111111]" type="text" placeholder="Title"/>
+          <input className="px-2 w-[43dvh] mb-3 py-4 placeholder:text-[#a7a6a6] rounded-lg  bg-[#111111] text-white" 
+          onChange={(e) => {setFormData({...formData , headline: e.target.value})}}
+          type="text" placeholder="Title"/>
           <div className="w-[100%] mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-200 dark:border-gray-600">
             <div className="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
               <div className="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600">
@@ -201,6 +244,7 @@ export default function NewsUpload() {
               <textarea
                 id="editor"
                 rows="8"
+                onChange={(e) => {setFormData({...formData , content: e.target.value})}}
                 style={{ resize: "both" }}
                 className="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-[#111111] focus:ring-0 dark:text-white dark:placeholder-gray-400"
                 placeholder="Write a Feed..."
@@ -210,12 +254,13 @@ export default function NewsUpload() {
           </div>
           <button
             type="submit"
+            onClick={handleUpload}
             className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-orange-700 rounded-lg focus:ring-4 focus:ring-orange-200 dark:focus:ring-orange-900 hover:bg-orange-800"
           >
             upload Feed
           </button>
         </form>
       </div>
-    </>
+    
   );
 }

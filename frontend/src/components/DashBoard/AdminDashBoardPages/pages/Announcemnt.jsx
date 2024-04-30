@@ -5,18 +5,18 @@ import { useState } from "react";
 export default function Announcement() {
     const [options,setOptions] = useState(0);
     return (
-     <>
+    
      <div className="w-[100%] h-[100dvh] flex justify-center items-center">
         {options ===0 && <AnnouncementOptions UpdateState1={setOptions}/>}
         {options ===1 && <AnnouncementPublishArea UpdateState1={setOptions} forwho={"Student"} id={1}/>}
         {options ===2 && <AnnouncementPublishArea UpdateState1={setOptions} forwho={"Teachers"} id={2}/>}
         {options ===3 && <AnnouncementPublishArea UpdateState1={setOptions} forwho={"Associate"} id={3}/>}
      </div>
-     </>
+     
     )
   }
   function AnnouncementOptions({UpdateState1}){
-    return ( <>
+    return ( 
     
     <div className="w-[100%] h-[100dvh]  flex justify-end items-center">
             <div className="h-[100%] w-[100%]  flex flex-col md:flex-row  justify-center items-center md:mt-0 mt-40">
@@ -46,12 +46,21 @@ export default function Announcement() {
               </button>
             </div>
           </div>
-    </>)
+    )
   }
   // eslint-disable-next-line no-unused-vars
   function AnnouncementPublishArea({UpdateState1,forwho, id}){
     console.log(forwho)
-    return (<>
+    // if(id===1){
+    //     ""
+    // }
+    // else if(id===2){
+
+    // }
+    // else{
+
+    // }
+    return (
     
 
 <form>
@@ -155,5 +164,5 @@ export default function Announcement() {
 </form>
 
 
-    </>)
+    )
   }
