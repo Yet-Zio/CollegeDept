@@ -10,7 +10,11 @@ import {
 } from "@mui/material";
 import benzi from "../../../../assets/benzi.png";
 
-export default function NotificationList({ NotificationData }) {
+import { Button } from "@mui/material";
+import ClearIcon from '@mui/icons-material/Clear';
+import CheckIcon from '@mui/icons-material/Check';
+
+export default function NotificationList({ NotificationData ,DashBoardId}) {
   return (
     <>
       <List sx={{ width: "99%", bgcolor: "#E5E7EB", marginBottom: "10dvh" }}>
@@ -47,6 +51,19 @@ export default function NotificationList({ NotificationData }) {
                 />
               </ListItem>
               <ListItemText primary={item.Message} />
+              <ListItemText>
+              {DashBoardId === 0 && (
+    <div className="w-[100%] mt-4 h-[10%] gap-10 justify-center items-center">
+      <Button style={{marginLeft: "10px"}} endIcon={<CheckIcon/>} variant="contained" color="success">
+        Approve 
+      </Button>
+      <span> &nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <Button endIcon={<ClearIcon/>} variant="contained" color="error">
+        Reject
+      </Button>
+    </div>
+  )}
+              </ListItemText>
             </ListItem>
           );
         })}

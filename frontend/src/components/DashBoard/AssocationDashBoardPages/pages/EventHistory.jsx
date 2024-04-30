@@ -45,7 +45,7 @@ export default function EventHistory({ updateEventState }) {
         <div className="h-[100%] w-[100%] overflow-auto flex flex-col justify-start items-start mt-52 me-2">
           {!(Events.length === 0) &&
             Events.map((item, index) => {
-              return <AccordionDropDown key={index} itemData={item} />;
+              return <AccordionDropDown  key={index} itemData={item} />;
             })}
           {Events.length === 0 && (
             <EmptyMessage emptyMessage={"History is Empty"} />

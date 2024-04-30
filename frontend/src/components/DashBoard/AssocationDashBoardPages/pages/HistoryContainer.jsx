@@ -13,8 +13,9 @@ export default function HistoryContainer() {
       {isEvent && !isArticle && <EventHistory updateEventState={SetEvent} />}
       {!(isArticle && isEvent) && (
         <HistoryOptions
-          UpdateArticleState={SetArticle}
-          UpdateEventState={SetEvent}
+          UpdateState1={SetArticle}
+          UpdateState2={SetEvent}
+          
         />
       )}
     </>
