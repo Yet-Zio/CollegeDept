@@ -2,7 +2,7 @@
 import { Button, TextField } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -15,7 +15,8 @@ const columns = [
   { field: "batchId", headerName: "Batch ID", width: 130 },
 ];
 
-export default function Table({ChangeState}) {
+
+export default function Table({ChangeState,fETCHcurrentURl}) {
   const ConvertToDataGrid = (data) => {
     return data.map((item, index) => {
       return {
@@ -28,27 +29,29 @@ export default function Table({ChangeState}) {
       };
     });
   };
-
+  
   const [response, setResponse] = useState([]);
   const [selectedOpton, setSelectedOption] = useState();
+  
   useEffect(() => {
+
+  
     const fetchTeachers = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:3000/api/teacher/getTeacher"
-        );
+        console.log(fETCHcurrentURl)
+        const res = await axios.get(fETCHcurrentURl);
         console.log("Data from API:", res.data);
         const convertedData = ConvertToDataGrid(res.data);
         console.log("Converted data:", convertedData);
         setResponse(convertedData);
-        console.log(response)
+        console.log(response);
       } catch (error) {
         console.error("Error fetching teachers:", error);
       }
     };
-
+  
     fetchTeachers();
-  }, []);
+  }, [fETCHcurrentURl]);
   
   return (
     <>

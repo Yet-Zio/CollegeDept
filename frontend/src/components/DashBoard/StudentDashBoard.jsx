@@ -10,6 +10,7 @@ import SideBarLayout from "./Shared/Layout/SideBarLayout";
 import Notification from './Shared/Pages/Notification';
 import Chart from './StudentDashBoardPages/Components/Chart';
 import HomeWork from './StudentDashBoardPages/pages/HomeWork';
+import StudentHomePage from './StudentDashBoardPages/pages/StudentHomePage';
 import StudyMaterials from './StudentDashBoardPages/pages/StudyMaterials';
 
 const themes = {
@@ -20,7 +21,7 @@ const StudentSideBarButtons = [
       id:1,
       ButtonName:"Home",
       NavigateTo: "",
-      Content: <></>,
+      Content: <StudentHomePage/>,
       Logo: <House weight="bold" size={22} />,
   },
   {
