@@ -31,7 +31,7 @@ export default function Chart() {
   const adjustedData = calculateAngles(pieChartData);
 
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
+    <div className="h-screen w-screen flex justify-start items-center">
       <div className="h-[100%] w-[80%] flex justify-evenly items-center">
         <div className="text-2xl font-bold text-[#5c5c5c]">
           <div>
@@ -44,7 +44,7 @@ export default function Chart() {
             Absent: <span>{absentDays}</span> Days
           </div>
         </div>
-        <div style={{ width: "30%", height: "43%" }}>
+        <div style={{ width: "40%", height: "43%" }}>
           <PieChart
             series={[
               {

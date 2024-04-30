@@ -26,7 +26,7 @@ const StudentSideBarButtons = [
   {
       id:2,
       ButtonName:"Profile",
-      NavigateTo: "/DasbBoard/Student/Profile",
+      NavigateTo: "Profile",
       Content: <ProfileContainer Option={3} />,
       Logo: <User weight="bold" size={22} />,
   },

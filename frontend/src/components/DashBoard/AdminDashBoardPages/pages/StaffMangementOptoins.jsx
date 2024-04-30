@@ -13,7 +13,7 @@ export default function StaffMangementOptoins({changeItemId}) {
         }}
         className=" md:me-4 me-0 px-6 py-2 mb-4 md:mb-0 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-orange-600 rounded-lg hover:bg-orange-500 focus:outline-none focus:ring focus:ring-orange-300 focus:ring-opacity-80"
       >
-       Create Facutly
+       Manage Teacher
       </button>
       <button
         onClick={() => {
@@ -21,7 +21,7 @@ export default function StaffMangementOptoins({changeItemId}) {
         }}
         className="px-6 md:ms-4 ms-0 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-orange-600 rounded-lg hover:bg-orange-500 focus:outline-none focus:ring focus:ring-orange-300 focus:ring-opacity-80"
       >
-        Manage Facutly
+       Add Teachers and Advisor
       </button>
     </div>
     <div className=" mb-28s">
@@ -31,7 +31,7 @@ export default function StaffMangementOptoins({changeItemId}) {
         }}
         className=" md:me-4 me-0 px-6 py-2 mb-4 md:mb-0 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-orange-600 rounded-lg hover:bg-orange-500 focus:outline-none focus:ring focus:ring-orange-300 focus:ring-opacity-80"
       >
-      Create Association Member
+      Manage Association
       </button>
       <button
         onClick={() => {
@@ -39,7 +39,7 @@ export default function StaffMangementOptoins({changeItemId}) {
         }}
         className="px-6 md:ms-4 ms-0 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-orange-600 rounded-lg hover:bg-orange-500 focus:outline-none focus:ring focus:ring-orange-300 focus:ring-opacity-80"
       >
-       Manage Association Member
+       Create Association
       </button>
     </div>
 
