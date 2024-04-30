@@ -12,6 +12,7 @@ import Chart from './StudentDashBoardPages/Components/Chart';
 import HomeWork from './StudentDashBoardPages/pages/HomeWork';
 import StudentHomePage from './StudentDashBoardPages/pages/StudentHomePage';
 import StudyMaterials from './StudentDashBoardPages/pages/StudyMaterials';
+import TimeTable from './StudentDashBoardPages/pages/TimeTable';
 
 const themes = {
     bgColor: "bg-gray-200"
@@ -32,11 +33,18 @@ const StudentSideBarButtons = [
       Logo: <User weight="bold" size={22} />,
   },
   {
-    id:4,
-    ButtonName:"Study Materials",
-    NavigateTo: "Study Materials",
-    Content:<StudyMaterials/>,
+    id:3,
+    ButtonName:"Time Table",
+    NavigateTo: "Time Table",
+    Content: <TimeTable/>,
     Logo: <Book weight="bold" size={22} />,
+},
+{
+  id:4,
+  ButtonName:"Study Materials",
+  NavigateTo: "Study Materials",
+  Content:<StudyMaterials/>,
+  Logo: <Book weight="bold" size={22} />,
 },
   {
       id:5,

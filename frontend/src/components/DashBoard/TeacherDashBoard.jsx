@@ -5,8 +5,10 @@ import { useDispatch } from "react-redux";
 import { ChangeDashData } from "../../redux/menu/DashBoardData";
 import { DashBoardOptchange } from "../../redux/menu/DashBoardOpt";
 import DashBoardBodyLayout from "./Shared/Layout/DashBoardBodyLayout";
-import ProfileContainer from "./Shared/Layout/ProfileContainer";
 import SideBarLayout from "./Shared/Layout/SideBarLayout";
+import TeacherProfile from './TeacherDashBoardPages/Pages/TeacherProfile';
+import TeacherNotification from './TeacherDashBoardPages/Pages/TeacherNotification';
+import TeacherHome from './TeacherDashBoardPages/Pages/TeacherHome';
 
 const themes = {
     bgColor: "bg-gray-200"
@@ -16,56 +18,49 @@ const StudentSideBarButtons = [
       id:1,
       ButtonName:"Home",
       NavigateTo: "",
-      Content: <></>,
+      Content: <TeacherHome/>,
       Logo: <House weight="bold" size={22} />,
   },
   {
       id:2,
       ButtonName:"Profile",
       NavigateTo: "/DasbBoard/Student/Profile",
-      Content: <></>,
+      Content: <TeacherProfile/>,
       Logo: <User weight="bold" size={22} />,
   },
   {
-    id:4,
+    id:3,
     ButtonName:"Study Materials",
     NavigateTo: "",
     Content:<></>,
     Logo: <Book weight="bold" size={22} />,
 },
   {
-      id:5,
+      id:4,
       ButtonName:"Homework",
       NavigateTo: "",
       Content:<></>,
       Logo: <Notebook weight="bold" size={22} />,
   },
   {
-      id:6,
+      id:5,
       ButtonName:"Attendance",
       NavigateTo: "",
       Content: <></>,
       Logo: <CoPresentSharpIcon fontSize="medium"/>
   },
-  {
-    id:7,
-    ButtonName:"Announcement",
-    NavigateTo: "",
-    Content: <></>,
-    Logo: <CoPresentSharpIcon fontSize="medium"/>
-},
 {
-    id:8,
+    id:6,
     ButtonName:"Leave",
     NavigateTo: "",
     Content: <></>,
     Logo: <CoPresentSharpIcon fontSize="medium"/>
 },
   {
-    id:9,
+    id:7,
     ButtonName:"Notifications",
     NavigateTo: "",
-    Content:<></>,
+    Content:<TeacherNotification/>,
     Logo: <Bell weight="bold" size={22} />,
 },
 ]
