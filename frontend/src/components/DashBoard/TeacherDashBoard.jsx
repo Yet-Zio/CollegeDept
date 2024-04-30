@@ -11,6 +11,10 @@ import TeacherNotification from './TeacherDashBoardPages/Pages/TeacherNotificati
 import TeacherHome from './TeacherDashBoardPages/Pages/TeacherHome';
 import TimeTableUPload from './TeacherDashBoardPages/Pages/TimTableUPload';
 import BackupTableIcon from '@mui/icons-material/BackupTable';
+import LeaveLetter from './TeacherDashBoardPages/Pages/LeaveLetter';
+import UploadAttendence from './TeacherDashBoardPages/Pages/UploadAttendence';
+import UploadHomeWork from './TeacherDashBoardPages/Pages/UploadHomeWork';
+import UploadStudyMaterials from './TeacherDashBoardPages/Pages/UploadStudyMaterials';
 
 
 const themes = {
@@ -42,28 +46,28 @@ const TeacherSideBarButtons = [
   id:4,
   ButtonName:"UploadStudy Material",
   NavigateTo: "Upload Study Material",
-  Content:<></>,
+  Content:<UploadStudyMaterials/>,
   Logo: <Notebook weight="bold" size={22} />,
 },
   {
       id:5,
       ButtonName:"Upload Homework",
       NavigateTo: "Upload Homework",
-      Content:<></>,
+      Content:<UploadHomeWork/>,
       Logo: <Notebook weight="bold" size={22} />,
   },
   {
       id:6,
       ButtonName:"Upload Attendance",
       NavigateTo: "Upload Attendance",
-      Content: <></>,
+      Content:  <UploadAttendence/> ,
       Logo: <CoPresentSharpIcon fontSize="medium"/>
   },
 {
     id:7,
     ButtonName:"Request Leave",
     NavigateTo: "Request Leave",
-    Content: <></>,
+    Content: <LeaveLetter/>,
     Logo: <CoPresentSharpIcon fontSize="medium"/>
 },
   {

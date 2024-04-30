@@ -188,7 +188,7 @@ function App() {
           path="/TeacherDashBoard"
           element={
             <>
-              <PageTitle title="AssocDashBoard" />
+              <PageTitle title="Teacher DashBoard" />
               <TeacherDashBoard/>
             </>
           }
