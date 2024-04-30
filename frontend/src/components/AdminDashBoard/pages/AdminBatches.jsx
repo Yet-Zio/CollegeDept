@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import {CloudLightning, Trash} from '@phosphor-icons/react'
 import axios from 'axios';
+import { Trash } from '@phosphor-icons/react';
 
 export default function AdminBatches() {
 

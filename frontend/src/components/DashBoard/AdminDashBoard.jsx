@@ -26,8 +26,8 @@ const themes = {
   },
   {
     id:2,
-    ButtonName:"Articles",
-    NavigateTo: "Article",
+    ButtonName:"Staff Management",
+    NavigateTo: "Staff Mangement",
     Content:<StaffMangerLayout/>,
     Logo: <Article size={22} weight="duotone" />
 },
