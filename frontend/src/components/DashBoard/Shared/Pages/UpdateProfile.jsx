@@ -5,7 +5,7 @@ import axios from "axios";
 import { login } from "../../../../redux/user/userSlice";
 import Swal from 'sweetalert2'
 // eslint-disable-next-line react/prop-types
-export default function UpdateProfile({updateState}) {
+export default function UpdateProfile({updateState ,URL}) {
 
   const currentUser = useSelector((state) => state.user.currentUser);
 
@@ -17,14 +17,12 @@ export default function UpdateProfile({updateState}) {
 
   console.log(firstname , lastname , gender , dob)
 
-
-
   const dispatch = useDispatch();
 
   const handleSubmit = async(event) => {
     event.preventDefault();
 
-    await axios.post(`http://localhost:3000/api/associate/updateAssociate/${currentUser._id}`,{firstname , lastname , gender , dob})
+    await axios.post(`${URL+currentUser._id}`,{firstname , lastname , gender , dob})
     .then((res) => {
       console.log(res.data)
       dispatch(login(res.data))

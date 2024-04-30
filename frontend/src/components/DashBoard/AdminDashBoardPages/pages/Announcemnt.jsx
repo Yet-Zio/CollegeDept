@@ -48,6 +48,7 @@ export default function Announcement() {
           </div>
     </>)
   }
+  // eslint-disable-next-line no-unused-vars
   function AnnouncementPublishArea({UpdateState1,forwho, id}){
     console.log(forwho)
     return (<>
@@ -142,7 +143,7 @@ export default function Announcement() {
   rows="8"
   style={{ resize: 'both' }}
   className="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-[#111111] focus:ring-0 dark:text-white dark:placeholder-gray-400"
-  placeholder="Write an article..."
+  placeholder={`Write content for ${forwho}`}
   required
 ></textarea>
 

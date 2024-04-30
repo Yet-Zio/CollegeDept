@@ -19,6 +19,7 @@ export default function EventHistory({ updateEventState }) {
       await axios.get(`http://localhost:3000/api/associate/getEvent/${currentUser._id}`)
       .then((res) => {
         setEvents(res.data)
+        console.log(res.data)
       })
       .catch((err) => {
         console.log(err)

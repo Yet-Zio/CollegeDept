@@ -15,10 +15,11 @@ import ClearIcon from '@mui/icons-material/Clear';
 import CheckIcon from '@mui/icons-material/Check';
 
 export default function NotificationList({ NotificationData ,DashBoardId}) {
+  const dataToRender = Array.isArray(NotificationData) ? NotificationData : [];
   return (
     <>
       <List sx={{ width: "99%", bgcolor: "#E5E7EB", marginBottom: "10dvh" }}>
-        {NotificationData.map((item) => {
+        {dataToRender?.map((item) => {
           return (
             <ListItem
               key={item._id}

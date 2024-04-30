@@ -2,18 +2,20 @@ import { useEffect, useState } from "react";
 import NotificationList from "../List/NotificationList";
 import axios from "axios";
 import { useSelector } from "react-redux";
-
-export default function Notification() {
+const AssociateDataUrl= "http://localhost:3000/api/associate/getNotification/";
+// eslint-disable-next-line react/prop-types
+export default function Notification({option}) {
     const [NotificationMessage , setNotificationMessage] = useState([]);
-
+    const [URL,setURL] = useState();
     const currentUser = useSelector((state) => state.user.currentUser);
 
     useEffect (() => {
-
+      console.log(option)
+      if(option===2) setURL(AssociateDataUrl)
         const fetchNotification = async() => {
-            await axios.get(`http://localhost:3000/api/associate/getNotification/${currentUser._id}`)
+            await axios.get(`${URL+currentUser._id}`)
             .then((res) => {
-                console.log(res)
+                console.log( [... NotificationMessage])
                 setNotificationMessage(res.data)
             })
             .catch((err) => {

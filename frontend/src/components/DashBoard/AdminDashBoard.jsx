@@ -17,6 +17,8 @@ import Query from './AdminDashBoardPages/pages/Query';
 import Requests from './AdminDashBoardPages/pages/Requests';
 import DashBoardBodyLayout from "./Shared/Layout/DashBoardBodyLayout";
 import SideBarLayout from "./Shared/Layout/SideBarLayout";
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import NewsUpload from './AdminDashBoardPages/pages/NewsUpload';
 const themes = {
     bgColor: "bg-gray-200"
 }
@@ -43,21 +45,28 @@ const themes = {
       Logo: <GroupAddIcon/>
   },
   {
-      id:4,
+    id:4,
+    ButtonName:"News Upload",
+    NavigateTo: "News Mangement",
+    Content: <NewsUpload/>,
+    Logo: <NewspaperIcon/>
+},
+  {
+      id:5,
       ButtonName:"Announcement",
       NavigateTo: "Announcement",
       Content: <Announcemnt/>,
       Logo: <AnnouncementIcon/>
   },
   {
-    id:5,
+    id:6,
     ButtonName:"Leave Requests",
     NavigateTo: "Leave Requests",
     Content: <Requests/>,
     Logo: <LocalPostOfficeIcon/>
 },
   {
-    id:6,
+    id:7,
     ButtonName:"Query",
     NavigateTo: "Query",
     Content:<Query/>,

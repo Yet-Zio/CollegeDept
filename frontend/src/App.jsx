@@ -9,7 +9,6 @@ import "./App.css";
 import AssociationHome from "./Mainpages/AssociationHome";
 import HomePage from "./Mainpages/HomePage";
 import NotFound from "./Mainpages/NotFound.jsx";
-import AdminDashboard from "./components/AdminDashBoard/AdminDashboard.jsx";
 import Loader from "./components/Common/Loader.jsx";
 import AssociationDashBoard from "./components/DashBoard/AssociationDashBoard.jsx";
 import AboutCreators from "./components/DeptOfCs/AboutCreators";
@@ -121,7 +120,7 @@ function App() {
             </>
           }
         />
-        <Route
+        {/* <Route
           path="/admin"
           element={
             <>
@@ -129,7 +128,7 @@ function App() {
               <AdminDashboard />
             </>
           }
-        />
+        /> */}
         <Route
           path="/home-assoc"
           element={

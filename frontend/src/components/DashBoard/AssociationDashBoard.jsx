@@ -30,7 +30,7 @@ export  const AssociateSideBarButtons = [
       id:2,
       ButtonName:"Profile",
       NavigateTo: "Profile",
-      Content: <ProfileContainer/>,
+      Content: <ProfileContainer Option={2} />,
       Logo: <User weight="bold" size={22} />,
   },
   {
@@ -58,7 +58,7 @@ export  const AssociateSideBarButtons = [
     id:6,
     ButtonName:"Notification",
     NavigateTo: "Notification",
-    Content:<Notification/>,
+    Content:<Notification option={2}/>,
     Logo: <Bell weight="bold" size={22} />,
 },
 ]

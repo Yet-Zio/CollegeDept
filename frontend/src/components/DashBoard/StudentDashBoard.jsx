@@ -7,6 +7,10 @@ import { DashBoardOptchange } from "../../redux/menu/DashBoardOpt";
 import DashBoardBodyLayout from "./Shared/Layout/DashBoardBodyLayout";
 import ProfileContainer from "./Shared/Layout/ProfileContainer";
 import SideBarLayout from "./Shared/Layout/SideBarLayout";
+import Notification from './Shared/Pages/Notification';
+import Chart from './StudentDashBoardPages/Components/Chart';
+import HomeWork from './StudentDashBoardPages/pages/HomeWork';
+import StudyMaterials from './StudentDashBoardPages/pages/StudyMaterials';
 
 const themes = {
     bgColor: "bg-gray-200"
@@ -23,35 +27,35 @@ const StudentSideBarButtons = [
       id:2,
       ButtonName:"Profile",
       NavigateTo: "/DasbBoard/Student/Profile",
-      Content: <ProfileContainer/>,
+      Content: <ProfileContainer Option={3} />,
       Logo: <User weight="bold" size={22} />,
   },
   {
     id:4,
     ButtonName:"Study Materials",
-    NavigateTo: "",
-    Content:<></>,
+    NavigateTo: "Study Materials",
+    Content:<StudyMaterials/>,
     Logo: <Book weight="bold" size={22} />,
 },
   {
       id:5,
       ButtonName:"Homework",
-      NavigateTo: "",
-      Content:<></>,
+      NavigateTo: "Home Work",
+      Content:<HomeWork/>,
       Logo: <Notebook weight="bold" size={22} />,
   },
   {
       id:6,
       ButtonName:"Attendance",
-      NavigateTo: "",
-      Content: <></>,
+      NavigateTo: "Attendance",
+      Content: <Chart/>,
       Logo: <CoPresentSharpIcon fontSize="medium"/>
   },
   {
     id:7,
     ButtonName:"Notifications",
-    NavigateTo: "",
-    Content:<></>,
+    NavigateTo: "Notifications",
+    Content:<Notification option={3}/>,
     Logo: <Bell weight="bold" size={22} />,
 },
 ]
