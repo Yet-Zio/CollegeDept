@@ -23,7 +23,7 @@ const StudentSideBarButtons = [
       id:2,
       ButtonName:"Profile",
       NavigateTo: "/DasbBoard/Student/Profile",
-      Content: <ProfileContainer/>,
+      Content: <></>,
       Logo: <User weight="bold" size={22} />,
   },
   {

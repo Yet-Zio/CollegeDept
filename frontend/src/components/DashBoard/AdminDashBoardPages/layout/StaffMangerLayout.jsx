@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Table from "../pages/DataTable";
 import StaffMangementOptoins from "../pages/StaffMangementOptoins";
 import StaffManager from "../pages/StaffManager";
+import AssocationTable from "../pages/AssociationTable";
 
 const GetTeacherURL = "http://localhost:3000/api/teacher/getTeacher";
 export default function StaffMangerLayout() {
@@ -22,7 +23,7 @@ export default function StaffMangerLayout() {
                 { itemid === 0 && <StaffMangementOptoins changeItemId={setItemId}/>}
               { itemid === 1 &&<Table ChangeState={setItemId} fETCHcurrentURl={currentURL}/>}
               { itemid === 2 &&(<><StaffManager ChangeState={setItemId} ComponentId={2}/></>)}
-              { itemid === 3 &&<Table ChangeState={setItemId} fETCHcurrentURl={currentURL}/>}
+              { itemid === 3 &&< AssocationTable ChangeState={setItemId}/>}
               { itemid === 4 &&(<><StaffManager ChangeState={setItemId} ComponentId={4}/></>)}
             </div>
         </div>
