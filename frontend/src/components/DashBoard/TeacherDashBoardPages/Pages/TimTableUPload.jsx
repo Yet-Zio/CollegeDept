@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -25,7 +25,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
+
   '&:last-child td, &:last-child th': {
     border: 0,
   },
@@ -40,7 +40,7 @@ export default function TimeTableUpload() {
     periods.map((period, periodIndex) => ({
       period,
       subjects: defaultSubjects.map((subject, subjectIndex) => ({
-        id: `${periodIndex}-${subjectIndex}`, // Generate unique ID for each cell
+        id: `${periodIndex}-${subjectIndex}`,
         value: subject,
       })),
     }))
@@ -54,7 +54,7 @@ export default function TimeTableUpload() {
   };
 
   const handleUpload = () => {
-    console.log(timetable); // Send timetable data to backend or perform further actions
+    console.log(timetable); 
   };
 
   return (

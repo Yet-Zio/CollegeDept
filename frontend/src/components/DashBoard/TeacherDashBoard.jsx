@@ -15,8 +15,8 @@ import LeaveLetter from './TeacherDashBoardPages/Pages/LeaveLetter';
 import UploadAttendence from './TeacherDashBoardPages/Pages/UploadAttendence';
 import UploadHomeWork from './TeacherDashBoardPages/Pages/UploadHomeWork';
 import UploadStudyMaterials from './TeacherDashBoardPages/Pages/UploadStudyMaterials';
-
-
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 const themes = {
     bgColor: "bg-gray-200"
 }
@@ -47,7 +47,7 @@ const TeacherSideBarButtons = [
   ButtonName:"UploadStudy Material",
   NavigateTo: "Upload Study Material",
   Content:<UploadStudyMaterials/>,
-  Logo: <Notebook weight="bold" size={22} />,
+  Logo: <LibraryBooksIcon weight="bold" size={22} />,
 },
   {
       id:5,
@@ -68,7 +68,7 @@ const TeacherSideBarButtons = [
     ButtonName:"Request Leave",
     NavigateTo: "Request Leave",
     Content: <LeaveLetter/>,
-    Logo: <CoPresentSharpIcon fontSize="medium"/>
+    Logo: <LocalPostOfficeIcon fontSize="medium"/>
 },
   {
     id:8,
