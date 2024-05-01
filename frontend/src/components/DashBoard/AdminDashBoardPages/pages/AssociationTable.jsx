@@ -11,13 +11,14 @@ const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "firstName", headerName: "First Name", width: 130 },
   { field: "lastName", headerName: "Last Name", width: 130 },
-  { field: "StudentId", headerName: "Student ID", width: 130 },
+  { field: "studentID", headerName: "Student ID", width: 130 },
   { field: "email", headerName: "Email", width: 250 },
 ];
 
 
 export default function AssocationTable({ChangeState,fETCHcurrentURl}) {
   const ConvertToDataGrid = (data) => {
+    console.log(data)
     return data.map((item, index) => {
       return {
         id: index + 1,
@@ -106,13 +107,10 @@ export default function AssocationTable({ChangeState,fETCHcurrentURl}) {
   
     const fetchTeachers = async () => {
       try {
-        console.log(fETCHcurrentURl)
         const res = await axios.get(fETCHcurrentURl);
-        console.log("Data from API:", res.data);
         const convertedData = ConvertToDataGrid(res.data);
-        console.log("Converted data:", convertedData);
+        console.log(convertedData)
         setResponse(convertedData);
-        console.log(response);
       } catch (error) {
         console.error("Error fetching teachers:", error);
       }
