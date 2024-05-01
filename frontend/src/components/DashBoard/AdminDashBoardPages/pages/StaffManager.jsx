@@ -120,7 +120,9 @@ export default function StaffManager({ChangeState,ComponentId , id , teacherID})
         </div>
         <button 
         onClick = {handleSubmit}
-        className=" px-8 py-3 rounded-md hover:bg-orange-600 bg-orange-400">Add Facualty</button>
+        className=" px-8 py-3 rounded-md hover:bg-orange-600 bg-orange-400">Add {teacherID}
+        
+        </button>
       </div>
       <div className="h-[30%] w-[100%] flex justify-center items-center flex-col gap-12">
         {ComponentId === 2 && <AppointFacutaly/>}
