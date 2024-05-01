@@ -167,7 +167,7 @@ function App() {
           }
         />
         <Route
-          path="/article/item/:id"
+          path="/article/item"
           element={
             <>
               <PageTitle title="Article" />

@@ -1,27 +1,14 @@
-import { useParams } from "react-router-dom";
 import  AssocaitionNav  from '../shared/AssocaitionNav.jsx'
 import Footer from "../../Shared/Footer.jsx";
 import Article from "./Article.jsx";
-import { useState } from "react";
+import { useSelector } from 'react-redux';
 export default function ArticleViewMore() {
-  let { id } = useParams();
-  
-  useState(()=>{
-    const fetchArticleById = async ()=>{
-      try {
-        console.log(id)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetchArticleById()
-  },[])
-
-
+  const getCurrentRenderData = useSelector(state=>state.ViewMoreStore.CurrentRenderData)
+  console.log(getCurrentRenderData)
   return (
     <>
            <AssocaitionNav/>
-           <Article id = {id}/>
+           <Article CurrrentData={getCurrentRenderData} />
            <Footer />
     </>
   )

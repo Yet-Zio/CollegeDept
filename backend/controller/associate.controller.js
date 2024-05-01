@@ -4,6 +4,7 @@ import { errorHandler } from "../utils/errorHandler.js";
 import jwt from "jsonwebtoken";
 import Event from "../models/event.model.js";
 import Notification from "../models/associateNotification.model.js";
+import mongoose from 'mongoose';
 
 export const loginAssociate = async (req, res, next) => {
   const { studentID, password } = req.body;
@@ -97,7 +98,9 @@ export const getAllArticle = async (req, res, next) => {
       },
       {
         $project: {
-          _id: "$article._id",
+          firstName: "$firstname",
+          lastName: "$lastname",
+          profileUrl: "$avatar",
           title: "$article.title",
           body: "$article.body",
           date: "$article.date",

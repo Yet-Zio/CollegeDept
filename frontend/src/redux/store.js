@@ -6,6 +6,7 @@ import MenuOptSlice from "./menu/MenuOptSlice";
 import DashBoardOptSlice from "./menu/DashBoardOpt";
 import DashBoardData from "./menu/DashBoardData";
 import userReducer from './user/userSlice.js';
+import CurrentVIewMoreSlice from "./Association/CurrentVIewMoreSlice.js";
 
 
 const persistConfig = {
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   DashBoardOpt: DashBoardOptSlice,
   DashBoardDatas: DashBoardData,
   user: userReducer,
+  ViewMoreStore: CurrentVIewMoreSlice,
 })
 
 
