@@ -131,7 +131,7 @@ export const assignHomework = async(req , res , next) => {
 
     try {
 
-        if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
+        // if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
 
         const {id} = req.params;
 

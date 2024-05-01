@@ -1,11 +1,36 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+
 
 const UploadHomeWork = () => {
+
+
+  const [loading , setLoading] = useState(false)
+
   const [subject, setSubject] = useState('');
   const [details, setDetails] = useState('');
   const [batch, setBatch] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [imageName, setImageName] = useState('');
+
+  const [fetchBatch , setFetchBatch] = useState([]);
+
+  const currentUser = useSelector((state) => state.user.currentUser)
+
+  useEffect(() =>{
+    axios
+    .get("http://localhost:3000/api/student/getBatch")
+    .then((res) =>{
+      setFetchBatch([...res.data]);
+      console.log(batch);
+      console.log(res.data);
+    })
+    .catch((error) =>{
+      console.log(error)
+    })
+  },[])
 
   const handleSubjectChange = (e) => {
     setSubject(e.target.value);
@@ -25,11 +50,31 @@ const UploadHomeWork = () => {
     setImageName(file.name);
   };
 
-  const handleUpload = () => {
-    console.log('Subject:', subject);
-    console.log('Details:', details);
-    console.log('Batch:', batch);
-    console.log('Image:', imageFile);
+
+  
+
+  const handleUpload = async(e) => {
+    e.preventDefault();
+    setLoading(true);
+    await axios.post(`http://localhost:3000/api/teacher/assignHomework/${currentUser._id}`  , {subject: subject , details , batch , image:imageFile } , {headers: {'Content-Type': 'multipart/form-data'}})
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        title: "Success",
+        text: "Homework Uploaded Successfully",
+        icon: "success"
+      });
+      setLoading(false)
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "Something went wrong",
+        icon: "error"
+      });
+      setLoading(false)
+    })
     setSubject('');
     setDetails('');
     setBatch('');
@@ -38,7 +83,9 @@ const UploadHomeWork = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <form className="flex justify-center items-center h-screen" 
+    onSubmit={handleUpload}
+    encType="multipart/form-data">
       <div className="w-96">
         <h1 className="text-2xl font-bold mb-4">Upload Homework</h1>
         <div className="mb-4">
@@ -72,10 +119,13 @@ const UploadHomeWork = () => {
             onChange={handleBatchChange}
           >
             <option value="">Select Batch</option>
-            <option value="Batch A">Batch A</option>
-            <option value="Batch B">Batch B</option>
-            <option value="Batch C">Batch C</option>
-            <option value="Batch D">Batch D</option>
+            {fetchBatch.map((item , index) => {
+              return(
+                <option 
+                key={index}
+                value={item}>{item}</option>
+              )
+            })}
           </select>
         </div>
         <div className="mb-4">
@@ -96,12 +146,12 @@ const UploadHomeWork = () => {
         </div>
         <button
           className="bg-orange-500 mt-9 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg"
-          onClick={handleUpload}
+          type='submit'
         >
-          Upload Homework
+          {loading ? "Loading..." : "Upload Homework"}
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
