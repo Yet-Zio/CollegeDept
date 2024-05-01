@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -10,6 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -36,6 +37,7 @@ const periods = ['Period 1', 'Period 2', 'Period 3', 'Period 4', 'Period 5'];
 const defaultSubjects = ['Math', 'C++', 'English', 'Science', 'History'];
 
 export default function TimeTableUpload() {
+  const [batch, setBatch] = useState('Batch A'); 
   const [timetable, setTimetable] = useState(
     periods.map((period, periodIndex) => ({
       period,
@@ -50,51 +52,61 @@ export default function TimeTableUpload() {
     const updatedTimetable = [...timetable];
     updatedTimetable[periodIndex].subjects[subjectIndex].value = value;
     setTimetable(updatedTimetable);
-    console.log(updatedTimetable)
+    console.log(updatedTimetable);
   };
 
   const handleUpload = () => {
-    console.log(timetable); 
+    console.log(timetable);
+  };
+
+  const handleBatchChange = (event) => {
+    setBatch(event.target.value);
   };
 
   return (
-   <div className="h-[100dvh] w-[100%] flex justify-center items-center">
-    <div className="">
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Period</StyledTableCell>
-            {periods.map((period, index) => (
-              <StyledTableCell key={index} align="center">
-                {period}
-              </StyledTableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {timetable.map((row, periodIndex) => (
-            <StyledTableRow key={periodIndex}>
-              <StyledTableCell component="th" scope="row">
-                {row.period}
-              </StyledTableCell>
-              {row.subjects.map(({ id, value }, subjectIndex) => (
-                <StyledTableCell key={id} align="center">
-                  <TextField
-                    value={value}
-                    onChange={(e) => handleSubjectChange(periodIndex, subjectIndex, e.target.value)}
-                  />
-                </StyledTableCell>
+    <div className="h-[100dvh] w-[100%] flex justify-center items-center">
+      <div className="">
+        <Select value={batch} className='mb-2' onChange={handleBatchChange} displayEmpty>
+          <MenuItem value="Batch A">Batch A</MenuItem>
+          <MenuItem value="Batch B">Batch B</MenuItem>
+        </Select>
+
+        {/* Timetable Table */}
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Period</StyledTableCell>
+                {periods.map((period, index) => (
+                  <StyledTableCell key={index} align="center">
+                    {period}
+                  </StyledTableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {timetable.map((row, periodIndex) => (
+                <StyledTableRow key={periodIndex}>
+                  <StyledTableCell component="th" scope="row">
+                    {row.period}
+                  </StyledTableCell>
+                  {row.subjects.map(({ id, value }, subjectIndex) => (
+                    <StyledTableCell key={id} align="center">
+                      <TextField
+                        value={value}
+                        onChange={(e) => handleSubjectChange(periodIndex, subjectIndex, e.target.value)}
+                      />
+                    </StyledTableCell>
+                  ))}
+                </StyledTableRow>
               ))}
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Button color='success' variant="contained" onClick={handleUpload}>
-        Upload Timetable
-      </Button>
-    </TableContainer>
+            </TableBody>
+          </Table>
+          <Button color="success" variant="contained" onClick={handleUpload}>
+            Upload Timetable
+          </Button>
+        </TableContainer>
+      </div>
     </div>
-   </div>
   );
 }

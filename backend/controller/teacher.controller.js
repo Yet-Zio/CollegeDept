@@ -228,3 +228,28 @@ export const deleteTeacher = async(req , res , next) => {
     }
 
 } 
+import TimeTable from '../models/timeTable.model.js';
+export const uploadTimetable = async (req, res) => {
+    const { batch, monday, tuesday, wednesday, thursday, friday } = req.body;
+
+    try {
+      let timetable = await TimeTable.findOne({ batch });
+  
+      if (!timetable) {
+        timetable = new TimeTable({ batch });
+      }
+      if (monday) timetable.monday = monday;
+      if (tuesday) timetable.tuesday = tuesday;
+      if (wednesday) timetable.wednesday = wednesday;
+      if (thursday) timetable.thursday = thursday;
+      if (friday) timetable.friday = friday;
+  
+      await timetable.save();
+      
+      const message = timetable.isNew ? 'Timetable uploaded successfully' : 'Timetable updated successfully';
+      return res.status(200).json({ message });
+    } catch (error) {
+      console.error('Error uploading timetable:', error);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+};

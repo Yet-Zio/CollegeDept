@@ -5,6 +5,7 @@ import ContactUs from "../models/contactUs.model.js";
 import { errorHandler } from "../utils/errorHandler.js";
 import Homework from "../models/homework.model.js";
 import Announcement from "../models/announcement.model.js";
+import TimeTable from "../models/timeTable.model.js";
 
 
 export const addStudent = async(req , res , next)=>{
@@ -126,3 +127,22 @@ export const getAnnouncement = async(req , res , next) => {
 
 }
 
+
+const getTimetableByBatch = async (req, res) => {
+  const { batch } = req.params; 
+
+  try {
+    const timetable = await TimeTable.findOne({ batch });
+
+    if (!timetable) {
+      return res.status(404).json({ message: 'Timetable not found for the specified batch' });
+    }
+
+    return res.status(200).json({ timetable });
+  } catch (error) {
+    console.error('Error fetching timetable:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export default getTimetableByBatch;
