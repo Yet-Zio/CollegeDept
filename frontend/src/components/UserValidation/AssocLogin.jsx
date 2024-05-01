@@ -12,6 +12,7 @@ import { Link , useNavigate } from "react-router-dom";
 import AssocaitionNav from "../association/shared/AssocaitionNav";
 import Footer from "../Shared/Footer";
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 export default function AssocLogin() {
   const [passInput, setPassInput] = useState(false);
@@ -35,6 +36,11 @@ export default function AssocLogin() {
     })
     .catch((err) =>  {
       console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "Login Failed",
+        icon: "error"
+      });
     })
 
   }

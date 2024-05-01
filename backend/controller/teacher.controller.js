@@ -5,6 +5,9 @@ import leaveLetter from '../models/leaveLetter.model.js';
 import Homework from '../models/homework.model.js';
 import Announcement from '../models/announcement.model.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
+import TimeTable from '../models/timeTable.model.js';
+import { errorHandler } from '../utils/errorHandler.js';
+import StudyMaterial from '../models/studyMaterial.model.js';
 
 export const addTeacher = async(req, res, next) =>{
     const{firstname, lastname,  teacherID, email} = req.body;
@@ -228,9 +231,10 @@ export const deleteTeacher = async(req , res , next) => {
     }
 
 } 
-import TimeTable from '../models/timeTable.model.js';
-export const uploadTimetable = async (req, res) => {
-    const { batch, monday, tuesday, wednesday, thursday, friday } = req.body;
+export const uploadTimetable = async (req, res , next) => {
+    const { batch } = req.body;
+
+    const { monday , tuesday , thursday , wednesday , friday } = req.body.timeTableData;
 
     try {
       let timetable = await TimeTable.findOne({ batch });
@@ -249,7 +253,31 @@ export const uploadTimetable = async (req, res) => {
       const message = timetable.isNew ? 'Timetable uploaded successfully' : 'Timetable updated successfully';
       return res.status(200).json({ message });
     } catch (error) {
-      console.error('Error uploading timetable:', error);
-      return res.status(500).json({ message: 'Internal server error' });
+        next(error);
     }
 };
+
+export const addStudyMaterial = async(req , res , next) => {
+
+    try {
+        
+        const filePath = req.file?.path;
+
+        const uploadFile = await uploadOnCloudinary(filePath)
+
+        const{url , batch} = req.body;
+
+        const addDoc = new StudyMaterial({url , batch , pdf: uploadFile.url})
+
+        await addDoc.save();
+
+        res
+        .status(200)
+        .json("added successfully")
+
+
+    } catch (error) {
+        next(error)
+    }
+
+}

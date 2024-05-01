@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,6 +11,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -36,10 +38,15 @@ const periods = ['Period 1', 'Period 2', 'Period 3', 'Period 4', 'Period 5'];
 
 const defaultSubjects = ['Math', 'C++', 'English', 'Science', 'History'];
 
+const days = ['Monday' , 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday']
+
 export default function TimeTableUpload() {
-  const [batch, setBatch] = useState('Batch A'); 
+  const [batch, setBatch] = useState([]); 
+
+  const [selectedBatch , setSelectedBatch] = useState("");
+
   const [timetable, setTimetable] = useState(
-    periods.map((period, periodIndex) => ({
+    days.map((period, periodIndex) => ({
       period,
       subjects: defaultSubjects.map((subject, subjectIndex) => ({
         id: `${periodIndex}-${subjectIndex}`,
@@ -48,6 +55,8 @@ export default function TimeTableUpload() {
     }))
   );
 
+  console.log("checking" , timetable)
+
   const handleSubjectChange = (periodIndex, subjectIndex, value) => {
     const updatedTimetable = [...timetable];
     updatedTimetable[periodIndex].subjects[subjectIndex].value = value;
@@ -55,20 +64,71 @@ export default function TimeTableUpload() {
     console.log(updatedTimetable);
   };
 
-  const handleUpload = () => {
-    console.log(timetable);
-  };
+  useEffect(() =>{
+    axios
+    .get("http://localhost:3000/api/student/getBatch")
+    .then((res) =>{
+      setBatch([...res.data]);
+      console.log(batch);
+      console.log(res.data);
+    })
+    .catch((error) =>{
+      console.log(error)
+    })
+  },[])
 
-  const handleBatchChange = (event) => {
-    setBatch(event.target.value);
+  const [timeTableData , setTimeTableData] = useState({})
+
+  const handleUpload = async(e) => {
+    e.preventDefault();
+
+    const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+    const dayObjects = {};
+
+    days.forEach((day, index) => {
+        const dayArray = timetable[index].subjects;
+        const dayValues = dayArray.map(subject => subject.value);
+
+        dayObjects[`${day}`] = {
+            firstPeriod: dayValues[0],
+            secondPeriod: dayValues[1],
+            thirdPeriod: dayValues[2],
+            fourthPeriod: dayValues[3],
+            fifthPeriod: dayValues[4]
+        };
+        
+        setTimeTableData(dayObjects)
+    });
+
+
+    await axios.post('http://localhost:3000/api/teacher/uploadTimeTable' , {batch: selectedBatch , timeTableData})
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        title: "Success",
+        text: "Time Table Uploaded Successfully",
+        icon: "success"
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "Something went wrong",
+        icon: "error"
+      });
+    })
   };
 
   return (
     <div className="h-[100dvh] w-[100%] flex justify-center items-center">
       <div className="">
-        <Select value={batch} className='mb-2' onChange={handleBatchChange} displayEmpty>
-          <MenuItem value="Batch A">Batch A</MenuItem>
-          <MenuItem value="Batch B">Batch B</MenuItem>
+        <Select className='mb-2' onChange={(e) => {setSelectedBatch(e.target.value)}} displayEmpty>
+          {batch.map((item , index) => {
+            return(
+              <MenuItem key={index} value={item}>{item}</MenuItem>
+            )
+          })}
         </Select>
 
         {/* Timetable Table */}

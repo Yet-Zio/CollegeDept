@@ -4,16 +4,42 @@ import {
   EyeSlash,
   ChalkboardTeacher
 } from "@phosphor-icons/react/dist/ssr";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Nav from "../Shared/Nav";
 import Footer from "../Shared/Footer";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { login } from "../../redux/user/userSlice";
+import { useDispatch } from "react-redux";
 
 export default function TeacherLogin() {
   const [passInput, setPassInput] = useState(false);
   const [isPassHidden, setisPassHidden] = useState(true);
 
-  const handleLogin = (e) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [formData , setFormData] = useState({
+    teacherID: "" , 
+    password: ""
+  })
+
+  const handleLogin = async(e) => {
     e.preventDefault()
+    await axios.post("http://localhost:3000/api/teacher/teacherSignin", formData)
+    .then((res) => {
+      console.log(res)
+      dispatch(login(res.data))
+      navigate('/TeacherDashBoard')
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "Login Failed",
+        icon: "error"
+      });
+    })
   }
 
   const setTitle = () => {
@@ -44,10 +70,11 @@ export default function TeacherLogin() {
           Teacher ID
         </span>
         <input
+          onChange={(e) => {setFormData({...formData , teacherID: e.target.value})}}
           className="useinter mt-2 w-full h-10 outline-0 bg-transparent border-2 border-gray-500/15 rounded-lg p-2 hover:border-orange-400 focus:border-orange-600 text-sm text-white"
           name="teacherid"
           id="teacherid"
-          placeholder="TEACHERXXXXXX"
+          placeholder="12345XXXX"
         ></input>
         <span className="useinter mt-3 text-white font-sans font-medium">
           Password
@@ -60,6 +87,7 @@ export default function TeacherLogin() {
           <input
             type={isPassHidden ? "password" : "text"}
             className="useinter bg-transparent ms-2 h-full w-4/5 outline-0 text-sm text-white"
+            onChange={(e) => {setFormData({...formData , password: e.target.value})}}
             onFocus={() => {
               setPassInput(!passInput);
             }}

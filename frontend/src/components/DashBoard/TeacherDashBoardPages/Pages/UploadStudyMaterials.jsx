@@ -1,10 +1,28 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const UploadStudyMaterials = () => {
+  const [batch , setBatch] = useState([]);
   const [pdfFile, setPdfFile] = useState(null);
   const [pdfFileName, setPdfFileName] = useState('');
   const [url, setUrl] = useState('');
   const [selectedBatch, setSelectedBatch] = useState('');
+
+  const [loading , setLoading ] = useState(false);
+
+  useEffect(() =>{
+    axios
+    .get("http://localhost:3000/api/student/getBatch")
+    .then((res) =>{
+      setBatch([...res.data]);
+      console.log(batch);
+      console.log(res.data);
+    })
+    .catch((error) =>{
+      console.log(error)
+    })
+  },[])
 
   const handlePdfChange = (e) => {
     const file = e.target.files[0];
@@ -16,28 +34,46 @@ const UploadStudyMaterials = () => {
     setUrl(e.target.value);
   };
 
-  const handlePdfUpload = () => {
-    console.log('Uploading PDF:', pdfFile, 'for batch:', selectedBatch);
-    setPdfFile(null);
-    setPdfFileName('');
-  };
-
-  const handleUrlUpload = () => {
-    console.log('Uploading URL:', url, 'for batch:', selectedBatch);
-    setUrl('');
-  };
+ 
 
   const handleBatchChange = (e) => {
     setSelectedBatch(e.target.value);
   };
 
+  const handleUpload = async(e) => {
+
+    e.preventDefault();
+    setLoading(true)
+    await axios.post('http://localhost:3000/api/teacher/addStudyMaterial' , {pdf: pdfFile ,url : url , batch: selectedBatch}  , {headers: {'Content-Type': 'multipart/form-data'}})
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        title: "Success",
+        text: "Uploaded SuccessFully",
+        icon: "success"
+      });
+      setLoading(false)
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "Something went wrong",
+        icon: "error"
+      });
+      setLoading(false)
+    })
+  }
+
   return (
-    <>
-        <div className="h-[100dvh] w-[100%] flex justify-center items-center">
+    
+        <form 
+        onSubmit={handleUpload} encType="multipart/form-data"
+        className="h-[100dvh] w-[100%] flex justify-center items-center">
             <div className="w-[40%]">
             <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-4">Upload Study Material</h1>
-      <div className="mb-4">
+      <div className="mb-4" >
         <label htmlFor="pdf" className="block mb-2 text-lg font-medium">Upload PDF:</label>
         <div className="flex items-center space-x-2">
           <input
@@ -52,14 +88,7 @@ const UploadStudyMaterials = () => {
           </label>
           <span className="text-gray-600">{pdfFileName}</span>
         </div>
-        {pdfFile && (
-          <button
-            className="bg-orange-400 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg"
-            onClick={handlePdfUpload}
-          >
-            Upload PDF
-          </button>
-        )}
+        
       </div>
       <div className="mb-4">
         <label htmlFor="url" className="block mb-2 text-lg font-medium">Upload URL:</label>
@@ -71,12 +100,7 @@ const UploadStudyMaterials = () => {
           onChange={handleUrlChange}
           placeholder="Enter URL here..."
         />
-        <button
-          className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg mt-2"
-          onClick={handleUrlUpload}
-        >
-          Upload URL
-        </button>
+        
       </div>
       <div className="mb-4">
         <label htmlFor="batch" className="block mb-2 text-lg font-medium">Select Batch:</label>
@@ -87,17 +111,26 @@ const UploadStudyMaterials = () => {
           onChange={handleBatchChange}
         >
           <option value="">Select Batch</option>
-          <option value="Batch A">Batch A</option>
-          <option value="Batch B">Batch B</option>
-          <option value="Batch C">Batch C</option>
-          <option value="Batch D">Batch D</option>
+          {batch.map((item , index) => {
+            return(
+              <option key={index} value={item}>{item}</option>
+            )
+          })}
         </select>
       </div>
+      <button
+      type= 'submit'
+          className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg mt-2"
+          
+        >
+          {loading ? "Loading..." : "Upload"}
+        </button>
     </div>
             </div>
-        </div>
+            
+        </form>
     
-    </>
+    
   );
 };
 
