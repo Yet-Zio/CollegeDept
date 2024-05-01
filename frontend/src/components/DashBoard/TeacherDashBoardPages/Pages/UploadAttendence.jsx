@@ -1,13 +1,33 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const UploadAttendance = () => {
   const [batch, setBatch] = useState('');
+
+  const [fetchStudent , setFetchStudent] = useState([])
+
+  const [fetchBatch , setFetchBatch] = useState([]);
   const [student, setStudent] = useState('');
   const [presentCount, setPresentCount] = useState('');
   const [absentCount, setAbsentCount] = useState('');
 
   const handleBatchChange = (e) => {
     setBatch(e.target.value);
+    let batch = e.target.value ; 
+            
+            
+    setFetchStudent([]);
+
+    axios.post("http://localhost:3000/api/student/getStudent" , {batch})
+    .then((res) => {
+    setFetchStudent(res.data);
+    console.log(res)
+    console.log(student)
+    })
+    .catch((err) => {
+    console.log(err)
+    })
   };
 
   const handleStudentChange = (e) => {
@@ -22,16 +42,48 @@ const UploadAttendance = () => {
     setAbsentCount(e.target.value);
   };
 
-  const handleSubmit = () => {
-    console.log('Batch:', batch);
-    console.log('Student:', student);
-    console.log('Present Count:', presentCount);
-    console.log('Absent Count:', absentCount);
+  const handleSubmit = async(e) => {
+
+    e.preventDefault();
+
+    console.log(student , presentCount , absentCount  )
+    await axios.post('http://localhost:3000/api/teacher/uploadAttendance' , {studentID: student , present: presentCount , absent: absentCount})
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        title: "Success",
+        text: "Attendance Uploaded Successfully",
+        icon: "success"
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "Something went wrong",
+        icon: "error"
+      });
+    })
+
+
     setBatch('');
     setStudent('');
     setPresentCount('');
     setAbsentCount('');
   };
+
+  useEffect(() =>{
+    axios
+    .get("http://localhost:3000/api/student/getBatch")
+    .then((res) =>{
+      setFetchBatch([...res.data]);
+      
+      console.log(res.data);
+    })
+    .catch((error) =>{
+      console.log(error)
+    })
+  },[])
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -46,10 +98,13 @@ const UploadAttendance = () => {
             onChange={handleBatchChange}
           >
             <option value="">Select Batch</option>
-            <option value="Batch A">Batch A</option>
-            <option value="Batch B">Batch B</option>
-            <option value="Batch C">Batch C</option>
-            <option value="Batch D">Batch D</option>
+            {fetchBatch.map((item , index) => {
+              return(
+                <option 
+                key={index}
+                value={item}>{item}</option>
+              )
+            })}
           </select>
         </div>
         <div className="mb-4">
@@ -61,11 +116,13 @@ const UploadAttendance = () => {
             onChange={handleStudentChange}
           >
             <option value="">Select Student</option>
-            <option value="Student 1">Student 1</option>
-            <option value="Student 2">Student 2</option>
-            <option value="Student 3">Student 3</option>
-            <option value="Student 4">Student 4</option>
-            {/* Add more students as needed */}
+            {fetchStudent.map((item , index) => {
+              return(
+                <option
+                key={index}
+                value={item.studentID}>{item.firstname + " " + item.lastname}</option>
+              )
+            })}
           </select>
         </div>
         <div className="mb-4">

@@ -1,5 +1,5 @@
 import express from "express";
-import { addAnnouncement, addStudyMaterial, addTeacher, applyLeave, assignHomework, deleteTeacher, getTeacher, setFaculty, teacherSignin, updateTeacher, uploadTimetable } from "../controller/teacher.controller.js";
+import { addAnnouncement, addStudyMaterial, addTeacher, applyLeave, assignHomework, deleteTeacher, getTeacher, setFaculty, teacherSignin, updateTeacher, uploadAttendance, uploadTimetable } from "../controller/teacher.controller.js";
 import { upload } from "../utils/multer.js";
 
 const router = express.Router();
@@ -15,6 +15,8 @@ router.post('/updateTeacher' , updateTeacher);
 router.delete('/deleteTeacher/:id' , deleteTeacher)
 router.post('/uploadTimeTable' , uploadTimetable)
 router.post('/addStudyMaterial' , upload.single("pdf") , addStudyMaterial)
+
+router.post('/uploadAttendance' , uploadAttendance);
 
 
 export default router;
