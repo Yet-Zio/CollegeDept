@@ -5,16 +5,16 @@ import { useEffect, useState } from "react";
 import UpdateProfile from "../../Shared/Pages/UpdateProfile";
 import Profile from "../../Shared/Pages/Profile";
 
-const StudentProfileUrl = "http://localhost:3000/api/associate/updateAssociate/";
-export default function TeacherProfile({Option}) {
+const TeacherCurrentProfile = "http://localhost:300/api/somethig/something/updatehere"
+export default function TeacherProfile() {
     const [isEditProfile,setEditComponent] = useState(false);
     const [CurrentURL, SetCurrentURL] = useState();
     useEffect(()=>{
-      if(Option ==2 ) SetCurrentURL(StudentProfileUrl); 
+    SetCurrentURL(TeacherCurrentProfile); 
     },[])
   return (
     <>
-       {isEditProfile &&  <UpdateProfile updateState={setEditComponent} URL = {CurrentURL}/> }
+       {isEditProfile &&  <UpdateProfile updateState={setEditComponent} userType={"teacher"} URL = {CurrentURL}/> }
        {!isEditProfile && <Profile updateState={setEditComponent} /> }
     </>
   )

@@ -32,7 +32,7 @@ const TeacherSideBarButtons = [
       id:2,
       ButtonName:"Profile",
       NavigateTo: "/DasbBoard/Student/Profile",
-      Content: <TeacherProfile/>,
+      Content: <TeacherProfile Option={3}/>,
       Logo: <User weight="bold" size={22} />,
   },
   {

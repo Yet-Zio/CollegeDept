@@ -5,10 +5,9 @@ import axios from "axios";
 import { login } from "../../../../redux/user/userSlice";
 import Swal from 'sweetalert2'
 // eslint-disable-next-line react/prop-types
-export default function UpdateProfile({updateState ,URL}) {
+export default function UpdateProfile({updateState,userType ,URL}) {
 
   const currentUser = useSelector((state) => state.user.currentUser);
-
   const [firstname, setFirstName] = useState(currentUser.firstname || "");
   const [lastname, setLastName] = useState(currentUser.lastname || "");
   const [gender, setSex] = useState(currentUser.gender || "");
@@ -16,9 +15,7 @@ export default function UpdateProfile({updateState ,URL}) {
   
 
   console.log(firstname , lastname , gender , dob)
-
   const dispatch = useDispatch();
-
   const handleSubmit = async(event) => {
     event.preventDefault();
 

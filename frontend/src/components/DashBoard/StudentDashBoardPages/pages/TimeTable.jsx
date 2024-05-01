@@ -1,13 +1,13 @@
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const url = "http://localhost:3000/api/student/fetchTimeTable/";
 
@@ -22,10 +22,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
@@ -37,8 +37,9 @@ export default function TimeTable() {
   useEffect(() => {
     const fetchTimeTable = async () => {
       try {
-        const res = await axios.get(`${url+batch}`);
+        const res = await axios.get(`${url + batch}`);
         setResponse(res.data);
+        console.log(res.data)
       } catch (error) {
         console.log(error);
       }
@@ -48,7 +49,7 @@ export default function TimeTable() {
 
   return (
     <>
-      <div className='w-[100%] h-[100dvh] flex justify-center items-center'>
+      <div className="w-[100%] h-[100dvh] flex justify-center items-center">
         <div className="w-[80%] h-[100%] flex justify-center items-center">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -64,17 +65,32 @@ export default function TimeTable() {
               </TableHead>
               <TableBody>
                 {response !== null &&
-                  Object.keys(response).map(day => (
+                  Object.keys(response).map((day) => (
                     <StyledTableRow key={day}>
                       <StyledTableCell component="th" scope="row">
                         {day}
                       </StyledTableCell>
                       {response[day].map((period, index) => (
-                        <StyledTableCell key={index} align="right">{period.firstPeriod}</StyledTableCell>
+                        <React.Fragment key={index}>
+                          <StyledTableCell align="right">
+                            {period.firstPeriod}
+                          </StyledTableCell>
+                          <StyledTableCell align="right">
+                            {period.secondPeriod}
+                          </StyledTableCell>
+                          <StyledTableCell align="right">
+                            {period.thirdPeriod}
+                          </StyledTableCell>
+                          <StyledTableCell align="right">
+                            {period.fourthPeriod}
+                          </StyledTableCell>
+                          <StyledTableCell align="right">
+                            {period.fifthPeriod}
+                          </StyledTableCell>
+                        </React.Fragment>
                       ))}
                     </StyledTableRow>
-                  ))
-                }
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>
