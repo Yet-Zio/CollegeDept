@@ -18,6 +18,7 @@ const teacherSchema = new mongoose.Schema({
     teacherID:{
         type: Number,
         required: true,
+        unique: true
     },
     email: {
         type: String,

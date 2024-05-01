@@ -34,7 +34,7 @@ const themes = {
     id:2,
     ButtonName:"Staff Management",
     NavigateTo: "Staff Mangement",
-    Content:<StaffMangerLayout/>,
+    Content:<StaffMangerLayout id={'admin'}/>,
     Logo: <PersonAddAlt1Icon/>
 },
   {

@@ -62,9 +62,17 @@ export const getTeacher = async(req, res, next) =>{
     }
 }
 
+// const {email} = req.params.email ; 
+
+    // const verifyAdmin = await Teacher.findOne({email});
+
+    // if(verifyAdmin.isHOD == false) next(errorHandler(401 , "Unauthorized"))
+
 export const setFaculty = async (req , res , next) => {
 
     const {batch, teacherID} = req.body ; 
+
+    
 
     // const {email} = req.params.email ; 
 
@@ -80,6 +88,7 @@ export const setFaculty = async (req , res , next) => {
         );
 
         res
+        .status(200)
         .json({message:"Faculty Set SuccessFully"});
     } catch (error) {
         next(error);
@@ -167,4 +176,42 @@ export const addAnnouncement = async(req , res , next) => {
     }
 
 }
+
+export const updateTeacher = async (req, res, next) => {
+    const { firstname, lastname, email, teacherID } = req.body;
+
+    try {
+        
+        if (!teacherID) {
+            return res.status(400).json({ error: "teacherID is required." });
+        }
+
+        
+        let teacher = await Teacher.findOne({ teacherID });
+
+    
+        if (!teacher) {
+            return res.status(404).json({ error: "Teacher not found." });
+        }
+
+        if (firstname) {
+            teacher.firstname = firstname;
+        }
+        if (lastname) {
+            teacher.lastname = lastname;
+        }
+        if (email) {
+            teacher.email = email;
+        }
+
+        await teacher.save()
+
+        res
+        .status(200)
+        .json("updated successfully");
+    } catch (error) {
+        next(error);
+        
+    }
+};
 

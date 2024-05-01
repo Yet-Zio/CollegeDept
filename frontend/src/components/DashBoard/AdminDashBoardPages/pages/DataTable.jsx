@@ -6,6 +6,7 @@ import {  useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Swal from "sweetalert2";
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "firstName", headerName: "First Name", width: 130 },
@@ -16,7 +17,7 @@ const columns = [
 ];
 
 
-export default function Table({ChangeState,fETCHcurrentURl}) {
+export default function Table({ChangeState,fETCHcurrentURl , id , teacherID}) {
   const ConvertToDataGrid = (data) => {
     return data.map((item, index) => {
       return {
@@ -32,6 +33,44 @@ export default function Table({ChangeState,fETCHcurrentURl}) {
   
   const [response, setResponse] = useState([]);
   const [selectedOpton, setSelectedOption] = useState();
+
+  const [formData , setFormData] = useState({
+    firstname: "" , 
+    lastname: "",
+    email: ""
+  })
+
+  const handleUpdateTeacher  =  async(teacherID) => {
+
+    console.log(formData)
+
+    console.log("checking ", teacherID)
+
+    await axios.post('http://localhost:3000/api/teacher/updateTeacher' , {firstname: formData.firstname , lastname: formData.lastname , email: formData.email , teacherID: teacherID})
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Teacher Updated Successfully",
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Teacher Added Successfully",
+      });
+    })
+
+  }
+
+  const handleEdit =  async(selectedOpton) => {
+    if(id === 'admin' && teacherID === 'teacher'){
+      handleUpdateTeacher(selectedOpton.teacherId);
+    }
+  }
   
   useEffect(() => {
 
@@ -63,23 +102,28 @@ export default function Table({ChangeState,fETCHcurrentURl}) {
           }}
         className="mb-5">  <ArrowBackIcon/></button>
           <TextField
+            onChange={(e) => {setFormData({...formData , firstname: e.target.value})}}
             helperText="Update Facualty Frist Name "
             id="demo-helper-text-aligned"
             label={`${selectedOpton?selectedOpton.firstName:"FirstName"}`}
           />
           <TextField
+          onChange={(e) => {setFormData({...formData , lastname: e.target.value})}}
             helperText="Update Facualty Last Name "
             id="demo-helper-text-aligned-no-helper"
             label={`${selectedOpton?selectedOpton.lastName:"FirstName"}`}
           />
           <TextField
+          onChange={(e) => {setFormData({...formData , email: e.target.value})}}
             helperText="Update Facualty Email "
             id="demo-helper-text-aligned-no-helper"
             label={`${selectedOpton?selectedOpton.email:"FirstName"}`}
           />
         </div>
         <div className="w-[20%] gap-5 flex justify-center items-center h-[90%]">
-        <Button variant="contained" color="success" style={{marginBottom: "15px"}} endIcon={<EditIcon />}>
+        <Button 
+        onClick={() => handleEdit(selectedOpton)}
+        variant="contained" color="success" style={{marginBottom: "15px"}} endIcon={<EditIcon />}>
             Edit
           </Button>
           <Button variant="contained" color="error" style={{marginBottom: "15px"}} startIcon={<DeleteIcon />}>
