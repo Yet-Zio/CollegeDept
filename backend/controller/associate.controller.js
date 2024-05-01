@@ -142,3 +142,56 @@ export const getNotification = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const updateAssociateAdmin = async (req, res, next) => {
+  const { firstname, lastname, email, studentID } = req.body;
+
+  try {
+      
+      if (!studentID) {
+          return res.status(400).json({ error: "ID is required." });
+      }
+
+      
+      let associate = await Associate.findOne({ studentID });
+
+  
+      if (!associate) {
+          return res.status(404).json({ error: "Associate not found." });
+      }
+
+      if (firstname) {
+          associate.firstname = firstname;
+      }
+      if (lastname) {
+          associate.lastname = lastname;
+      }
+      if (email) {
+          associate.email = email;
+      }
+
+      await associate.save()
+
+      res
+      .status(200)
+      .json("updated successfully");
+  } catch (error) {
+      next(error);
+      
+  }
+};
+
+export const deleteAssociate = async(req , res , next) => {
+
+  try {
+      
+      await Associate.findOneAndDelete({studentID : req.params.id})
+      res.status(200)
+      .json("Associate Deleted Successfully")
+
+  } catch (error) {
+      next(error)
+  }
+
+} 

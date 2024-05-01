@@ -194,3 +194,20 @@ export const addTeacherNotification = async(req , res , next) => {
     }
 
 }
+
+export const getAssociate = async(req, res, next) => {
+
+
+    try {
+        
+        const fetchAssociate = await Associate.find().select('-password -article -gender -dob -avatar');
+        res
+        .status(200)
+        .json(fetchAssociate);
+
+
+    } catch (error) {
+        next(error)
+    }
+
+}

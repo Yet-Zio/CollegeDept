@@ -5,6 +5,7 @@ import StaffManager from "../pages/StaffManager";
 import AssocationTable from "../pages/AssociationTable";
 
 const GetTeacherURL = "http://localhost:3000/api/teacher/getTeacher";
+const getAssociateURL = "http://localhost:3000/api/admin/getAssociate";
 export default function StaffMangerLayout({id}) {
   const [itemid, setItemId] = useState(0)
   const [currentURL, SetCurrentURL] = useState();
@@ -15,6 +16,7 @@ export default function StaffMangerLayout({id}) {
     }
     if(itemid===3)
     console.log(itemid)
+    SetCurrentURL(getAssociateURL);
   },[itemid])
   return (
     <>

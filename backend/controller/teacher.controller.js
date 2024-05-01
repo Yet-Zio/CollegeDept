@@ -215,3 +215,16 @@ export const updateTeacher = async (req, res, next) => {
     }
 };
 
+export const deleteTeacher = async(req , res , next) => {
+
+    try {
+        
+        await Teacher.findOneAndDelete({teacherID : req.params.id})
+        res.status(200)
+        .json("Teacher Deleted Successfully")
+
+    } catch (error) {
+        next(error)
+    }
+
+} 

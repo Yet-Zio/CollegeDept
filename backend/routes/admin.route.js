@@ -1,5 +1,5 @@
 import express from "express";
-import { addAssociate, addAssociateNotification, addEvent, addNews, addTeacherNotification, getContactUs, getLeaveLetter, getNews, manageLeaveLetter } from "../controller/admin.controller.js";
+import { addAssociate, addAssociateNotification, addEvent, addNews, addTeacherNotification, getAssociate, getContactUs, getLeaveLetter, getNews, manageLeaveLetter } from "../controller/admin.controller.js";
 import { upload } from "../utils/multer.js";
 
 const router = express.Router(); 
@@ -13,6 +13,7 @@ router.post('/addEvent/:id', upload.single("image") ,addEvent);
 router.get('/getContact', getContactUs);
 router.get('/getNews', getNews);
 router.get('/getLeaveLetter', getLeaveLetter);
+router.get('/getAssociate', getAssociate);
 
 
 export default router;

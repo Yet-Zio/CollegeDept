@@ -7,6 +7,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Swal from "sweetalert2";
+
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "firstName", headerName: "First Name", width: 130 },
@@ -24,7 +25,7 @@ export default function Table({ChangeState,fETCHcurrentURl , id , teacherID}) {
         id: index + 1,
         firstName: item.firstname,
         lastName: item.lastname,
-        teacherId: item.teacherID,
+        teacherId: (teacherID === 'teacher' ? item.teacherID : item.studentID),
         email: item.email,
         batchId: item.batch.length === 0 ? "empty" : item.batch[0].batch,
       };
@@ -42,9 +43,15 @@ export default function Table({ChangeState,fETCHcurrentURl , id , teacherID}) {
 
   const handleUpdateTeacher  =  async(teacherID) => {
 
-    console.log(formData)
-
-    console.log("checking ", teacherID)
+    if (!formData.firstname && !formData.lastname && !formData.email) {
+  
+      Swal.fire({
+        title: "Error",
+        text: "Nothing To Update",
+        icon: "error"
+      });
+      return; 
+    }
 
     await axios.post('http://localhost:3000/api/teacher/updateTeacher' , {firstname: formData.firstname , lastname: formData.lastname , email: formData.email , teacherID: teacherID})
     .then((res) => {
@@ -58,17 +65,104 @@ export default function Table({ChangeState,fETCHcurrentURl , id , teacherID}) {
     .catch((err) => {
       console.log(err)
       Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: "Teacher Added Successfully",
+        icon: "error",
+        title: "Failed",
+        text: "Something went wrong",
       });
     })
 
   }
 
+  const handleDeleteTeacher = async(id) => {
+
+    axios.delete(`http://localhost:3000/api/teacher/deleteTeacher/${id}`)
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Teacher Deleted  Successfully",
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        icon: "error",
+        title: "Failed",
+        text: "Something went wrong",
+      });
+    })
+
+  }
+
+  const handleUpdateAssociate = async(studentID) => {
+
+    if (!formData.firstname && !formData.lastname && !formData.email) {
+  
+      Swal.fire({
+        title: "Error",
+        text: "Nothing To Update",
+        icon: "error"
+      });
+      return; 
+    }
+
+    await axios.post('http://localhost:3000/api/associate/updateAssociate' , {firstname: formData.firstname , lastname: formData.lastname , email: formData.email , studentID: studentID})
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Associate Updated Successfully",
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        icon: "error",
+        title: "Failed",
+        text: "Something went wrong",
+      });
+    })
+
+  };
+
+  const handleDeleteAssociate = async(studentID) => {
+
+    axios.delete(`http://localhost:3000/api/associate/deleteAssociate/${studentID}`)
+    .then((res) => {
+      console.log(res)
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Associate Deleted  Successfully",
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        icon: "error",
+        title: "Failed",
+        text: "Something went wrong",
+      });
+    })
+  };
+
   const handleEdit =  async(selectedOpton) => {
     if(id === 'admin' && teacherID === 'teacher'){
       handleUpdateTeacher(selectedOpton.teacherId);
+    }
+    if(id === 'admin' && teacherID === 'associate'){
+      handleUpdateAssociate(selectedOpton.teacherId);
+    }
+  }
+
+  const handleDelete = async(selectedOpton) => {
+    if(id === 'admin' && teacherID === 'teacher'){
+      handleDeleteTeacher(selectedOpton.teacherId);
+    }
+    if(id === 'admin' && teacherID === 'associate'){
+      handleDeleteAssociate(selectedOpton.teacherId);
     }
   }
   
@@ -126,7 +220,9 @@ export default function Table({ChangeState,fETCHcurrentURl , id , teacherID}) {
         variant="contained" color="success" style={{marginBottom: "15px"}} endIcon={<EditIcon />}>
             Edit
           </Button>
-          <Button variant="contained" color="error" style={{marginBottom: "15px"}} startIcon={<DeleteIcon />}>
+          <Button
+          onClick={() => handleDelete(selectedOpton)}
+          variant="contained" color="error" style={{marginBottom: "15px"}} startIcon={<DeleteIcon />}>
             Delete
           </Button>
         </div>
