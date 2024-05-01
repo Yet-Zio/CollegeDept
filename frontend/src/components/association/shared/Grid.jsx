@@ -11,7 +11,7 @@ export default function Grid({ContentItem}) {
   return (
     <>
     <div className="flex justify-center items-center">
-        <div className="h-auto w-[100%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 bg-[#0b0b0b] ps-11 pe-11 pt-4 pb-4">
+        <div className="h-auto w-[100%] min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 bg-[#0b0b0b] ps-11 pe-11 pt-4 pb-4">
           {ContentItem.map((item) => {
             return (
               <div

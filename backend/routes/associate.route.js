@@ -1,5 +1,5 @@
 import express from "express";
-import { addArticle, countAssociate, getArticle, getEvent, getNotification, loginAssociate, updateAssociate } from "../controller/associate.controller.js";
+import { addArticle, countAssociate, getAllArticle, getArticle, getEvent, getNotification, loginAssociate, updateAssociate } from "../controller/associate.controller.js";
 import { upload } from "../utils/multer.js";
 import { verifyUser } from "../utils/verifyUser.js";
 
@@ -12,6 +12,8 @@ router.post('/updateAssociate/:id', updateAssociate);
 router.post('/addArticle/:id' ,addArticle)
 
 router.get('/count/:id' , countAssociate)
+
+router.get('/getAllArticle' , getAllArticle)
 
 router.get('/getArticle/:id' , getArticle)
 
