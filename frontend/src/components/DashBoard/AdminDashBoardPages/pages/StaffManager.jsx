@@ -86,17 +86,17 @@ export default function StaffManager({ChangeState,ComponentId , id , teacherID})
             ChangeState(0)
           }}
         className="mb-5">  <ArrowBackIcon/></button>
-        <div className="text-xl font-semibold">Add Facualty</div>
+        <div className="text-xl font-semibold">Add {teacherID}</div>
         <div className=" flex gap-16">
         <TextField
-          helperText="Teacher Frist Name "
+          helperText={`${teacherID} First Name`}
           id="demo-helper-text-aligned"
           label={"FirstName"}
           onChange={(e) => {setFormData({...formData , firstname: e.target.value})}}
         />
 
         <TextField
-          helperText="Teacher Frist Name "
+          helperText={`${teacherID} Last Name`}
           id="demo-helper-text-aligned"
           label={"LastName"}
           onChange={(e) => {setFormData({...formData , lastname: e.target.value})}}
@@ -105,14 +105,14 @@ export default function StaffManager({ChangeState,ComponentId , id , teacherID})
 
         <div className="flex gap-16">
         <TextField
-          helperText="Teacher  EmailId "
+          helperText={`${teacherID} Email`}
           id="demo-helper-text-aligned"
           label={"Email"}
           onChange={(e) => {setFormData({...formData , email: e.target.value})}}
         />
 
         <TextField
-          helperText="Teacher Id "
+          helperText={`${teacherID} Id`}
           id="demo-helper-text-aligned"
           label={"ID"}
           onChange={(e) => {setFormData({...formData , id: e.target.value})}}
