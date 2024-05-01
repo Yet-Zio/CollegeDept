@@ -128,8 +128,8 @@ export const getAnnouncement = async(req , res , next) => {
 }
 
 
-const getTimetableByBatch = async (req, res) => {
-  const { batch } = req.params; 
+export const getTimetableByBatch = async (req, res) => {
+ const { batch } = req.params;
 
   try {
     const timetable = await TimeTable.findOne({ batch });
@@ -138,11 +138,20 @@ const getTimetableByBatch = async (req, res) => {
       return res.status(404).json({ message: 'Timetable not found for the specified batch' });
     }
 
-    return res.status(200).json({ timetable });
+    // Extracting only the periods for each day without additional fields
+    const simplifiedTimetable = {
+      monday: timetable.monday,
+      tuesday: timetable.tuesday,
+      wednesday: timetable.wednesday,
+      thursday: timetable.thursday,
+      friday: timetable.friday
+    };
+
+    return res.status(200).json(simplifiedTimetable);
   } catch (error) {
     console.error('Error fetching timetable:', error);
     return res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-export default getTimetableByBatch;
+

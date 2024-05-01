@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import getTimetableByBatch, { addStudent, contactUs, getAnnouncement, getBatch, getHomework, getStudent} from "../controller/student.controller.js";
+import { addStudent, contactUs, getAnnouncement, getBatch, getHomework, getStudent, getTimetableByBatch} from "../controller/student.controller.js";
 import { verifyUser } from "../utils/verifyUser.js";
 
 const router = express.Router(); 
