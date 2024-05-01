@@ -1,5 +1,6 @@
 import benzi from '../../../../assets/hikigaya.jpeg'
 export default function HomeWork() {
+  const url = "http://localhost:3000/api/student/getHomework/Batch A";
   return (
     <>
     <div className="h-auto overflow-hidden w-[100%] ">

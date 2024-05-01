@@ -92,11 +92,10 @@ export const getStudent = async (req , res , next) => {
 }
 
 export const getHomework = async(req , res , next) => {
+    const { batch } = req.params;
 
     try {
-        
-        const fetchHomework = await Homework.find();
-
+      const fetchHomework = await Homework.find({ batch });
         res
         .status(200)
         .json(fetchHomework);
