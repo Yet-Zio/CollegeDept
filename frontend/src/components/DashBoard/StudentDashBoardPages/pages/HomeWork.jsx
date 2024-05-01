@@ -16,8 +16,8 @@ export default function HomeWork() {
         </div>
     </div>
     <footer className="mb-5 text-sm text-black-500 dark:text-black-400"><p>Uploaded on <time dateTime="2017-03-03 19:00">March 3, 2017</time></p></footer>
-    <p className="mb-2 text-black-500 dark:text-black-400">This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems.</p>
-    <p className="mb-3 text-black-500 dark:text-black-400">It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain.</p>
+    <p className="mb-2 text-black-500 dark:text-black-400">This ived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to te st the waterproofing.... No problems.</p>
+    <p className="mb-3 text-black-500 dark:text-black-400">It is obviously not the ss my third Invicta Pro Diver. They are just fantastic value for money. This one arriame build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain.</p>
 
 </article>
 

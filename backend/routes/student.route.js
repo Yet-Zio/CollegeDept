@@ -10,6 +10,6 @@ router.get('/getBatch', getBatch);
 router.get('/getHomework/:batch', getHomework);
 router.post('/getStudent', getStudent);
 router.post('/getAnnouncement/:batch', getAnnouncement);
-router.get('/fetchTimeTable/:batch' , getTimetableByBatch )
+router.post('/getStudyMaterial/:batch', );
 
 export default router;

@@ -17,6 +17,7 @@ import UploadHomeWork from './TeacherDashBoardPages/Pages/UploadHomeWork';
 import UploadStudyMaterials from './TeacherDashBoardPages/Pages/UploadStudyMaterials';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
+import AddStudents from './TeacherDashBoardPages/Pages/AddStudents';
 const themes = {
     bgColor: "bg-gray-200"
 }
@@ -31,47 +32,54 @@ const TeacherSideBarButtons = [
   {
       id:2,
       ButtonName:"Profile",
-      NavigateTo: "/DasbBoard/Student/Profile",
+      NavigateTo: "/Profile",
       Content: <TeacherProfile Option={3}/>,
       Logo: <User weight="bold" size={22} />,
   },
   {
     id:3,
+    ButtonName:"Add Student",
+    NavigateTo: "/Add Studetn",
+    Content: <AddStudents/>,
+    Logo: <User weight="bold" size={22} />,
+},
+  {
+    id:4,
     ButtonName:"Upload Time Table",
     NavigateTo: "Upload Time Table",
     Content:<TimeTableUPload/>,
     Logo: <BackupTableIcon weight="bold" size={22} />,
 },
 {
-  id:4,
+  id:5,
   ButtonName:"UploadStudy Material",
   NavigateTo: "Upload Study Material",
   Content:<UploadStudyMaterials/>,
   Logo: <LibraryBooksIcon weight="bold" size={22} />,
 },
   {
-      id:5,
+      id:6,
       ButtonName:"Upload Homework",
       NavigateTo: "Upload Homework",
       Content:<UploadHomeWork/>,
       Logo: <Notebook weight="bold" size={22} />,
   },
   {
-      id:6,
+      id:7,
       ButtonName:"Upload Attendance",
       NavigateTo: "Upload Attendance",
       Content:  <UploadAttendence/> ,
       Logo: <CoPresentSharpIcon fontSize="medium"/>
   },
 {
-    id:7,
+    id:8,
     ButtonName:"Request Leave",
     NavigateTo: "Request Leave",
     Content: <LeaveLetter/>,
     Logo: <LocalPostOfficeIcon fontSize="medium"/>
 },
   {
-    id:8,
+    id:9,
     ButtonName:"Notifications",
     NavigateTo: "Notification",
     Content:<TeacherNotification/>,

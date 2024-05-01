@@ -6,6 +6,7 @@ import { errorHandler } from "../utils/errorHandler.js";
 import Homework from "../models/homework.model.js";
 import Announcement from "../models/announcement.model.js";
 import TimeTable from "../models/timeTable.model.js";
+import StudyMaterial from "../models/studyMaterial.model.js";
 
 
 export const addStudent = async(req , res , next)=>{
@@ -153,4 +154,17 @@ export const getTimetableByBatch = async (req, res) => {
   }
 };
 
+export const getStudyMaterial = async(req, res, next) =>{
+    const {batch} = req.params;
 
+    try {
+        const studyMaterial = await StudyMaterial.find({batch});
+
+        if(!studyMaterial)
+        return res.status(404).json({ message: 'No Study material Available' });
+        return res.status(200).json(studyMaterial);
+    } catch (error) {
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+
+}
