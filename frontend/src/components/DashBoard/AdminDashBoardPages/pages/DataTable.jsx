@@ -8,18 +8,22 @@ import EditIcon from "@mui/icons-material/Edit";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Swal from "sweetalert2";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First Name", width: 130 },
-  { field: "lastName", headerName: "Last Name", width: 130 },
-  { field: "teacherId", headerName: "Teacher ID", width: 130 },
-  { field: "email", headerName: "Email", width: 250 },
-  { field: "batchId", headerName: "Batch ID", width: 130 },
-];
-
 
 export default function Table({ChangeState,fETCHcurrentURl , id , teacherID}) {
+
+
+  const columns = [
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "firstName", headerName: "First Name", width: 130 },
+    { field: "lastName", headerName: "Last Name", width: 130 },
+    { field: teacherID==="teacher"?"teacherId": "studentId", headerName: teacherID==="teacher"?"Teacher Id": "Student Id", width: 130 },
+    { field: "email", headerName: "Email", width: 250 },
+  ];
+  
+  
+
   const ConvertToDataGrid = (data) => {
+    console.log(data)
     return data.map((item, index) => {
       return {
         id: index + 1,
@@ -27,7 +31,6 @@ export default function Table({ChangeState,fETCHcurrentURl , id , teacherID}) {
         lastName: item.lastname,
         teacherId: (teacherID === 'teacher' ? item.teacherID : item.studentID),
         email: item.email,
-        batchId: item.batch.length === 0 ? "empty" : item.batch[0].batch,
       };
     });
   };
@@ -171,12 +174,9 @@ export default function Table({ChangeState,fETCHcurrentURl , id , teacherID}) {
   
     const fetchTeachers = async () => {
       try {
-        console.log(fETCHcurrentURl)
         const res = await axios.get(fETCHcurrentURl);
-        console.log("Data from API:", res.data);
-        const convertedData = ConvertToDataGrid(res.data);
-        console.log("Converted data:", convertedData);
-        setResponse(convertedData);
+        setResponse(ConvertToDataGrid(res.data));
+        console.log(res.data)
         console.log(response);
       } catch (error) {
         console.error("Error fetching teachers:", error);

@@ -15,6 +15,7 @@ export default function Grid({ ContentItem }) {
         const resolvedItems = await Promise.all(ContentItem);
         setItems(resolvedItems.filter(item => item && item.description));
         setLoading(false);
+        console.log(ContentItem)
       } catch (error) {
         console.error("Error fetching items:", error);
         setLoading(false);

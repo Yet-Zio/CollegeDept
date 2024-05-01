@@ -4,8 +4,8 @@ import StaffMangementOptoins from "../pages/StaffMangementOptoins";
 import StaffManager from "../pages/StaffManager";
 import AssocationTable from "../pages/AssociationTable";
 
-const GetTeacherURL = "http://localhost:3000/api/teacher/getTeacher";
-const getAssociateURL = "http://localhost:3000/api/admin/getAssociate";
+const GetTeacherURL = "http://localhost:3000/api/admin/getAssociate";
+const getAssociateURL = " http://localhost:3000/api/teacher/getTeacher";
 export default function StaffMangerLayout({id}) {
   const [itemid, setItemId] = useState(0)
   const [currentURL, SetCurrentURL] = useState();
@@ -25,7 +25,7 @@ export default function StaffMangerLayout({id}) {
                 { itemid === 0 && <StaffMangementOptoins changeItemId={setItemId}/>}
               { itemid === 1 &&<Table ChangeState={setItemId} fETCHcurrentURl={currentURL} id = {id} teacherID = {'teacher'}/>}
               { itemid === 2 &&(<><StaffManager ChangeState={setItemId} ComponentId={2} id = {id} teacherID = {'teacher'}/></>)}
-              { itemid === 3 &&< AssocationTable ChangeState={setItemId}  id = {id} teacherID = {'associate'}/>}
+              { itemid === 3 &&<AssocationTable fETCHcurrentURl={GetTeacherURL} ChangeState={setItemId}  id = {id} teacherID = {'associate'}/>}
               { itemid === 4 &&(<><StaffManager ChangeState={setItemId} ComponentId={4} id = {id} teacherID = {'associate'}/></>)}
             </div>
         </div>
