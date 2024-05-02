@@ -1,13 +1,37 @@
+import axios from "axios";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 export default function LeaveLetter() {
+
+    const currentUser = useSelector((state) => state.user.currentUser)
+
     const [letterContent, setLetterContent] = useState('');
     const handleContentChange = (e) => {
         setLetterContent(e.target.value);
       };
     
-      const handleRequest = () => {
-        console.log('Leave Letter Content:', letterContent);
+      const handleRequest = async(e) => {
+        e.preventDefault();
+        await axios.post(`http://localhost:3000/api/teacher/applyLeave/${currentUser._id}` , {message: letterContent})
+        .then((res) => {
+          console.log(res)
+          Swal.fire({
+            title: "Success",
+            text: "Leave Letter Sent Successfully",
+            icon: "success"
+          });
+        })
+        .catch((err) => {
+          console.log(err)
+          Swal.fire({
+            title: "Failed",
+            text: "Something went wrong",
+            icon: "error"
+          });
+        })
+
       };
     
       return (

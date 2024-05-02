@@ -23,7 +23,7 @@ const UploadAttendance = () => {
     .then((res) => {
     setFetchStudent(res.data);
     console.log(res)
-    console.log(student)
+    
     })
     .catch((err) => {
     console.log(err)

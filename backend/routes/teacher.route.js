@@ -1,5 +1,5 @@
 import express from "express";
-import { addAnnouncement, addStudyMaterial, addTeacher, applyLeave, assignHomework, deleteTeacher, getTeacher, setFaculty, teacherSignin, updateTeacher, uploadAttendance, uploadTimetable } from "../controller/teacher.controller.js";
+import { addAnnouncement, addStudyMaterial, addTeacher, applyLeave, assignHomework, deleteTeacher, getTeacher, getTeacherNotification, setFaculty, teacherSignin, updateTeacher, uploadAttendance, uploadTimetable } from "../controller/teacher.controller.js";
 import { upload } from "../utils/multer.js";
 
 const router = express.Router();
@@ -7,6 +7,7 @@ const router = express.Router();
 router.post('/addTeacher', addTeacher);
 router.post('/teacherSignin', teacherSignin);
 router.get('/getTeacher', getTeacher);
+router.get('/getTeacherNotification', getTeacherNotification);
 router.post('/setFaculty', setFaculty);
 router.post('/assignHomework/:id',upload.single("image") , assignHomework);
 router.post('/addAnnouncement', addAnnouncement);

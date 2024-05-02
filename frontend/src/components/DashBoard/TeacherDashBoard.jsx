@@ -82,7 +82,7 @@ const TeacherSideBarButtons = [
     id:9,
     ButtonName:"Notifications",
     NavigateTo: "Notification",
-    Content:<TeacherNotification/>,
+    Content:<TeacherNotification id={'teacher'}/>,
     Logo: <Bell weight="bold" size={22} />,
 },
 ]

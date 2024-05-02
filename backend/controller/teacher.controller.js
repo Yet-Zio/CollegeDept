@@ -10,6 +10,7 @@ import { errorHandler } from '../utils/errorHandler.js';
 import StudyMaterial from '../models/studyMaterial.model.js';
 import Student from '../models/students.model.js';
 import mongoose from 'mongoose';
+import TeacherNotification from '../models/teacherNotification.model.js';
 
 export const addTeacher = async(req, res, next) =>{
     const{firstname, lastname,  teacherID, email} = req.body;
@@ -306,7 +307,7 @@ export const uploadAttendance = async (req, res, next) => {
         
             student.attendance[0].absent += absent;
        
-        console.log("checkinnn")
+        
 
         await student.save();
 
@@ -316,3 +317,21 @@ export const uploadAttendance = async (req, res, next) => {
     }
 };
 
+export const getTeacherNotification  = async(req , res , next) => {
+
+    
+
+    try {
+
+        const fetchDocs = await TeacherNotification.find();
+
+        res 
+        .status(200)
+        .json(fetchDocs)
+
+        
+    } catch (error) {
+        next(error)
+    }
+
+}
