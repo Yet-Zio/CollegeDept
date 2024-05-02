@@ -9,6 +9,7 @@ import TimeTable from '../models/timeTable.model.js';
 import { errorHandler } from '../utils/errorHandler.js';
 import StudyMaterial from '../models/studyMaterial.model.js';
 import Student from '../models/students.model.js';
+import mongoose from 'mongoose';
 
 export const addTeacher = async(req, res, next) =>{
     const{firstname, lastname,  teacherID, email} = req.body;
@@ -284,21 +285,28 @@ export const addStudyMaterial = async(req , res , next) => {
 }
 
 export const uploadAttendance = async (req, res, next) => {
-    const { studentID, present, absent } = req.body;
+    const { studentID, present, absent , batch } = req.body;
 
     try {
-        const student = await Student.findOne({ studentID });
+
+        const model = mongoose.model(batch , Student.schema);
+
+        const student = await model.findOne({ studentID });
 
         // if (!student) {
         //     return res.status(404).json({ message: 'Student not found' });
         // }
 
-        if (present !== undefined) {
+        if (student.attendance.length === 0) {
+            // If no attendance entry exists, create a new one
+            student.attendance.push({ present: 0, absent: 0 });
+        }
+
             student.attendance[0].present += present;
-        }
-        if (absent !== undefined) {
+        
             student.attendance[0].absent += absent;
-        }
+       
+        console.log("checkinnn")
 
         await student.save();
 

@@ -47,7 +47,7 @@ const UploadAttendance = () => {
     e.preventDefault();
 
     console.log(student , presentCount , absentCount  )
-    await axios.post('http://localhost:3000/api/teacher/uploadAttendance' , {studentID: student , present: presentCount , absent: absentCount})
+    await axios.post('http://localhost:3000/api/teacher/uploadAttendance' , {studentID: student , present: presentCount , absent: absentCount , batch})
     .then((res) => {
       console.log(res)
       Swal.fire({
