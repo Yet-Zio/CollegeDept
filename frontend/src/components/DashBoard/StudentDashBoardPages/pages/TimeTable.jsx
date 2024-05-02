@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const url = "http://localhost:3000/api/student/fetchTimeTable/";
 
@@ -31,21 +32,22 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function TimeTable() {
-  const [batch, setBatch] = useState("Batch A");
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const [batch, setBatch] = useState(currentUser.batch); // Initialize state with currentUser.batch directly
   const [response, setResponse] = useState(null);
 
   useEffect(() => {
     const fetchTimeTable = async () => {
       try {
-        const res = await axios.get(`${url + batch}`);
+        const res = await axios.get(`${url}${batch}`);
         setResponse(res.data);
-        console.log(res.data)
       } catch (error) {
         console.log(error);
       }
     };
+    
     fetchTimeTable();
-  }, []);
+  }, [batch]); // Add batch as a dependency to the useEffect hook
 
   return (
     <>
@@ -99,3 +101,4 @@ export default function TimeTable() {
     </>
   );
 }
+
