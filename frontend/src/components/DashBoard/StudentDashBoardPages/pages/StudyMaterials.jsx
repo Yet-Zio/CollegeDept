@@ -1,5 +1,25 @@
+import { useEffect, useState } from "react";
 import gay from "../../../../assets/hikigaya.jpeg";
 export default function StudyMaterials() {
+
+  const [studyMaterial, setStudyMaterial] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/student/getStudyMaterial/batch2021");
+        console.log(response.data)
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setStudyMaterial(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
       <div className="h-[100dvh] w-[100%]">
