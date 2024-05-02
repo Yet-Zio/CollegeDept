@@ -52,7 +52,7 @@ const StudentSideBarButtons = [
       NavigateTo: "Home Work",
       Content:<HomeWork/>,
       Logo: <Notebook weight="bold" size={22} />,
-  },
+  },              
   {
       id:6,
       ButtonName:"Attendance",
