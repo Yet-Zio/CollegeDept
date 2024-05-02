@@ -12,81 +12,42 @@ export default function AddStudents() {
     firstname: "",
     lastname: "",
     email: "",
-    id: 0
+    studentID: 0,
+    batch: ""
   });
 
-
-  const handleAddTeacher = async() => {
-   
-    await axios.post((`http://localhost:3000/api/teacher/addTeacher`) , {firstname:formData.firstname , lastname:formData.lastname, email:formData.email , teacherID: formData.id})
-    .then((res) =>{
-      console.log(res.data);
-      Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: "Teacher Added Successfully",
-      });
-    })
-    .catch((error) =>{
-      Swal.fire({
-        icon: "error",
-        title: "Failed",
-        text: "Something Went Wrong",
-      });
-      console.log(error);
-    })
-  }
-
-  const handleAddAssociate = async() => {
-
-    await axios.post((`http://localhost:3000/api/admin/addAssociate`) , {firstname:formData.firstname , lastname:formData.lastname, email:formData.email , studentID: formData.id})
-    .then((res) =>{
-      console.log(res.data);
-      Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: "Association Member Added Successfully",
-      });
-    })
-    .catch((error) =>{
-      Swal.fire({
-        icon: "error",
-        title: "Failed",
-        text: "Something Went Wrong",
-      });
-      console.log(error);
-    })
-
-  }
-
   const handleSubmit = async(e) => {
-    e.preventDefault();
 
-    if (!formData.firstname || !formData.lastname || !formData.email || !formData.id) {
-      
+    e.preventDefault();
+    let studBatch = `batch${formData.batch}`
+    await axios.post('http://localhost:3000/api/student/addStudent',{firstname:formData.firstname , lastname: formData.lastname , studentID: formData.studentID , batch: studBatch , email: formData.email})
+    .then((res) => {
+      console.log(res)
       Swal.fire({
-        title: "Error",
-        text: "Please fill out all fields",
+        title: "Success",
+        text: "Student added successfully",
+        icon: "success"
+      });
+    })
+    .catch((err) => {
+      console.log(err)
+      Swal.fire({
+        title: "Failed",
+        text: "something went wrong",
         icon: "error"
       });
-      return; 
-    }
-
-    if(id === 'admin' && teacherID ==='teacher') handleAddTeacher ();
-
-    if(id === 'admin' && teacherID ==='associate') handleAddAssociate ();
+    })
 
   }
+
+
+ 
 
   return (
     <>
       <div className="h-[60%] w-[100%] flex justify-center items-center flex-col mt-48 gap-12">
-      <button 
-          onClick={()=>{
-            ChangeState(0)
-          }}
-        className="mb-5">  <ArrowBackIcon/></button>
-        <div className="text-xl font-semibold">Add Facualty</div>
+
+        <div className="text-xl font-semibold">Add Student</div>
         <div className=" flex gap-16">
         <TextField
           helperText="Student Frist Name "
@@ -115,7 +76,7 @@ export default function AddStudents() {
           helperText="Student  Id "
           id="demo-helper-text-aligned"
           label={"ID"}
-          onChange={(e) => {setFormData({...formData , id: e.target.value})}}
+          onChange={(e) => {setFormData({...formData , studentID: e.target.value})}}
         />
         </div>
         <div className="flex gap-16">
@@ -123,7 +84,7 @@ export default function AddStudents() {
           helperText="Student Batch "
           id="demo-helper-text-aligned"
           label={"Batch"}
-          onChange={(e) => {setFormData({...formData , email: e.target.value})}}
+          onChange={(e) => {setFormData({...formData , batch: e.target.value})}}
         />
 </div>
         <button 

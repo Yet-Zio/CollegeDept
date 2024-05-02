@@ -4,6 +4,7 @@ import { Eye, EyeSlash, Student } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
 import Nav from "../Shared/Nav";
 import Footer from "../Shared/Footer";
+import Swal from "sweetalert2";
 
 export default function StudentsLogin() {
   const [passInput, setPassInput] = useState(false);
@@ -13,11 +14,12 @@ export default function StudentsLogin() {
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
+    let studBatch = `batch${batch}`
     e.preventDefault();
     axios
       .post("http://localhost:3000/api/auth/signin", {
         studentID,
-        batch,
+        batch: studBatch,
         password,
       })
       .then((res) => {
@@ -25,6 +27,11 @@ export default function StudentsLogin() {
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          title: "The ",
+          text: "That thing is still around?",
+          icon: "question"
+        });
       });
   };
 
