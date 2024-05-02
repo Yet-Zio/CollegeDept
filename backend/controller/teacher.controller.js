@@ -107,13 +107,13 @@ export const applyLeave = async (req , res , next) => {
 
     // if(req.user.id != req.params.id) return next(errorHandler(401 , "Unauthorized")) 
 
-    const { message} = req.body ;
+    const { message , firstname , image} = req.body ;
 
     // const findTeacher = await Teacher.findOne({_id:teacher})
 
     // if(!findTeacher) return next(errorHandler(404 , 'Teacher Not Found'));
 
-    const addLeaveLetter = new leaveLetter({teacher: req.params.id , message});
+    const addLeaveLetter = new leaveLetter({teacher: req.params.id , message , firstname , image});
 
     try {
         

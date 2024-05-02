@@ -15,7 +15,9 @@ const leaveLetterSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    image: String , 
+    firstname: String
 
 })
 

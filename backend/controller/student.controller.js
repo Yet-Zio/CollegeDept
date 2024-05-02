@@ -11,7 +11,7 @@ import StudyMaterial from "../models/studyMaterial.model.js";
 
 export const addStudent = async(req , res , next)=>{
 
-    // if(req.user.id !== req.params.id) return next(errorHandler(403, 'forbidden'))
+    // if(req.user.id !== req.params.id) return next(errorHandler(403, 'forbidden'))    
 
     const {email , studentID , firstname , lastname , batch} = req.body;
     

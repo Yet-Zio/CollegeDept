@@ -14,7 +14,7 @@ export default function LeaveLetter() {
     
       const handleRequest = async(e) => {
         e.preventDefault();
-        await axios.post(`http://localhost:3000/api/teacher/applyLeave/${currentUser._id}` , {message: letterContent})
+        await axios.post(`http://localhost:3000/api/teacher/applyLeave/${currentUser._id}` , {message: letterContent , firstname: currentUser.firstname , image: currentUser.avatar})
         .then((res) => {
           console.log(res)
           Swal.fire({

@@ -82,7 +82,7 @@ export default function NotificationList({ NotificationData ,DashBoardId , id}) 
                   <Avatar alt="Remy Sharp" src={benzi} />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={" Benziger Raj"}
+                  primary={id !== 'admin'? "Benzigar" : item.firstname}
                   secondary={
                     
                       <Typography
