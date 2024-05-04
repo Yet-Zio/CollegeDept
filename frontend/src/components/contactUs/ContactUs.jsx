@@ -2,11 +2,42 @@
 // const handleSubmit = (e) =>{
 //     e.preventDefault();
 
+import { useState } from "react";
 import Footer from "../Shared/Footer";
 import Nav from "../Shared/Nav";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 // }
 export default function ContactUs() {
+
+    const [formdata , setFormdata] = useState({
+        name: "",
+        email: "" , 
+        message: ""
+    })
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        await axios.post('http://localhost:3000/api/student/contactUs' , formdata)
+        .then((res) => {
+            console.log(res)
+            Swal.fire({
+                title: "Success",
+                text: "Thanks For Contacting",
+                icon: "success"
+              });
+        })
+        .catch((err) => {
+            console.log(err)
+            Swal.fire({
+                title: "Failed",
+                text: "Something went wrong",
+                icon: "error"
+              });
+        })
+    }
+
   return (
     <>
     <Nav/>
@@ -57,20 +88,30 @@ export default function ContactUs() {
                     <form className="mt-4">
                         <div className="flex-1">
                             <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Full Name</label>
-                            <input type="text" placeholder="Devloper" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-[#222222] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input 
+                            onChange={(e) => {setFormdata({...formdata , name: e.target.value})}}
+                            type="text" placeholder="Devloper" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-[#222222] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
-                        <div className="flex-1 mt-6">
+        
+              <div className="flex-1 mt-6">
                             <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email address</label>
-                            <input type="email" placeholder="Devloper@dev.com" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-[#222222] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input
+                            onChange={(e) => {setFormdata({...formdata , email: e.target.value})}}
+                            type="email" placeholder="Devloper@dev.com" className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-[#222222] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
                         <div className="w-full mt-6">
                             <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Message</label>
-                            <textarea className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-[#222222] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" placeholder="Message"></textarea>
-                        </div>
+                            <textarea 
+                            onChange={(e) => {setFormdata({...formdata , message: e.target.value})}}
+                            className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-[#222222] dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" placeholder="Message"></textarea>
+        
+             </div>
 
-                        <button className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#DC8733] rounded-md hover:bg-[#dc8833c0] ">
+                        <button
+                        onClick={handleSubmit}
+                        className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#DC8733] rounded-md hover:bg-[#dc8833c0] ">
                             get in touch
                         </button>
                     </form>

@@ -32,6 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function TimeTable() {
+
   const currentUser = useSelector((state) => state.user.currentUser);
   const [batch, setBatch] = useState(currentUser.batch); // Initialize state with currentUser.batch directly
   const [response, setResponse] = useState(null);

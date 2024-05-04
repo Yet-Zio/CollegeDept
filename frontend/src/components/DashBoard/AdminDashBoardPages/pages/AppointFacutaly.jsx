@@ -68,7 +68,7 @@ export default function AppointFacutaly() {
    
        <div className=" h-[100%] w-[100%] ">
        <div className="w-[100%] flex text-2xl font-semibold justify-center items-center">
-        Appoint Facualty
+        Appoint Faculty
     </div>
        <div className="w-[100%] flex gap-7 h-[100%] justify-start items-center">
  
@@ -99,7 +99,7 @@ export default function AppointFacutaly() {
       <div className="w-[100%] h-[100%] flex justify-center items-center">
         <button
         onClick={handleAssignFaculty}
-        className="py-5 px-16 rounded-xl bg-orange-400 hover:bg-orange-600">Appoint Facualty</button>
+        className="py-5 px-16 rounded-xl bg-orange-400 hover:bg-orange-600">Appoint Faculty</button>
     </div>
  </div>
     </div>

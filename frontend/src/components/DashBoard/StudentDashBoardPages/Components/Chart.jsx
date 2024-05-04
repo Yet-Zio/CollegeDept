@@ -1,17 +1,33 @@
 import { PieChart } from "@mui/x-charts";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Chart() {
-  const backendData = {
-    absentPercentage: 20,
-  };
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const [response, setResponse] = useState(null);
+  const [backendData, setBackendData] = useState({});
+
+  useEffect(() => {
+    const fetchAttendance = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3000/api/student/getAttendance/${currentUser.studentID}/${currentUser.batch}`);
+        setResponse(res.data);
+        setBackendData({
+          absentPercentage: res.data.absentPercentage,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchAttendance();
+  }, [currentUser.studentID, currentUser.batch]);
+
   const days = Array.from({ length: 100 }, (_, i) => i + 1);
   const totalDays = days.length;
   const absentPercentage = backendData.absentPercentage;
   const presentPercentage = 100 - absentPercentage;
-
-  // Calculate total present and absent days
-  const presentDays = Math.round((presentPercentage / 100) * totalDays);
-  const absentDays = totalDays - presentDays;
 
   const pieChartData = [
     { name: "Absent", value: absentPercentage, color: "#e0771b" },
@@ -34,15 +50,19 @@ export default function Chart() {
     <div className="h-screen w-screen flex justify-start items-center">
       <div className="h-[100%] w-[80%] flex justify-evenly items-center">
         <div className="text-2xl font-bold text-[#5c5c5c]">
-          <div>
-            Total Working Days: <span>{totalDays}</span> Days
-          </div>
-          <div className="text-green-600">
-            Present: <span>{presentDays}</span> Days
-          </div>
-          <div className="text-[#e0771b]">
-            Absent: <span>{absentDays}</span> Days
-          </div>
+          {response && (
+            <>
+              <div>
+                Total Working Days: <span>{response.total}</span> Days
+              </div>
+              <div className="text-green-600">
+                Present: <span>{response.present}</span> Days
+              </div>
+              <div className="text-[#e0771b]">
+                Absent: <span>{response.absent}</span> Days
+              </div>
+            </>
+          )}
         </div>
         <div style={{ width: "40%", height: "43%" }}>
           <PieChart

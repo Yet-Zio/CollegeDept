@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from "react";
 import "./nav.css";
-// import search from "../../assets/search-icon-2044x2048-psdrpqwp.png";
+import search from "../../assets/search-icon-2044x2048-psdrpqwp.png";
 import logo from "../../assets/collegedepticon.png";
 import { X } from "@phosphor-icons/react";
 import Spinner from "../Common/Spinner";
@@ -61,10 +61,10 @@ export default function Nav({ sendDataToParent }) {
             </span>
           </div>
           <div className="search">
-            {/* <img src={search} /> */}
-            <span className="h-[40px] w-[50px] rounded-full bg-white ">
+            <img src={search} />
+            {/* <span className="h-[40px] w-[50px] rounded-full bg-white ">
 
-            </span>
+            </span> */}
           </div>
         </div>
       </div>

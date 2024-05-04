@@ -111,7 +111,7 @@ function App() {
             </>
           }
         />
-        <Route
+        {/* <Route
           path="/student"
           element={
             <>
@@ -119,7 +119,7 @@ function App() {
               <StudenDashboard />
             </>
           }
-        />
+        /> */}
         {/* <Route
           path="/admin"
           element={

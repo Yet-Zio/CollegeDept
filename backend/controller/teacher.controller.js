@@ -234,32 +234,31 @@ export const deleteTeacher = async(req , res , next) => {
     }
 
 } 
-export const uploadTimetable = async (req, res , next) => {
-    const { batch } = req.body;
-
-    const { monday , tuesday , thursday , wednesday , friday } = req.body.timeTableData;
+export const uploadTimetable = async (req, res, next) => {
+    const { batch, timeTableData } = req.body;
 
     try {
-      let timetable = await TimeTable.findOne({ batch });
-  
-      if (!timetable) {
-        timetable = new TimeTable({ batch });
-      }
-      if (monday) timetable.monday = monday;
-      if (tuesday) timetable.tuesday = tuesday;
-      if (wednesday) timetable.wednesday = wednesday;
-      if (thursday) timetable.thursday = thursday;
-      if (friday) timetable.friday = friday;
-  
-      await timetable.save();
-      
-      const message = timetable.isNew ? 'Timetable uploaded successfully' : 'Timetable updated successfully';
-      return res.status(200).json({ message });
+        let timetable = await TimeTable.findOne({ batch });
+
+        if (!timetable) {
+            timetable = new TimeTable({ batch });
+        }
+
+        ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'].forEach(day => {
+            if (timeTableData[day]) {
+                timetable[day] = timeTableData[day];
+            }
+        });
+
+        await timetable.save();
+
+        const message = timetable.isNew ? 'Timetable uploaded successfully' : 'Timetable updated successfully';
+        return res.status(200).json({ message });
     } catch (error) {
-        next(error);
+        console.error(error); // Log the error for debugging
+        return res.status(500).json({ error: 'An error occurred while uploading the timetable.' });
     }
 };
-
 export const addStudyMaterial = async(req , res , next) => {
 
     try {

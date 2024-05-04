@@ -30,6 +30,7 @@ export const addStudent = async(req , res , next)=>{
     }
 }
 
+  
 export const contactUs = async(req , res ,next) =>{
     const{name, email, message} = req.body;
 
@@ -166,5 +167,28 @@ export const getStudyMaterial = async(req, res, next) =>{
     } catch (error) {
         return res.status(500).json({ message: 'Internal server error' });
     }
+
+}
+
+export const fetchAttendance = async( req , res ,next) => {
+
+    const {id ,batch } = req.params ;
+
+
+    const model = mongoose.model(batch , Student.schema);
+
+    const fetchStudent = await model.findOne({studentID: id})
+
+    const present = fetchStudent.attendance[0].present ; 
+
+    const absent = fetchStudent.attendance[0].absent;
+
+    let total = present + absent ;
+
+    let absentPercentage = (absent / total) * 100
+
+    res
+    .status(200)
+    .json({absentPercentage , total , present , absent})
 
 }
